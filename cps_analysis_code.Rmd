@@ -168,7 +168,7 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 ggsave(filename = "~/national_unemp_sex.png",height=8, width=10, dpi = "print" )
 ```
 
-
+## gender x race X education
 ```{r}
 outna2<-cpsdat2%>%
   filter(is.na(race_eth2)==F, month>=as.Date('2019-12-01'))%>%
@@ -191,7 +191,7 @@ outna2%>%
   labs(title = "Unemployment Rate and Race/Ethnicity, Gender and Education",subtitle = "December 2019 to May 2020",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
-       y = "Unemployment Rate")+ylim(c(0, .5))+
+       y = "Unemployment Rate")+#ylim(c(0, .6))+
   scale_color_brewer(type="qual", palette = "Set1", name = "Race/Ethnicity",labels=c("Native American","Non Hispanic Asian", "Non Hispanic Black", "Hispanic","Non Hispanic White"))+facet_wrap(~educ+sex, ncol = 4)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
@@ -233,7 +233,7 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 
 #p$labels$colour<-"Race/Ethnicity"
 #p
-ggsave(filename = "~/national_unemp_sex_fb.png",height=8, width=10, dpi = "print" )
+ggsave(filename = "C:/Users/corey//national_unemp_sex_fb.png",height=8, width=10, dpi = "print" )
 ```
 
 ### State rate map
