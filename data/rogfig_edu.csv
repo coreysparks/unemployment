@@ -1,0 +1,16 @@
+edu_attain,rate,group
+Not a high school graduate,25.8,black
+High school graduate,17.5,black
+"One or more year of college, no degree",17.5,black
+Associate's degree,12.4,black
+Bachelor's degree or higher,8.7,black
+Not a high school graduate,16.4,latino
+High school graduate,14.9,latino
+"One or more year of college, no degree",18.1,latino
+Associate's degree,12.9,latino
+Bachelor's degree or higher,10.8,latino
+Not a high school graduate,18,white
+High school graduate,10.4,white
+"One or more year of college, no degree",11.6,white
+Associate's degree,8.7,white
+Bachelor's degree or higher,7,white

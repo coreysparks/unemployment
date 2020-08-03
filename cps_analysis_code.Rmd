@@ -521,3 +521,110 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 ggsave(filename = "~/national_metro_sex.png",height=8, width=10, dpi = "print" )
 
 ```
+
+### additional figures by Rogelio
+```{r}
+dat<-read.csv("./data/rogrank.csv", header=T)
+
+library(dplyr)
+library(ggplot2)
+
+dat%>%
+  mutate(group= ifelse(pjobrecv<100, 1,0))%>%
+  ggplot(aes(x=pjobrecv, y=reorder(STATEFIP, pjobrecv)))+geom_point(stat = "identity" , aes(color=as.factor(group) ))+geom_vline(xintercept = 100)+ylab("State")+xlab("Percentage of Jobs Recovered by June")+theme(legend.position = "none")+ggtitle("Job Recovery by State", sub="February to June")
+ggsave(filename="~/rogelio_state.png", width = 6, height = 10, dpi = "print")
+
+
+dat2<-read.csv("./data/rogrank_race.csv", header=T)
+head(dat2)
+library(gridExtra)
+p1<-dat2%>%
+  mutate(group= ifelse(White<100, 1,0))%>%
+  ggplot(aes(x=White, y=reorder(STATEFIP, White)))+geom_point(stat = "identity" , aes(color=as.factor(group) ))+geom_vline(xintercept = 100)+ylab("State")+xlab("Percentage of Jobs Recovered by June")+theme(legend.position = "none")+ggtitle("Non-Hispanic White Job Recovery by State", sub="February to June")
+
+p2<-dat2%>%
+  mutate(group= ifelse(Latino<100, 1,0))%>%
+  filter(LatinoLF>20000)%>%
+  ggplot(aes(x=Latino, y=reorder(STATEFIP, Latino)))+geom_point(stat = "identity" , aes(color=as.factor(group) ))+geom_vline(xintercept = 100)+ylab("State")+xlab("Percentage of Jobs Recovered by June")+theme(legend.position = "none")+ggtitle("Hispanic Job Recovery by State", sub="February to June")
+
+p3<-dat2%>%
+  mutate(group= ifelse(Black<100, 1,0))%>%
+  filter(BlackLF>20000)%>%
+  ggplot(aes(x=Black, y=reorder(STATEFIP, Black)))+geom_point(stat = "identity" , aes(color=as.factor(group) ))+geom_vline(xintercept = 100)+ylab("State")+xlab("Percentage of Jobs Recovered by June")+theme(legend.position = "none")+ggtitle("Non-Hispanic Black Job Recovery by State", sub="February to June")
+
+p4<-dat2%>%
+  mutate(group= ifelse(Asian<100, 1,0))%>%
+  filter(AsianLF>20000)%>%
+  ggplot(aes(x=Asian, y=reorder(STATEFIP, Asian)))+geom_point(stat = "identity" , aes(color=as.factor(group) ))+geom_vline(xintercept = 100)+ylab("State")+xlab("Percentage of Jobs Recovered by June")+theme(legend.position = "none")+ggtitle("Non-Hispanic Asian Job Recovery by State", sub="February to June")
+
+pa<-grid.arrange(p1,p2,p3,p4,ncol=2, nrow=2)
+pa
+ggsave(pa, filename="~/rogelio_state_race.png", width = 14, height = 18, dpi = "print")
+
+library(stringr)
+
+dat3<-read.csv("./data/rogrank_racefig2.csv", header=T)
+
+head(dat3)
+p5<-dat3%>%
+  mutate(newgroup=str_wrap(Group, width=16))%>%
+  ggplot(aes(x=newgroup, y=pct_recover, fill=Time))+geom_bar(stat="identity", position = "dodge")+scale_fill_brewer(type="qual", palette = "Set1", name = "Time")+ theme(axis.text.x = element_text(angle = 45))
+
+library(forcats)
+p5
+
+p5b<-dat3%>%
+  #mutate(newgroup=str_wrap(Group, width=16))%>%
+  filter(Group%in%c("Asian", "Black", "Latino", "White"))%>%
+  mutate(Time=fct_relevel(Time,"Feb. Workers","Apr.-May","May-June","Apr.-June" ))%>%
+  ggplot(aes(x=Group, y=pct_recover, fill=Time))+geom_bar(stat="identity", position = "dodge")+scale_fill_brewer(type="qual", palette = "Set1", name = "Time")+ theme(axis.text.x = element_text(angle = 45))+theme_minimal()+ylab("% Recovered Jobs")+xlab("Race/Ethnic Group")+ggtitle("Percent Distribution of Total Workers and Job Growth \nby Race/Ethnic Group and Period")
+
+
+p5b
+ggsave(p5b, filename="~/rogeliofig2.png", height = 6, width = 6, dpi = "print")                                                                                                     
+dat4<-read.csv("./data/rogfig3.csv", header=T)
+#names(dat4)<-c("Group", "Feb_Workers", "Feb_April")
+head(dat4)
+p6b<-dat4%>%
+  #mutate(newgroup=str_wrap(Group, width=16))%>%
+  filter(Group%in%c("Asian", "Black", "Latino", "White"))%>%
+  mutate(time=fct_relevel(time,"Feb. Workers","Feb.-Apr."))%>%
+  ggplot(aes(x=Group, y=value, fill=time))+geom_bar(stat="identity", position = "dodge",color="grey")+
+  scale_fill_brewer(type="qual", palette = "Set1", name = "Time")+ theme(axis.text.x = element_text(angle = 45))+theme_minimal()+ylab("% Recovered Jobs")+xlab("Race/Ethnic Group")+ggtitle("Percent Distribution of Total Workers and \nJob Loss by Race/Ethnic Group and Period")
+
+
+p6b
+ggsave(p6b, filename="~/rogeliofig1.png", height = 6, width = 6, dpi = "print")             
+
+
+dat5<-read.csv("./data/rogfig4.csv", header=T)
+#names(dat4)<-c("Group", "Feb_Workers", "Feb_April")
+head(dat5)
+p7b<-dat5%>%
+  #mutate(newgroup=str_wrap(Group, width=16))%>%
+  filter(group%in%c("Asian", "Black", "Latino", "White"))%>%
+ # mutate(time=fct_relevel(sex,"Feb. Workers","Feb.-Apr."))%>%
+  ggplot(aes(x=group, y=value, fill=sex))+geom_bar(stat="identity", position = "dodge",color="grey")+
+  scale_fill_brewer(type="qual", palette = "Set1", name = "Gender")+ theme(axis.text.x = element_text(angle = 45))+theme_minimal()+ylab("% Recovered Jobs")+xlab("Race/Ethnic Group")+ggtitle("Percent of February Jobs Recovered in June \nby Race/Ethnic Group and Gender")
+
+
+p7b
+ggsave(p7b, filename="~/rogeliofig4.png", height = 6, width = 6, dpi = "print")       
+
+
+dat6<-read.csv("./data/rogfig5.csv", header=T)
+#names(dat4)<-c("Group", "Feb_Workers", "Feb_April")
+head(dat6)
+p8b<-dat6%>%
+  mutate(time=factor(time))%>%
+  filter(group%in%c("Asian", "Black", "Latino", "White"))%>%
+  mutate(time=fct_relevel(time,"Pct. Jobs Feb.","Pct. of Feb. Jobs in May", "Pct. of Feb. Jobs in June"))%>%
+  ggplot(aes(x=group, y=value, fill=time))+geom_bar(stat="identity", position = "dodge",color="grey")+
+  scale_fill_brewer(type="qual", palette = "Set1", name = "Time")+ theme(axis.text.x = element_text(angle = 45))+theme_minimal()+ylab("% Recovered Jobs")+xlab("Race/Ethnic Group")+ggtitle("Percent of February Jobs Recovered in May and June by Race/Ethnic Group")
+
+
+p8b
+ggsave(p8b, filename="~/rogeliofig3.png", height = 6, width = 6, dpi = "print") 
+
+```
+
