@@ -21,6 +21,8 @@ library(questionr)
 library(tidyquant)
 library(fpp)
 library(survey)
+ test<-sessioninfo::session_info()
+knitr::write_bib(test$packages$package, file = "~/Documents/loadedpkgs.bib")
 ```
 #read from original IPUMS
 ```{r}
