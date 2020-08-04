@@ -25,13 +25,13 @@ library(survey)
 knitr::write_bib(test$packages$package, file = "~/Documents/loadedpkgs.bib")
 ```
 #read from original IPUMS
-```{r}
+```{r, eval=FALSE}
 ddi<-read_ipums_ddi("/home/corey/ExpanDrive/OneDrive Business//cps_00029.xml")
 cpsdat2<-read_ipums_micro(ddi)
 cpsdat2<-zap_labels(cpsdat2)
 ```
 
-```{r}
+```{r, eval=FALSE}
 
 stfips<-data.frame(stfip=unique(tidycensus::fips_codes$state_code), stname=unique(tidycensus::fips_codes$state_name))
 head(stfips)
@@ -58,7 +58,7 @@ cpsdat2<-merge(cpsdat2, stfips, by.x="stfip", by.y= "stfip")
 ```
 
 ## recoding from original data
-```{r}
+```{r, eval=FALSE}
 cpsdat2<-cpsdat2%>%
   filter(YEAR >2009,AGE>16,EMPSTAT%in%c(10,12,21,22))%>%
   mutate(emp = Recode(EMPSTAT, recodes = "0 = NA; 1='af'; 10='curr work'; 12 = 'recent no job'; 20:22='unemp'"),
@@ -90,7 +90,7 @@ cpsdat2<-cpsdat2%>%
   arrange(CPSIDP, MONTH)
 ```
 
-```{r}
+```{r, eval=FALSE}
 #head(cpsdat2)
 #rm(cpsdat2)
 #rm(cpsdat2)
@@ -102,10 +102,10 @@ gc()
 ```
 
 ```{r, eval=FALSE}
-load("~/git_area/unemployment/data/analysisdata.Rdata")
+load("~/Documents/GitHub//unemployment/data/analysisdata.Rdata")
 ```
 
-```{r}
+```{r, eval=FALSE}
 cpsdat2%>%
   #filter(recentloss==1)%>%
   #filter(emp=="unemp")%>%
@@ -137,7 +137,7 @@ outna<-cpsdat2%>%
   filter(is.na(race_eth2)==F, month>=as.Date('2020-02-01'))%>%
   #mutate(Group = ifelse(stname=="Texas", "Texas","Rest of US"))%>%
   group_by(month, race_eth2 )%>%
-  summarise(unemprate =(wtd.mean(recentloss,weights = WTFINL, na.rm=T)),
+  summarise(#unemprate =(wtd.mean(recentloss,weights = WTFINL, na.rm=T)),
          # avghrs=wtd.mean(AHRSWORKT,weights = WTFINL, na.rm=T),
           emprate =(1- wtd.mean(curremp,weights = WTFINL, na.rm=T)))%>%
   arrange( month)%>%
@@ -163,6 +163,7 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 #p$labels$colour<-"Race/Ethnicity"
 #p
 ggsave(filename = "~/national_unemp.png",height=8, width=10, dpi = "print" )
+write.csv(outna, file="~/Documents/GitHub/unemployment/fig1_rate.csv", row.names = F)
 ```
 
 ## gender
@@ -171,7 +172,7 @@ outna2<-cpsdat2%>%
   filter(is.na(race_eth2)==F)%>%
   #mutate(Group = ifelse(stname=="Texas", "Texas","Rest of US"))%>%
   group_by(month, race_eth2, sex )%>%
-  summarise(unemprate =(wtd.mean(recentloss,weights = WTFINL, na.rm=T)),
+  summarise(#unemprate =(wtd.mean(recentloss,weights = WTFINL, na.rm=T)),
           #avghrs=wtd.mean(AHRSWORKT,weights = WTFINL, na.rm=T),
           emprate =(1- wtd.mean(curremp,weights = WTFINL, na.rm=T)))%>%
   arrange( month)%>%
@@ -197,6 +198,7 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 #p$labels$colour<-"Race/Ethnicity"
 #p
 ggsave(filename = "~/national_unemp_sex.png",height=8, width=10, dpi = "print" )
+write.csv(outna, file="~/Documents/GitHub/unemployment/fig4_rate.csv", row.names = F)
 ```
 
 ## gender x race X education
@@ -232,6 +234,7 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 #p$labels$colour<-"Race/Ethnicity"
 #p
 ggsave(filename = "~/national_unemp_sex_educ.png",height=8, width=10, dpi = "print" )
+write.csv(outna2, file="~/Documents/GitHub/unemployment/fig_3_rate.csv", row.names = F)
 ```
 
 
@@ -241,7 +244,7 @@ outna2<-cpsdat2%>%
   filter(is.na(race_eth2)==F)%>%
   #mutate(Group = ifelse(stname=="Texas", "Texas","Rest of US"))%>%
   group_by(month, race_eth2, fb )%>%
-  summarise(unemprate =(wtd.mean(recentloss,weights = WTFINL, na.rm=T)),
+  summarise(#unemprate =(wtd.mean(recentloss,weights = WTFINL, na.rm=T)),
          # avghrs=wtd.mean(AHRSWORKT,weights = WTFINL, na.rm=T),
           emprate =(1- wtd.mean(curremp,weights = WTFINL, na.rm=T)))%>%
   arrange( month)%>%
@@ -267,6 +270,7 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 #p$labels$colour<-"Race/Ethnicity"
 #p
 ggsave(filename = "~/national_unemp_sex_fb.png",height=8, width=10, dpi = "print" )
+write.csv(outna2, file="~/Documents/GitHub/unemployment/fig_5rates.csv", row.names = F)
 ```
 
 ### State rate map
@@ -276,7 +280,7 @@ outst<-cpsdat2%>%
   filter(is.na(race_eth2)==F)%>%
   #mutate(Group = ifelse(stname=="Texas", "Texas","Rest of US"))%>%
   group_by(month, stname)%>%
-  summarise(emprate =(1- wtd.mean(curremp,weights = WTFINL, na.rm=T)),
+  summarise(#emprate =(1- wtd.mean(curremp,weights = WTFINL, na.rm=T)),
           #avghrs=wtd.mean(AHRSWORKT,weights = WTFINL, na.rm=T),
           emprate =(1- wtd.mean(curremp,weights = WTFINL, na.rm=T)))%>%
   arrange( month)%>%
@@ -301,7 +305,7 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 p
 ggsave(plot = p,filename = "~/stunemp_norace.png",height=12, width=16, dpi = "print" )
 head(outst)
-
+write.csv(outst, file="~/Documents/GitHub/unemployment/figst_rate.csv", row.names = F)
 # outst%>%
 #   group_by(month, race_eth2)%>%
 #   summarise(max=max(emprate))
@@ -358,6 +362,7 @@ p
   p$labels$colour<-"Race/Ethnicity"
 p
 ggsave(plot = p,filename = "~/stunemp.png",height=12, width=16, dpi = "print" )
+write.csv(outst, file="~/Documents/GitHub/unemployment/fig_state_race.csv", row.names = F)
 ```
 ## gender x race X education
 ```{r}
@@ -393,6 +398,7 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 #p$labels$colour<-"Race/Ethnicity"
 #p
 ggsave(filename = "~/national_unemp_sex_educ.png",height=8, width=10, dpi = "print" )
+write.csv(outna2, file="~/Documents/GitHub/unemployment/fig_gender_edu.csv", row.names = F)
 ```
 
 
@@ -431,6 +437,7 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 #p$labels$colour<-"Race/Ethnicity"
 #p
 ggsave(filename = "~/national_unemp_age.png",height=8, width=10, dpi = "print" )
+write.csv(outna2, file="~/Documents/GitHub/unemployment/fig_2.csv", row.names = F)
 ```
 ## metro status
 ```{r}
@@ -462,7 +469,7 @@ ggsave(filename = "~/national_metro.png",height=8, width=10, dpi = "print" )
 
 ```
 
-```{r}
+```{r, eval=FALSE}
 #p$labels$colour<-"Race/Ethnicity"
 #p
 
@@ -523,7 +530,7 @@ ggsave(filename = "~/national_metro_sex.png",height=8, width=10, dpi = "print" )
 ```
 
 ### additional figures by Rogelio
-```{r}
+```{r, eval=FALSE}
 dat<-read.csv("./data/rogrank.csv", header=T)
 
 library(dplyr)
@@ -625,6 +632,6 @@ p8b<-dat6%>%
 
 p8b
 ggsave(p8b, filename="~/rogeliofig3.png", height = 6, width = 6, dpi = "print") 
-
+write.csv(outna, file="~/Documents/GitHub/unemployment/fig4_rate.csv", row.names = F)
 ```
 
