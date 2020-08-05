@@ -26,7 +26,7 @@ knitr::write_bib(test$packages$package, file = "~/Documents/loadedpkgs.bib")
 ```
 #read from original IPUMS
 ```{r, eval=FALSE}
-ddi<-read_ipums_ddi("/home/corey/ExpanDrive/OneDrive Business//cps_00029.xml")
+ddi<-read_ipums_ddi("~/OneDrive - University of Texas at San Antonio//cps_00029.xml")
 cpsdat2<-read_ipums_micro(ddi)
 cpsdat2<-zap_labels(cpsdat2)
 ```
@@ -64,12 +64,14 @@ cpsdat2<-cpsdat2%>%
   mutate(emp = Recode(EMPSTAT, recodes = "0 = NA; 1='af'; 10='curr work'; 12 = 'recent no job'; 20:22='unemp'"),
          sex=Recode(SEX, recodes = "1='Male'; 2='Female'; else=NA", as.factor=T),
          race = Recode (RACE, recodes = "100 = 'White'; 200='Black';300='AIAE';651='Asian';652='NHPI';802:830='multiple'; else=NA"),
+         lfpart = Recode(LABFORCE,recodes="2=1; 1=0; else=NA" ),
          hisp= ifelse(HISPAN !=0, "Latino", "Not Latino")
          )%>%
   mutate( curremp = ifelse(EMPSTAT%in%c(10,12) , 1, 0),
           recentloss=ifelse(emp=='recent no job', 1,0))%>%
   arrange(CPSIDP, MONTH,MISH)
 
+cpsdat2$emp_bin<-ifelse(cpsdat2$emp!="curr work", 1, 0)
 cpsdat2$month<- as.Date(as.yearmon(paste(cpsdat2$YEAR,cpsdat2$MONTH, sep="/"), format = "%Y/%m"))
 cpsdat2$race_eth<-interaction(cpsdat2$race, cpsdat2$hisp)
 library(stringr)
@@ -83,7 +85,7 @@ cpsdat2$duremp_c<-ifelse(cpsdat2$DURUNEMP==999, NA, cpsdat2$DURUNEMP)
 cpsdat2$fb<-ifelse(cpsdat2$YRIMMIG>0, "Foreign Born", "Native Born")
 cpsdat2$avghrs<-ifelse(cpsdat2$AHRSWORKT==999, NA, cpsdat2$AHRSWORKT)
 cpsdat2<-cpsdat2%>%
-  select(CPSIDP, MISH, MONTH, WTFINL, month, race_eth2, curremp,educ, sex, race, emp, YEAR, AGE, stname, PANLWT, EDUC, avghrs, ABSENT, WKSTAT, EMPSAME, MULTJOB, NUMJOB,recentloss,fb, cohort , METRO, duremp_c)%>%
+  select(emp_bin,CPSIDP, MISH, MONTH, WTFINL, month, race_eth2, curremp,educ, sex, race, emp, YEAR, AGE, stname, PANLWT, EDUC, avghrs, ABSENT, WKSTAT, EMPSAME, MULTJOB, NUMJOB,recentloss,fb, cohort , METRO, duremp_c, lfpart)%>%
   filter(is.na(race_eth2)==F, month>=as.Date('2020-02-01'))%>%
   #filter(AGE>18)%>%
   group_by(CPSIDP)%>%
@@ -96,7 +98,11 @@ cpsdat2<-cpsdat2%>%
 #rm(cpsdat2)
 #rm(cntpep)
 
-save(cpsdat2,  file="~/git_area//unemployment/data/analysisdata.Rdata")
+save(cpsdat2,  file="~/Documents/GitHub///unemployment/data/analysisdata.Rdata")
+cpsdat2<-cpsdat2%>%
+  filter(race_eth2!="multiple.Not Latino",race_eth2!="AIAE.Not Latino", race_eth2!="NHPI.Not Latino", race_eth2!="Asian.Not Latino")
+
+des<-survey::svydesign(ids=~1,  weights = ~WTFINL, data=cpsdat2)
 #rm(cpsdat2)
 gc()
 ```
@@ -126,6 +132,21 @@ cpsdat2%>%
 
 ```
 
+## Stats
+```{r}
+m1<-svyglm(emp_bin~race_eth2+sex+race_eth2*factor(month), des, family=binomial)
+summary(m1)
+anova(m1)
+
+m2<-svyglm(emp_bin~race_eth2+sex+race_eth2*sex*factor(month), des, family=binomial)
+summary(m2)
+anova(m2)
+
+m3<-svyglm(emp_bin~race_eth2+sex+race_eth2*sex*fb*factor(month), des, family=binomial)
+summary(m3)
+anova(m3)
+
+```
 
 
 ### national rate map
@@ -164,6 +185,8 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 #p
 ggsave(filename = "~/national_unemp.png",height=8, width=10, dpi = "print" )
 write.csv(outna, file="~/Documents/GitHub/unemployment/fig1_rate.csv", row.names = F)
+
+
 ```
 
 ## gender
@@ -243,7 +266,7 @@ write.csv(outna2, file="~/Documents/GitHub/unemployment/fig_3_rate.csv", row.nam
 outna2<-cpsdat2%>%
   filter(is.na(race_eth2)==F)%>%
   #mutate(Group = ifelse(stname=="Texas", "Texas","Rest of US"))%>%
-  group_by(month, race_eth2, fb )%>%
+  group_by(month, race_eth2, fb, sex )%>%
   summarise(#unemprate =(wtd.mean(recentloss,weights = WTFINL, na.rm=T)),
          # avghrs=wtd.mean(AHRSWORKT,weights = WTFINL, na.rm=T),
           emprate =(1- wtd.mean(curremp,weights = WTFINL, na.rm=T)))%>%
