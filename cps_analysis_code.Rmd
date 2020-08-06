@@ -97,18 +97,20 @@ cpsdat2<-cpsdat2%>%
 #rm(cpsdat2)
 #rm(cpsdat2)
 #rm(cntpep)
-
-save(cpsdat2,  file="~/Documents/GitHub///unemployment/data/analysisdata.Rdata")
 cpsdat2<-cpsdat2%>%
   filter(race_eth2!="multiple.Not Latino",race_eth2!="AIAE.Not Latino", race_eth2!="NHPI.Not Latino", race_eth2!="Asian.Not Latino")
+
+saveRDS(cpsdat2, file="~/cpsdat.rds")
 
 des<-survey::svydesign(ids=~1,  weights = ~WTFINL, data=cpsdat2)
 #rm(cpsdat2)
 gc()
 ```
+# Load data file
 
 ```{r, eval=FALSE}
-load("~/Documents/GitHub//unemployment/data/analysisdata.Rdata")
+setwd('path to file')
+load("cpsdat.rds")
 ```
 
 ```{r, eval=FALSE}
@@ -132,19 +134,21 @@ cpsdat2%>%
 
 ```
 
-## Stats
+## basic models for month * race * sex variation
 ```{r}
-m1<-svyglm(emp_bin~race_eth2+sex+race_eth2*factor(month), des, family=binomial)
+m1<-svyglm(emp_bin~factor(race_eth2)+sex+factor(race_eth2)*factor(month), des, family=binomial)
 summary(m1)
 anova(m1)
+Anova(m1)
 
 m2<-svyglm(emp_bin~race_eth2+sex+race_eth2*sex*factor(month), des, family=binomial)
 summary(m2)
-anova(m2)
+Anova(m2)
 
 m3<-svyglm(emp_bin~race_eth2+sex+race_eth2*sex*fb*factor(month), des, family=binomial)
 summary(m3)
-anova(m3)
+Anova(m3)
+
 
 ```
 
