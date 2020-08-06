@@ -162,7 +162,7 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 
 #p$labels$colour<-"Race/Ethnicity"
 #p
-ggsave(filename = "~/national_unemp.png",height=8, width=10, dpi = "print" )
+ggsave(filename = "~/national_unemp.eps",height=8, width=10, dpi = "print" )
 ```
 
 ## gender
@@ -196,7 +196,7 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 
 #p$labels$colour<-"Race/Ethnicity"
 #p
-ggsave(filename = "~/national_unemp_sex.png",height=8, width=10, dpi = "print" )
+ggsave(filename = "~/national_unemp_sex.eps",height=8, width=10, dpi = "print" )
 ```
 
 ## gender x race X education
@@ -231,7 +231,7 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 
 #p$labels$colour<-"Race/Ethnicity"
 #p
-ggsave(filename = "~/national_unemp_sex_educ.png",height=8, width=10, dpi = "print" )
+ggsave(filename = "~/national_unemp_sex_educ.eps",height=8, width=10, dpi = "print" )
 ```
 
 
@@ -266,7 +266,7 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 
 #p$labels$colour<-"Race/Ethnicity"
 #p
-ggsave(filename = "~/national_unemp_sex_fb.png",height=8, width=10, dpi = "print" )
+ggsave(filename = "~/national_unemp_sex_fb.eps",height=8, width=10, dpi = "print" )
 ```
 
 ### State rate map
@@ -392,7 +392,7 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 
 #p$labels$colour<-"Race/Ethnicity"
 #p
-ggsave(filename = "~/national_unemp_sex_educ.png",height=8, width=10, dpi = "print" )
+ggsave(filename = "~/national_unemp_sex_educ.eps",height=8, width=10, dpi = "print" )
 ```
 
 
@@ -430,7 +430,8 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 
 #p$labels$colour<-"Race/Ethnicity"
 #p
-ggsave(filename = "~/national_unemp_age.png",height=8, width=10, dpi = "print" )
+ggsave(filename = "~/national_unemp_age.epsfig3
+       figure",height=8, width=10, dpi = "print" )
 ```
 ## metro status
 ```{r}
