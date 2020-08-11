@@ -364,10 +364,28 @@ outst<-cpsdat2%>%
           #avghrs=wtd.mean(AHRSWORKT,weights = WTFINL, na.rm=T),
           emprate =(1- wtd.mean(curremp,weights = WTFINL, na.rm=T)), 
           nsamp=n())%>%
-  filter(nsamp>30)%>%
+  filter(nsamp>20)%>%
   arrange( month)%>%
   ungroup()%>%
   arrange( race_eth2,stname, month )
+
+usavg<-cpsdat2%>%
+  group_by(month)%>%
+  summarise(emprate =(1- wtd.mean(curremp,weights = WTFINL, na.rm=T)),
+          #avghrs=wtd.mean(AHRSWORKT,weights = WTFINL, na.rm=T),
+          emprate =(1- wtd.mean(curremp,weights = WTFINL, na.rm=T)), 
+          nsamp=n())%>%
+  filter(nsamp>20)%>%
+  arrange( month)%>%
+  ungroup()%>%
+  arrange( month )
+
+outst%>%filter(stname=="New Hampshire")%>%ggplot(aes(x=month, y=emprate, color=race_eth2))+geom_line(aes(group=race_eth2), lwd=1.75)+ggtitle("New Hampshire Unemployment Rates", subtitle = "February to June, 2020")+geom_line(data=usavg, aes(x=month, y=emprate, group="National Rate"), col="black")+scale_y_continuous(labels = scales::percent)+
+  #guides(fill=guide_legend(title="Race/Ethnicity"))+
+  #geom_hline(yintercept = 0, col="red", lwd=1.1)+
+theme_minimal()+theme(axis.text.x = element_text(angle = 45))
+
+
 
 p<-outst%>%
   filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino", emprate!=0, race_eth2!="Asian.Not Latino")%>%
