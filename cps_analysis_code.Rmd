@@ -26,7 +26,7 @@ knitr::write_bib(test$packages$package, file = "~/Documents/loadedpkgs.bib")
 ```
 #read from original IPUMS
 ```{r, eval=FALSE}
-ddi<-read_ipums_ddi("~/OneDrive - University of Texas at San Antonio//cps_00029.xml")
+ddi<-read_ipums_ddi("~/OneDrive - University of Texas at San Antonio//cps_00032.xml")
 cpsdat2<-read_ipums_micro(ddi)
 cpsdat2<-zap_labels(cpsdat2)
 ```
@@ -187,14 +187,14 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 
 #p$labels$colour<-"Race/Ethnicity"
 #p
-<<<<<<< HEAD
+#<<<<<<< HEAD
 ggsave(filename = "~/national_unemp.eps",height=8, width=10, dpi = "print" )
 =======
-ggsave(filename = "~/national_unemp.png",height=8, width=10, dpi = "print" )
-write.csv(outna, file="~/Documents/GitHub/unemployment/fig1_rate.csv", row.names = F)
+#ggsave(filename = "~/national_unemp.png",height=8, width=10, dpi = "print" )
+#write.csv(outna, file="~/Documents/GitHub/unemployment/fig1_rate.csv", row.names = F)
 
 
->>>>>>> a84ccb9e5b8bcff0b7f9cf5252e05dbf049207d3
+#>>>>>>> a84ccb9e5b8bcff0b7f9cf5252e05dbf049207d3
 ```
 
 ## gender
@@ -228,12 +228,12 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 
 #p$labels$colour<-"Race/Ethnicity"
 #p
-<<<<<<< HEAD
+#<<<<<<< HEAD
 ggsave(filename = "~/national_unemp_sex.eps",height=8, width=10, dpi = "print" )
-=======
-ggsave(filename = "~/national_unemp_sex.png",height=8, width=10, dpi = "print" )
-write.csv(outna, file="~/Documents/GitHub/unemployment/fig4_rate.csv", row.names = F)
->>>>>>> a84ccb9e5b8bcff0b7f9cf5252e05dbf049207d3
+#=======
+#ggsave(filename = "~/national_unemp_sex.png",height=8, width=10, dpi = "print" )
+#write.csv(outna, file="~/Documents/GitHub/unemployment/fig4_rate.csv", row.names = F)
+#>>>>>>> a84ccb9e5b8bcff0b7f9cf5252e05dbf049207d3
 ```
 
 ## gender x race X education
@@ -268,12 +268,12 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 
 #p$labels$colour<-"Race/Ethnicity"
 #p
-<<<<<<< HEAD
+#<<<<<<< HEAD
 ggsave(filename = "~/national_unemp_sex_educ.eps",height=8, width=10, dpi = "print" )
-=======
-ggsave(filename = "~/national_unemp_sex_educ.png",height=8, width=10, dpi = "print" )
-write.csv(outna2, file="~/Documents/GitHub/unemployment/fig_3_rate.csv", row.names = F)
->>>>>>> a84ccb9e5b8bcff0b7f9cf5252e05dbf049207d3
+#=======
+#ggsave(filename = "~/national_unemp_sex_educ.png",height=8, width=10, dpi = "print" )
+#write.csv(outna2, file="~/Documents/GitHub/unemployment/fig_3_rate.csv", row.names = F)
+#>>>>>>> a84ccb9e5b8bcff0b7f9cf5252e05dbf049207d3
 ```
 
 
@@ -301,19 +301,19 @@ outna2%>%
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+ylim(c(0, .25))+
-  scale_color_brewer(type="qual", palette = "Set1", name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))+facet_wrap(~fb)+scale_y_continuous(labels = scales::percent)+
+  scale_color_brewer(type="qual", palette = "Set1", name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))+facet_wrap(~fb+sex)+scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
 theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 
 #p$labels$colour<-"Race/Ethnicity"
 #p
-<<<<<<< HEAD
-ggsave(filename = "~/national_unemp_sex_fb.eps",height=8, width=10, dpi = "print" )
-=======
+#<<<<<<< HEAD
+#ggsave(filename = "~/national_unemp_sex_fb.eps",height=8, width=10, dpi = "print" )
+#=======
 ggsave(filename = "~/national_unemp_sex_fb.png",height=8, width=10, dpi = "print" )
-write.csv(outna2, file="~/Documents/GitHub/unemployment/fig_5rates.csv", row.names = F)
->>>>>>> a84ccb9e5b8bcff0b7f9cf5252e05dbf049207d3
+#write.csv(outna2, file="~/Documents/GitHub/unemployment/fig_5rates.csv", row.names = F)
+#>>>>>>> a84ccb9e5b8bcff0b7f9cf5252e05dbf049207d3
 ```
 
 ### State rate map
@@ -458,12 +458,12 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 
 #p$labels$colour<-"Race/Ethnicity"
 #p
-<<<<<<< HEAD
-ggsave(filename = "~/national_unemp_sex_educ.eps",height=8, width=10, dpi = "print" )
-=======
+#<<<<<<< HEAD
+#ggsave(filename = "~/national_unemp_sex_educ.eps",height=8, width=10, dpi = "print" )
+#=======
 ggsave(filename = "~/national_unemp_sex_educ.png",height=8, width=10, dpi = "print" )
 write.csv(outna2, file="~/Documents/GitHub/unemployment/fig_gender_edu.csv", row.names = F)
->>>>>>> a84ccb9e5b8bcff0b7f9cf5252e05dbf049207d3
+#>>>>>>> a84ccb9e5b8bcff0b7f9cf5252e05dbf049207d3
 ```
 
 
@@ -501,13 +501,13 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 
 #p$labels$colour<-"Race/Ethnicity"
 #p
-<<<<<<< HEAD
-ggsave(filename = "~/national_unemp_age.epsfig3
-       figure",height=8, width=10, dpi = "print" )
-=======
+# <<<<<<< HEAD
+# ggsave(filename = "~/national_unemp_age.epsfig3
+#        figure",height=8, width=10, dpi = "print" )
+# =======
 ggsave(filename = "~/national_unemp_age.png",height=8, width=10, dpi = "print" )
 write.csv(outna2, file="~/Documents/GitHub/unemployment/fig_2.csv", row.names = F)
->>>>>>> a84ccb9e5b8bcff0b7f9cf5252e05dbf049207d3
+#>>>>>>> a84ccb9e5b8bcff0b7f9cf5252e05dbf049207d3
 ```
 ## metro status
 ```{r}

@@ -1,745 +1,1057 @@
 "month","race_eth2","stname","emprate","nsamp"
-2020-02-01,"AIAE.Not Latino","Alaska",0.0958011529012698,78
-2020-03-01,"AIAE.Not Latino","Alaska",0.140529306058548,85
-2020-04-01,"AIAE.Not Latino","Alaska",0.260380295672442,67
-2020-05-01,"AIAE.Not Latino","Alaska",0.282099294031159,54
-2020-06-01,"AIAE.Not Latino","Alaska",0.217402233128866,58
-2020-02-01,"AIAE.Not Latino","New Mexico",0.109070735789953,80
-2020-03-01,"AIAE.Not Latino","New Mexico",0.0633831852188659,56
-2020-04-01,"AIAE.Not Latino","New Mexico",0.103312046819728,55
-2020-05-01,"AIAE.Not Latino","New Mexico",0.0879382646404053,55
-2020-06-01,"AIAE.Not Latino","New Mexico",0.0762035959985796,51
-2020-02-01,"AIAE.Not Latino","Oklahoma",0.0144056397460903,59
-2020-03-01,"AIAE.Not Latino","Oklahoma",0.0527375566342776,48
-2020-04-01,"AIAE.Not Latino","Oklahoma",0.145013713264745,58
-2020-05-01,"AIAE.Not Latino","Oklahoma",0.219914705193775,51
-2020-06-01,"AIAE.Not Latino","Oklahoma",0.0980516684477334,47
-2020-02-01,"AIAE.Not Latino","South Dakota",0.0902415279086951,34
-2020-03-01,"AIAE.Not Latino","South Dakota",0,31
-2020-05-01,"AIAE.Not Latino","South Dakota",0.38689209748587,31
-2020-02-01,"Asian.Not Latino","Alaska",0,51
-2020-03-01,"Asian.Not Latino","Alaska",0.0224885151931586,45
-2020-04-01,"Asian.Not Latino","Alaska",0.043177902459219,51
-2020-05-01,"Asian.Not Latino","Alaska",0.0391965182681744,41
-2020-06-01,"Asian.Not Latino","Alaska",0.120110236976646,43
-2020-02-01,"Asian.Not Latino","Arizona",0.0460659421264337,36
-2020-03-01,"Asian.Not Latino","Arizona",0.0286851345945595,36
-2020-04-01,"Asian.Not Latino","Arizona",0.121567031066584,40
-2020-02-01,"Asian.Not Latino","California",0.0251139221062779,844
-2020-03-01,"Asian.Not Latino","California",0.0442834205785783,677
-2020-04-01,"Asian.Not Latino","California",0.139434738830443,643
-2020-05-01,"Asian.Not Latino","California",0.134486974598555,627
-2020-06-01,"Asian.Not Latino","California",0.17076712622272,627
-2020-02-01,"Asian.Not Latino","Connecticut",0.0268430243357286,39
-2020-03-01,"Asian.Not Latino","Connecticut",0,35
-2020-04-01,"Asian.Not Latino","Connecticut",0.0657156220607769,31
-2020-02-01,"Asian.Not Latino","District of Columbia",0,58
-2020-03-01,"Asian.Not Latino","District of Columbia",0.0297328362318519,49
-2020-04-01,"Asian.Not Latino","District of Columbia",0.0348251586353624,46
-2020-05-01,"Asian.Not Latino","District of Columbia",0.0478568423319274,48
-2020-06-01,"Asian.Not Latino","District of Columbia",0.0950361978720767,53
-2020-02-01,"Asian.Not Latino","Florida",0,76
-2020-03-01,"Asian.Not Latino","Florida",0,60
-2020-04-01,"Asian.Not Latino","Florida",0.077362301049628,58
-2020-05-01,"Asian.Not Latino","Florida",0.192491654643843,49
-2020-06-01,"Asian.Not Latino","Florida",0.105602929199345,43
-2020-02-01,"Asian.Not Latino","Georgia",0.0156956218720513,79
-2020-03-01,"Asian.Not Latino","Georgia",0.0741899493853992,71
-2020-04-01,"Asian.Not Latino","Georgia",0.156244560371907,57
-2020-05-01,"Asian.Not Latino","Georgia",0.0920045813007788,49
-2020-06-01,"Asian.Not Latino","Georgia",0.0535979218890165,43
-2020-02-01,"Asian.Not Latino","Hawaii",0.0179496076121376,310
-2020-03-01,"Asian.Not Latino","Hawaii",0.0156435674536972,288
-2020-04-01,"Asian.Not Latino","Hawaii",0.239314329586453,308
-2020-05-01,"Asian.Not Latino","Hawaii",0.204139635284189,309
-2020-06-01,"Asian.Not Latino","Hawaii",0.151840661666993,293
-2020-02-01,"Asian.Not Latino","Illinois",0.0110280161739633,110
-2020-03-01,"Asian.Not Latino","Illinois",0.0490414314334953,80
-2020-04-01,"Asian.Not Latino","Illinois",0.0273374059368729,69
-2020-05-01,"Asian.Not Latino","Illinois",0.163128845301538,66
-2020-06-01,"Asian.Not Latino","Illinois",0.093346571019538,75
-2020-03-01,"Asian.Not Latino","Iowa",0.0279407211717065,31
-2020-02-01,"Asian.Not Latino","Maryland",0.0125250426468589,70
-2020-03-01,"Asian.Not Latino","Maryland",0.0322429806731367,83
-2020-04-01,"Asian.Not Latino","Maryland",0.116481028351994,69
-2020-05-01,"Asian.Not Latino","Maryland",0.121595410706696,57
-2020-06-01,"Asian.Not Latino","Maryland",0.102324841962942,42
-2020-02-01,"Asian.Not Latino","Massachusetts",0,93
-2020-03-01,"Asian.Not Latino","Massachusetts",0.0449293606566999,109
-2020-04-01,"Asian.Not Latino","Massachusetts",0.266119448850096,79
-2020-05-01,"Asian.Not Latino","Massachusetts",0.183776809909916,93
-2020-06-01,"Asian.Not Latino","Massachusetts",0.130303162531067,100
-2020-02-01,"Asian.Not Latino","Michigan",0.0157292227254846,53
-2020-03-01,"Asian.Not Latino","Michigan",0,52
-2020-04-01,"Asian.Not Latino","Michigan",0.0733137537990199,48
-2020-05-01,"Asian.Not Latino","Michigan",0.185036963661204,34
-2020-06-01,"Asian.Not Latino","Michigan",0.108134572848891,35
-2020-02-01,"Asian.Not Latino","Minnesota",0.0384797415435962,51
-2020-03-01,"Asian.Not Latino","Minnesota",0.0157685906233488,45
-2020-04-01,"Asian.Not Latino","Minnesota",0.119694358971866,43
-2020-02-01,"Asian.Not Latino","Nevada",0,68
-2020-03-01,"Asian.Not Latino","Nevada",0.0859646657670917,75
-2020-04-01,"Asian.Not Latino","Nevada",0.347341815858199,64
-2020-05-01,"Asian.Not Latino","Nevada",0.41985107071718,50
-2020-06-01,"Asian.Not Latino","Nevada",0.217393331053732,40
-2020-03-01,"Asian.Not Latino","New Hampshire",0.0271450717127012,35
-2020-02-01,"Asian.Not Latino","New Jersey",0.0380505755549594,139
-2020-03-01,"Asian.Not Latino","New Jersey",0.0424759397184669,134
-2020-04-01,"Asian.Not Latino","New Jersey",0.117936357693233,120
-2020-05-01,"Asian.Not Latino","New Jersey",0.149908743946943,116
-2020-06-01,"Asian.Not Latino","New Jersey",0.188035527562488,120
-2020-02-01,"Asian.Not Latino","New York",0.0365038044329719,242
-2020-03-01,"Asian.Not Latino","New York",0.0244282712818245,203
-2020-04-01,"Asian.Not Latino","New York",0.166138334736151,194
-2020-05-01,"Asian.Not Latino","New York",0.205543933792311,164
-2020-06-01,"Asian.Not Latino","New York",0.193174115979156,148
-2020-02-01,"Asian.Not Latino","North Carolina",0,59
-2020-03-01,"Asian.Not Latino","North Carolina",0,55
-2020-04-01,"Asian.Not Latino","North Carolina",0.0386723475300679,46
-2020-05-01,"Asian.Not Latino","North Carolina",0.0980342419679598,57
-2020-06-01,"Asian.Not Latino","North Carolina",0.101578794900415,42
-2020-02-01,"Asian.Not Latino","Ohio",0.0822724654173441,34
-2020-03-01,"Asian.Not Latino","Ohio",0.134850443719599,38
-2020-04-01,"Asian.Not Latino","Ohio",0.13637779514247,34
-2020-02-01,"Asian.Not Latino","Oregon",0.019735215607724,48
-2020-03-01,"Asian.Not Latino","Oregon",0.0634357954892644,49
-2020-04-01,"Asian.Not Latino","Oregon",0.0380684347642122,43
-2020-05-01,"Asian.Not Latino","Oregon",0.179002235682218,36
-2020-06-01,"Asian.Not Latino","Oregon",0.075766228987195,47
-2020-02-01,"Asian.Not Latino","Pennsylvania",0.0728865953503579,64
-2020-03-01,"Asian.Not Latino","Pennsylvania",0.0839387286587289,61
-2020-04-01,"Asian.Not Latino","Pennsylvania",0.193701466064547,45
-2020-05-01,"Asian.Not Latino","Pennsylvania",0.0769808830968388,39
-2020-06-01,"Asian.Not Latino","Pennsylvania",0.274855126027426,46
-2020-02-01,"Asian.Not Latino","Texas",0.019036156550887,216
-2020-03-01,"Asian.Not Latino","Texas",0.0315263285088633,179
-2020-04-01,"Asian.Not Latino","Texas",0.162961173875861,167
-2020-05-01,"Asian.Not Latino","Texas",0.159945882529819,171
-2020-06-01,"Asian.Not Latino","Texas",0.0778053222939691,135
-2020-02-01,"Asian.Not Latino","Virginia",0.0219498430793699,95
-2020-03-01,"Asian.Not Latino","Virginia",0.0360424863183549,82
-2020-04-01,"Asian.Not Latino","Virginia",0.111630589524677,66
-2020-05-01,"Asian.Not Latino","Virginia",0.111264177376181,74
-2020-06-01,"Asian.Not Latino","Virginia",0.144596830790995,58
-2020-02-01,"Asian.Not Latino","Washington",0.020766180226933,92
-2020-03-01,"Asian.Not Latino","Washington",0.106723048065149,79
-2020-04-01,"Asian.Not Latino","Washington",0.102518271910326,87
-2020-05-01,"Asian.Not Latino","Washington",0.0854210264934822,81
-2020-06-01,"Asian.Not Latino","Washington",0.0940049983453635,90
 2020-02-01,"Black.Not Latino","Alabama",0.0306677648523317,223
 2020-03-01,"Black.Not Latino","Alabama",0.030546265030218,205
 2020-04-01,"Black.Not Latino","Alabama",0.210647515914569,191
 2020-05-01,"Black.Not Latino","Alabama",0.106892189614029,188
 2020-06-01,"Black.Not Latino","Alabama",0.113987646330063,198
+2020-07-01,"Black.Not Latino","Alabama",0.116924687361456,200
+2020-08-01,"Black.Not Latino","Alabama",0.105450531731945,199
+2020-09-01,"Black.Not Latino","Alabama",0.126617856573256,249
+2020-08-01,"Black.Not Latino","Alaska",0.0381790077418858,26
+2020-09-01,"Black.Not Latino","Alaska",0.112803725846082,21
 2020-02-01,"Black.Not Latino","Arizona",0.040820696426709,49
 2020-03-01,"Black.Not Latino","Arizona",0.0317829608306647,34
 2020-04-01,"Black.Not Latino","Arizona",0.215884689323196,32
 2020-05-01,"Black.Not Latino","Arizona",0.143311210134362,42
 2020-06-01,"Black.Not Latino","Arizona",0.106907499788262,33
+2020-07-01,"Black.Not Latino","Arizona",0,24
+2020-08-01,"Black.Not Latino","Arizona",0,24
+2020-09-01,"Black.Not Latino","Arizona",0.0240426092783618,32
 2020-02-01,"Black.Not Latino","Arkansas",0.0438940902628876,112
 2020-03-01,"Black.Not Latino","Arkansas",0.0731465624907719,102
 2020-04-01,"Black.Not Latino","Arkansas",0.10694204003273,98
 2020-05-01,"Black.Not Latino","Arkansas",0.114733282030515,100
 2020-06-01,"Black.Not Latino","Arkansas",0.132144425332111,82
+2020-07-01,"Black.Not Latino","Arkansas",0.125663059234516,76
+2020-08-01,"Black.Not Latino","Arkansas",0.163207788770499,82
+2020-09-01,"Black.Not Latino","Arkansas",0.117577335067714,99
 2020-02-01,"Black.Not Latino","California",0.0699519397618821,252
 2020-03-01,"Black.Not Latino","California",0.0797691092185159,179
 2020-04-01,"Black.Not Latino","California",0.152753119495272,174
 2020-05-01,"Black.Not Latino","California",0.156635206448509,176
 2020-06-01,"Black.Not Latino","California",0.198948031191804,175
+2020-07-01,"Black.Not Latino","California",0.178600117567857,195
+2020-08-01,"Black.Not Latino","California",0.162687579748103,205
+2020-09-01,"Black.Not Latino","California",0.158905792359044,250
+2020-09-01,"Black.Not Latino","Colorado",0.132752291538789,23
 2020-02-01,"Black.Not Latino","Connecticut",0.0218154432641156,34
 2020-03-01,"Black.Not Latino","Connecticut",0.0472291046021842,41
 2020-04-01,"Black.Not Latino","Connecticut",0.0608094534931248,36
 2020-05-01,"Black.Not Latino","Connecticut",0.0555582801187001,36
 2020-06-01,"Black.Not Latino","Connecticut",0.0318659904609894,41
+2020-07-01,"Black.Not Latino","Connecticut",0.189340863441578,49
+2020-08-01,"Black.Not Latino","Connecticut",0.108390826393921,46
+2020-09-01,"Black.Not Latino","Connecticut",0.0644327031940862,51
 2020-02-01,"Black.Not Latino","Delaware",0.0485071767548356,87
 2020-03-01,"Black.Not Latino","Delaware",0.0624151726670662,75
 2020-04-01,"Black.Not Latino","Delaware",0.142288237480251,69
 2020-05-01,"Black.Not Latino","Delaware",0.129017667017862,67
 2020-06-01,"Black.Not Latino","Delaware",0.211261716174793,65
+2020-07-01,"Black.Not Latino","Delaware",0.119226304018981,80
+2020-08-01,"Black.Not Latino","Delaware",0.107642302440037,115
+2020-09-01,"Black.Not Latino","Delaware",0.0660083443488569,108
 2020-02-01,"Black.Not Latino","District of Columbia",0.102174224978829,292
 2020-03-01,"Black.Not Latino","District of Columbia",0.117594094891228,258
 2020-04-01,"Black.Not Latino","District of Columbia",0.202356878264187,266
 2020-05-01,"Black.Not Latino","District of Columbia",0.157837625100256,250
 2020-06-01,"Black.Not Latino","District of Columbia",0.158278752713904,210
+2020-07-01,"Black.Not Latino","District of Columbia",0.142216208477686,207
+2020-08-01,"Black.Not Latino","District of Columbia",0.159011086958455,239
+2020-09-01,"Black.Not Latino","District of Columbia",0.20702477417824,209
 2020-02-01,"Black.Not Latino","Florida",0.0754643116937533,363
 2020-03-01,"Black.Not Latino","Florida",0.0734305747968274,320
 2020-04-01,"Black.Not Latino","Florida",0.158498883946629,253
 2020-05-01,"Black.Not Latino","Florida",0.167125664007738,213
 2020-06-01,"Black.Not Latino","Florida",0.165225019468175,202
+2020-07-01,"Black.Not Latino","Florida",0.162564913675843,224
+2020-08-01,"Black.Not Latino","Florida",0.105769494115471,242
+2020-09-01,"Black.Not Latino","Florida",0.0727014014634177,322
 2020-02-01,"Black.Not Latino","Georgia",0.0568099345457136,379
 2020-03-01,"Black.Not Latino","Georgia",0.0740965921164267,332
 2020-04-01,"Black.Not Latino","Georgia",0.109612497265879,271
 2020-05-01,"Black.Not Latino","Georgia",0.112519083239748,245
 2020-06-01,"Black.Not Latino","Georgia",0.117363735134214,249
+2020-07-01,"Black.Not Latino","Georgia",0.119312778640534,231
+2020-08-01,"Black.Not Latino","Georgia",0.0697213309351181,216
+2020-09-01,"Black.Not Latino","Georgia",0.0741265436295263,291
 2020-02-01,"Black.Not Latino","Illinois",0.0702958994841719,154
 2020-03-01,"Black.Not Latino","Illinois",0.0726033004982702,140
 2020-04-01,"Black.Not Latino","Illinois",0.181323702290942,130
 2020-05-01,"Black.Not Latino","Illinois",0.185581990781613,130
 2020-06-01,"Black.Not Latino","Illinois",0.145024304402841,127
+2020-07-01,"Black.Not Latino","Illinois",0.154260571877817,136
+2020-08-01,"Black.Not Latino","Illinois",0.19763359902088,131
+2020-09-01,"Black.Not Latino","Illinois",0.198190513367931,123
 2020-02-01,"Black.Not Latino","Indiana",0.0692190954589973,74
 2020-03-01,"Black.Not Latino","Indiana",0.0843169250160037,63
 2020-04-01,"Black.Not Latino","Indiana",0.230960930666583,67
 2020-05-01,"Black.Not Latino","Indiana",0.194291613544643,72
 2020-06-01,"Black.Not Latino","Indiana",0.135594838135365,51
+2020-07-01,"Black.Not Latino","Indiana",0.182234419217103,55
+2020-08-01,"Black.Not Latino","Indiana",0.131725876071219,57
+2020-09-01,"Black.Not Latino","Indiana",0.0983026259264171,69
+2020-02-01,"Black.Not Latino","Iowa",0.132083199559051,29
+2020-04-01,"Black.Not Latino","Iowa",0.167804631341313,28
+2020-03-01,"Black.Not Latino","Kansas",0,24
+2020-05-01,"Black.Not Latino","Kansas",0.0427069499601438,21
+2020-06-01,"Black.Not Latino","Kansas",0.130551837285653,25
+2020-07-01,"Black.Not Latino","Kansas",0.150062117351251,31
+2020-08-01,"Black.Not Latino","Kansas",0.0923815881666503,26
 2020-02-01,"Black.Not Latino","Kentucky",0.0156247447533601,40
 2020-03-01,"Black.Not Latino","Kentucky",0.0302884601280268,36
 2020-04-01,"Black.Not Latino","Kentucky",0.231165053562406,35
 2020-05-01,"Black.Not Latino","Kentucky",0.255712030652635,42
 2020-06-01,"Black.Not Latino","Kentucky",0.052529271609036,47
+2020-07-01,"Black.Not Latino","Kentucky",0.103140206810013,38
+2020-08-01,"Black.Not Latino","Kentucky",0.085622057405803,48
+2020-09-01,"Black.Not Latino","Kentucky",0.114415458488715,49
 2020-02-01,"Black.Not Latino","Louisiana",0.0645786105825702,325
 2020-03-01,"Black.Not Latino","Louisiana",0.0714251359362976,293
 2020-04-01,"Black.Not Latino","Louisiana",0.144714317409702,256
 2020-05-01,"Black.Not Latino","Louisiana",0.201127809610599,240
 2020-06-01,"Black.Not Latino","Louisiana",0.146392562728729,232
+2020-07-01,"Black.Not Latino","Louisiana",0.148368904208402,213
+2020-08-01,"Black.Not Latino","Louisiana",0.0906165693880354,227
+2020-09-01,"Black.Not Latino","Louisiana",0.0889906085473023,318
 2020-02-01,"Black.Not Latino","Maryland",0.0810084910423668,194
 2020-03-01,"Black.Not Latino","Maryland",0.0922620360425239,173
 2020-04-01,"Black.Not Latino","Maryland",0.115622480437055,179
 2020-05-01,"Black.Not Latino","Maryland",0.088672565320156,178
 2020-06-01,"Black.Not Latino","Maryland",0.0775333041415919,168
+2020-07-01,"Black.Not Latino","Maryland",0.104779368445565,173
+2020-08-01,"Black.Not Latino","Maryland",0.100330154114918,197
+2020-09-01,"Black.Not Latino","Maryland",0.0999401669801825,168
 2020-02-01,"Black.Not Latino","Massachusetts",0.0570719212062105,92
 2020-03-01,"Black.Not Latino","Massachusetts",0.0196881694523281,75
 2020-04-01,"Black.Not Latino","Massachusetts",0.150669704706457,69
 2020-05-01,"Black.Not Latino","Massachusetts",0.191432260589563,65
 2020-06-01,"Black.Not Latino","Massachusetts",0.167710695367332,67
+2020-07-01,"Black.Not Latino","Massachusetts",0.188719607380532,64
+2020-08-01,"Black.Not Latino","Massachusetts",0.170333056495281,74
+2020-09-01,"Black.Not Latino","Massachusetts",0.110382892204701,70
 2020-02-01,"Black.Not Latino","Michigan",0.0688769933886687,106
 2020-03-01,"Black.Not Latino","Michigan",0.0740723426925792,92
 2020-04-01,"Black.Not Latino","Michigan",0.363939368090574,73
 2020-05-01,"Black.Not Latino","Michigan",0.433655591919643,76
 2020-06-01,"Black.Not Latino","Michigan",0.320458196971648,101
+2020-07-01,"Black.Not Latino","Michigan",0.220320767619,110
+2020-08-01,"Black.Not Latino","Michigan",0.223552542743866,141
+2020-09-01,"Black.Not Latino","Michigan",0.229253396703407,145
 2020-02-01,"Black.Not Latino","Minnesota",0.0475001807520063,33
+2020-03-01,"Black.Not Latino","Minnesota",0.071802396163877,22
+2020-04-01,"Black.Not Latino","Minnesota",0.0407553119153863,21
+2020-05-01,"Black.Not Latino","Minnesota",0.265345063180261,27
+2020-06-01,"Black.Not Latino","Minnesota",0.252939954408722,21
+2020-07-01,"Black.Not Latino","Minnesota",0.180222676797557,29
+2020-08-01,"Black.Not Latino","Minnesota",0.0900122865848543,29
+2020-09-01,"Black.Not Latino","Minnesota",0.0658774609901849,25
 2020-02-01,"Black.Not Latino","Mississippi",0.0948997919700106,317
 2020-03-01,"Black.Not Latino","Mississippi",0.106677424044661,279
 2020-04-01,"Black.Not Latino","Mississippi",0.166215481141599,212
 2020-05-01,"Black.Not Latino","Mississippi",0.0982687643396567,184
 2020-06-01,"Black.Not Latino","Mississippi",0.115470038860642,204
+2020-07-01,"Black.Not Latino","Mississippi",0.165575513703829,234
+2020-08-01,"Black.Not Latino","Mississippi",0.125715146600207,226
+2020-09-01,"Black.Not Latino","Mississippi",0.110027282696199,302
 2020-02-01,"Black.Not Latino","Missouri",0.028982165979639,90
 2020-03-01,"Black.Not Latino","Missouri",0.0555062341891741,75
 2020-04-01,"Black.Not Latino","Missouri",0.094827080809725,76
 2020-05-01,"Black.Not Latino","Missouri",0.0553367023242038,61
 2020-06-01,"Black.Not Latino","Missouri",0.0849734209044752,58
+2020-07-01,"Black.Not Latino","Missouri",0.119141767501854,74
+2020-08-01,"Black.Not Latino","Missouri",0.155898893720514,65
+2020-09-01,"Black.Not Latino","Missouri",0.129078666061571,69
+2020-02-01,"Black.Not Latino","Nebraska",0,27
+2020-03-01,"Black.Not Latino","Nebraska",0.132548941932568,23
+2020-04-01,"Black.Not Latino","Nebraska",0.0974158188056954,24
+2020-08-01,"Black.Not Latino","Nebraska",0.113495931976506,27
+2020-09-01,"Black.Not Latino","Nebraska",0.0250632494684653,35
 2020-02-01,"Black.Not Latino","Nevada",0.125751487670629,78
 2020-03-01,"Black.Not Latino","Nevada",0.102064775969282,75
 2020-04-01,"Black.Not Latino","Nevada",0.258763265002342,64
 2020-05-01,"Black.Not Latino","Nevada",0.307394058341252,59
 2020-06-01,"Black.Not Latino","Nevada",0.120823260984018,37
+2020-07-01,"Black.Not Latino","Nevada",0.192545239756143,35
+2020-08-01,"Black.Not Latino","Nevada",0.310084585417687,43
+2020-09-01,"Black.Not Latino","Nevada",0.233744039077504,62
 2020-02-01,"Black.Not Latino","New Jersey",0.0670387879631485,146
 2020-03-01,"Black.Not Latino","New Jersey",0.0736021651361092,95
 2020-04-01,"Black.Not Latino","New Jersey",0.0997856575991161,89
 2020-05-01,"Black.Not Latino","New Jersey",0.198111692860259,69
 2020-06-01,"Black.Not Latino","New Jersey",0.190361774130436,56
+2020-07-01,"Black.Not Latino","New Jersey",0.212932527802221,86
+2020-08-01,"Black.Not Latino","New Jersey",0.208426319267533,109
+2020-09-01,"Black.Not Latino","New Jersey",0.139449792446886,132
+2020-02-01,"Black.Not Latino","New Mexico",0.107617904761782,21
+2020-05-01,"Black.Not Latino","New Mexico",0.182266348371111,21
 2020-02-01,"Black.Not Latino","New York",0.0374157727437097,264
 2020-03-01,"Black.Not Latino","New York",0.0576477961777054,231
 2020-04-01,"Black.Not Latino","New York",0.135711269413375,191
 2020-05-01,"Black.Not Latino","New York",0.190565343509916,180
 2020-06-01,"Black.Not Latino","New York",0.208314875383752,183
+2020-07-01,"Black.Not Latino","New York",0.157866273377955,187
+2020-08-01,"Black.Not Latino","New York",0.1165699970935,255
+2020-09-01,"Black.Not Latino","New York",0.114133290838641,254
 2020-02-01,"Black.Not Latino","North Carolina",0.0541022719963669,246
 2020-03-01,"Black.Not Latino","North Carolina",0.0637924647747644,204
 2020-04-01,"Black.Not Latino","North Carolina",0.146523921692481,179
 2020-05-01,"Black.Not Latino","North Carolina",0.167339521021879,156
 2020-06-01,"Black.Not Latino","North Carolina",0.112712603205645,156
+2020-07-01,"Black.Not Latino","North Carolina",0.0606699559337146,134
+2020-08-01,"Black.Not Latino","North Carolina",0.0825204262034577,127
+2020-09-01,"Black.Not Latino","North Carolina",0.126704784027074,205
 2020-02-01,"Black.Not Latino","North Dakota",0.097794572908983,31
+2020-03-01,"Black.Not Latino","North Dakota",0.042518884550396,24
+2020-05-01,"Black.Not Latino","North Dakota",0.122535316108153,22
+2020-06-01,"Black.Not Latino","North Dakota",0.124475785552408,30
+2020-07-01,"Black.Not Latino","North Dakota",0.128429577950001,25
+2020-08-01,"Black.Not Latino","North Dakota",0.0800467793915752,32
+2020-09-01,"Black.Not Latino","North Dakota",0.21284461341888,25
 2020-02-01,"Black.Not Latino","Ohio",0.0604350235605419,105
 2020-03-01,"Black.Not Latino","Ohio",0.119762198483206,106
 2020-04-01,"Black.Not Latino","Ohio",0.272936392677807,85
 2020-05-01,"Black.Not Latino","Ohio",0.264644684530911,84
 2020-06-01,"Black.Not Latino","Ohio",0.154843213457671,80
+2020-07-01,"Black.Not Latino","Ohio",0.152305076573798,85
+2020-08-01,"Black.Not Latino","Ohio",0.159495344839174,96
+2020-09-01,"Black.Not Latino","Ohio",0.114244127126878,113
 2020-02-01,"Black.Not Latino","Oklahoma",0.0539358300288443,38
 2020-03-01,"Black.Not Latino","Oklahoma",0.105457506597503,43
+2020-04-01,"Black.Not Latino","Oklahoma",0.121275404608523,26
 2020-05-01,"Black.Not Latino","Oklahoma",0.120211650291647,31
 2020-06-01,"Black.Not Latino","Oklahoma",0.0461265206696644,34
+2020-07-01,"Black.Not Latino","Oklahoma",0.0494297216123933,34
+2020-08-01,"Black.Not Latino","Oklahoma",0.0416147441600029,42
+2020-09-01,"Black.Not Latino","Oklahoma",0.0898839604374019,38
 2020-02-01,"Black.Not Latino","Pennsylvania",0.0739337118006301,107
 2020-03-01,"Black.Not Latino","Pennsylvania",0.0916273957878405,105
 2020-04-01,"Black.Not Latino","Pennsylvania",0.277046719737086,97
 2020-05-01,"Black.Not Latino","Pennsylvania",0.170413953699718,91
 2020-06-01,"Black.Not Latino","Pennsylvania",0.167322721689105,66
+2020-07-01,"Black.Not Latino","Pennsylvania",0.283778312508112,79
+2020-08-01,"Black.Not Latino","Pennsylvania",0.309071816803077,90
+2020-09-01,"Black.Not Latino","Pennsylvania",0.186953265027625,108
+2020-02-01,"Black.Not Latino","Rhode Island",0,21
+2020-09-01,"Black.Not Latino","Rhode Island",0.0603222796638633,21
 2020-02-01,"Black.Not Latino","South Carolina",0.0660034364141897,187
 2020-03-01,"Black.Not Latino","South Carolina",0.0293673031187556,155
 2020-04-01,"Black.Not Latino","South Carolina",0.176539778842245,158
 2020-05-01,"Black.Not Latino","South Carolina",0.119274646353074,158
 2020-06-01,"Black.Not Latino","South Carolina",0.146322521581048,142
+2020-07-01,"Black.Not Latino","South Carolina",0.100511394326053,148
+2020-08-01,"Black.Not Latino","South Carolina",0.0845364274082948,143
+2020-09-01,"Black.Not Latino","South Carolina",0.0692841647152972,193
+2020-08-01,"Black.Not Latino","South Dakota",0.0351082313519535,21
 2020-02-01,"Black.Not Latino","Tennessee",0.130531488277345,126
 2020-03-01,"Black.Not Latino","Tennessee",0.0777849202439628,129
 2020-04-01,"Black.Not Latino","Tennessee",0.154399037829346,90
 2020-05-01,"Black.Not Latino","Tennessee",0.115042644176506,103
 2020-06-01,"Black.Not Latino","Tennessee",0.159203604933432,92
+2020-07-01,"Black.Not Latino","Tennessee",0.188249971551718,90
+2020-08-01,"Black.Not Latino","Tennessee",0.216669807420935,114
+2020-09-01,"Black.Not Latino","Tennessee",0.0729579440911113,128
 2020-02-01,"Black.Not Latino","Texas",0.0545797013115115,354
 2020-03-01,"Black.Not Latino","Texas",0.0780082594917106,271
 2020-04-01,"Black.Not Latino","Texas",0.192438648991311,257
 2020-05-01,"Black.Not Latino","Texas",0.218751367243104,265
 2020-06-01,"Black.Not Latino","Texas",0.13523639681403,244
+2020-07-01,"Black.Not Latino","Texas",0.142650575390204,233
+2020-08-01,"Black.Not Latino","Texas",0.0802733895396497,261
+2020-09-01,"Black.Not Latino","Texas",0.0937280923118933,337
 2020-02-01,"Black.Not Latino","Virginia",0.0353681582693109,176
 2020-03-01,"Black.Not Latino","Virginia",0.0307419458497113,147
 2020-04-01,"Black.Not Latino","Virginia",0.100647414600576,136
 2020-05-01,"Black.Not Latino","Virginia",0.0974858774201264,157
 2020-06-01,"Black.Not Latino","Virginia",0.127308908936272,146
+2020-07-01,"Black.Not Latino","Virginia",0.147115587096058,161
+2020-08-01,"Black.Not Latino","Virginia",0.136952258714678,160
+2020-09-01,"Black.Not Latino","Virginia",0.101022519077238,165
 2020-02-01,"Black.Not Latino","Washington",0.0588359334995671,36
+2020-03-01,"Black.Not Latino","Washington",0.0334603516038413,23
+2020-04-01,"Black.Not Latino","Washington",0.218422756685892,26
+2020-07-01,"Black.Not Latino","Washington",0.111846273248818,26
+2020-08-01,"Black.Not Latino","Washington",0.152646603325548,39
+2020-09-01,"Black.Not Latino","Washington",0.156316381582666,50
+2020-02-01,"Black.Not Latino","West Virginia",0.0612750207298074,26
+2020-03-01,"Black.Not Latino","West Virginia",0.227850856466826,24
+2020-04-01,"Black.Not Latino","West Virginia",0.138865543290848,21
+2020-05-01,"Black.Not Latino","West Virginia",0.179934926825725,24
+2020-06-01,"Black.Not Latino","West Virginia",0.135528396378933,30
+2020-07-01,"Black.Not Latino","West Virginia",0.178236383252457,26
+2020-08-01,"Black.Not Latino","West Virginia",0.116965233171601,31
+2020-09-01,"Black.Not Latino","West Virginia",0.137019037434688,35
+2020-02-01,"Black.Not Latino","Wisconsin",0.0855515868870343,28
 2020-03-01,"Black.Not Latino","Wisconsin",0.0386559513263365,37
 2020-04-01,"Black.Not Latino","Wisconsin",0.249169700710876,35
+2020-05-01,"Black.Not Latino","Wisconsin",0.0463657272963636,29
+2020-06-01,"Black.Not Latino","Wisconsin",0.206497775137824,22
+2020-09-01,"Black.Not Latino","Wisconsin",0.208394729030408,51
 2020-02-01,"Latino","Alabama",0.0127329646140332,55
 2020-03-01,"Latino","Alabama",0.018945507047249,54
 2020-04-01,"Latino","Alabama",0.209050721427146,34
 2020-05-01,"Latino","Alabama",0.193540315292941,39
 2020-06-01,"Latino","Alabama",0.125375383838139,42
+2020-07-01,"Latino","Alabama",0.121312247583519,40
+2020-08-01,"Latino","Alabama",0.120329858081894,32
+2020-09-01,"Latino","Alabama",0.0332191397253198,26
+2020-02-01,"Latino","Alaska",0.0313438216605187,30
+2020-03-01,"Latino","Alaska",0.0317714954683209,29
 2020-04-01,"Latino","Alaska",0.144197045894265,34
 2020-05-01,"Latino","Alaska",0.0647434252213284,39
 2020-06-01,"Latino","Alaska",0.0406631010748484,35
+2020-07-01,"Latino","Alaska",0.0999519226859064,31
+2020-08-01,"Latino","Alaska",0.0995707937045635,34
+2020-09-01,"Latino","Alaska",0.0870087077779433,37
 2020-02-01,"Latino","Arizona",0.0435440737574362,344
 2020-03-01,"Latino","Arizona",0.0509640176458462,282
 2020-04-01,"Latino","Arizona",0.143032197277516,274
 2020-05-01,"Latino","Arizona",0.0835007190208882,218
 2020-06-01,"Latino","Arizona",0.112065019901896,202
+2020-07-01,"Latino","Arizona",0.12440798159437,196
+2020-08-01,"Latino","Arizona",0.101712422527966,204
+2020-09-01,"Latino","Arizona",0.0684005908211748,295
 2020-02-01,"Latino","Arkansas",0.030378101001641,81
 2020-03-01,"Latino","Arkansas",0.0261104417764846,45
 2020-04-01,"Latino","Arkansas",0.0840905936131829,33
+2020-05-01,"Latino","Arkansas",0.0251154923291991,28
+2020-06-01,"Latino","Arkansas",0.0738530270617332,26
+2020-07-01,"Latino","Arkansas",0.0318684314328033,31
+2020-08-01,"Latino","Arkansas",0.0390181800995725,56
+2020-09-01,"Latino","Arkansas",0.0310284122399164,51
 2020-02-01,"Latino","California",0.0572688801879141,1945
 2020-03-01,"Latino","California",0.0677743138515299,1561
 2020-04-01,"Latino","California",0.195250482658369,1367
 2020-05-01,"Latino","California",0.182929180637591,1267
 2020-06-01,"Latino","California",0.146085058843835,1193
+2020-07-01,"Latino","California",0.135401052344752,1159
+2020-08-01,"Latino","California",0.121550791658096,1180
+2020-09-01,"Latino","California",0.120525586199898,1557
 2020-02-01,"Latino","Colorado",0.0446514041189129,162
 2020-03-01,"Latino","Colorado",0.0936033675277201,127
 2020-04-01,"Latino","Colorado",0.202481723547628,114
 2020-05-01,"Latino","Colorado",0.170967138474211,112
 2020-06-01,"Latino","Colorado",0.158331094919855,109
+2020-07-01,"Latino","Colorado",0.101238925439685,143
+2020-08-01,"Latino","Colorado",0.0907937113294708,139
+2020-09-01,"Latino","Colorado",0.0643516155817079,154
 2020-02-01,"Latino","Connecticut",0.0637512241050876,90
 2020-03-01,"Latino","Connecticut",0.0464543441328087,67
 2020-04-01,"Latino","Connecticut",0.0728935530553664,50
 2020-05-01,"Latino","Connecticut",0.201732576304025,60
 2020-06-01,"Latino","Connecticut",0.201293085070303,47
+2020-07-01,"Latino","Connecticut",0.202122568924673,58
+2020-08-01,"Latino","Connecticut",0.119812059944986,60
+2020-09-01,"Latino","Connecticut",0.0815311811916434,72
 2020-02-01,"Latino","Delaware",0.0393732925522875,56
 2020-03-01,"Latino","Delaware",0.0742260142260087,34
 2020-04-01,"Latino","Delaware",0.169694891695256,41
 2020-05-01,"Latino","Delaware",0.183526807535402,40
+2020-06-01,"Latino","Delaware",0.16712638704221,24
+2020-07-01,"Latino","Delaware",0.10729691785802,33
+2020-08-01,"Latino","Delaware",0.0976419006487464,41
+2020-09-01,"Latino","Delaware",0.191288426921463,38
 2020-02-01,"Latino","District of Columbia",0.0551376070582724,113
 2020-03-01,"Latino","District of Columbia",0.016363132183901,95
 2020-04-01,"Latino","District of Columbia",0.134956659224122,76
 2020-05-01,"Latino","District of Columbia",0.0867355102627345,64
 2020-06-01,"Latino","District of Columbia",0.203581317627463,73
+2020-07-01,"Latino","District of Columbia",0.11877887543336,69
+2020-08-01,"Latino","District of Columbia",0.119428485060255,78
+2020-09-01,"Latino","District of Columbia",0.128453807054668,82
 2020-02-01,"Latino","Florida",0.0255327716729878,686
 2020-03-01,"Latino","Florida",0.0444515360733406,534
 2020-04-01,"Latino","Florida",0.161941788645697,483
 2020-05-01,"Latino","Florida",0.177429558262779,475
 2020-06-01,"Latino","Florida",0.131311664908343,479
+2020-07-01,"Latino","Florida",0.136501280737773,490
+2020-08-01,"Latino","Florida",0.0989485357199777,476
+2020-09-01,"Latino","Florida",0.085206148096251,619
 2020-02-01,"Latino","Georgia",0.0452899979369807,140
 2020-03-01,"Latino","Georgia",0.0535979821224266,106
 2020-04-01,"Latino","Georgia",0.203200203448322,88
 2020-05-01,"Latino","Georgia",0.126972992164287,85
 2020-06-01,"Latino","Georgia",0.0717582274530918,102
+2020-07-01,"Latino","Georgia",0.0510278228614578,80
+2020-08-01,"Latino","Georgia",0.0625999481217788,61
+2020-09-01,"Latino","Georgia",0.0580495882072171,96
 2020-02-01,"Latino","Hawaii",0.0273307090222238,50
 2020-03-01,"Latino","Hawaii",0,40
+2020-04-01,"Latino","Hawaii",0.190001203014651,29
 2020-05-01,"Latino","Hawaii",0.299205037796084,31
 2020-06-01,"Latino","Hawaii",0.146021369329125,34
+2020-07-01,"Latino","Hawaii",0.112668818831113,36
+2020-08-01,"Latino","Hawaii",0.11499990982379,52
+2020-09-01,"Latino","Hawaii",0.093306261548297,46
 2020-02-01,"Latino","Idaho",0.0332294265875032,86
 2020-03-01,"Latino","Idaho",0.0390028139028622,73
 2020-04-01,"Latino","Idaho",0.178894551957948,72
 2020-05-01,"Latino","Idaho",0.16196077604238,87
 2020-06-01,"Latino","Idaho",0.131158122922008,104
+2020-07-01,"Latino","Idaho",0.116460815312219,106
+2020-08-01,"Latino","Idaho",0.0471240492636215,81
+2020-09-01,"Latino","Idaho",0.0631871834446508,131
 2020-02-01,"Latino","Illinois",0.0658470395848691,248
 2020-03-01,"Latino","Illinois",0.0622330703350449,240
 2020-04-01,"Latino","Illinois",0.245586190997155,242
 2020-05-01,"Latino","Illinois",0.215755924840632,208
 2020-06-01,"Latino","Illinois",0.205547404307499,180
+2020-07-01,"Latino","Illinois",0.114490440964202,195
+2020-08-01,"Latino","Illinois",0.0970749283897715,227
+2020-09-01,"Latino","Illinois",0.117667883864372,259
 2020-02-01,"Latino","Indiana",0,43
 2020-03-01,"Latino","Indiana",0.05284991908099,40
 2020-04-01,"Latino","Indiana",0.228700795252988,46
 2020-05-01,"Latino","Indiana",0.16697378545558,41
 2020-06-01,"Latino","Indiana",0.0909522303613851,42
+2020-07-01,"Latino","Indiana",0.0733381772809147,46
+2020-08-01,"Latino","Indiana",0.0938624945559016,46
+2020-09-01,"Latino","Indiana",0.0440873047850838,60
 2020-02-01,"Latino","Iowa",0.0814818496462395,37
 2020-03-01,"Latino","Iowa",0.0584951489200172,31
+2020-04-01,"Latino","Iowa",0.046752794098445,24
 2020-05-01,"Latino","Iowa",0.120057755420455,32
+2020-06-01,"Latino","Iowa",0.122166972318245,30
+2020-07-01,"Latino","Iowa",0.0987388448563294,37
+2020-08-01,"Latino","Iowa",0.151587391802158,40
+2020-09-01,"Latino","Iowa",0.0646542859617978,34
 2020-02-01,"Latino","Kansas",0.0670941955423351,83
 2020-03-01,"Latino","Kansas",0.0429606490684838,62
 2020-04-01,"Latino","Kansas",0.194160612898313,65
 2020-05-01,"Latino","Kansas",0.152384531939954,53
 2020-06-01,"Latino","Kansas",0.0883538323174261,54
+2020-07-01,"Latino","Kansas",0.100505883173292,78
+2020-08-01,"Latino","Kansas",0.0479858134695549,110
+2020-09-01,"Latino","Kansas",0.0491827695706978,102
+2020-09-01,"Latino","Kentucky",0.118706697494412,21
 2020-02-01,"Latino","Louisiana",0.05897628581546,67
 2020-03-01,"Latino","Louisiana",0.141770677789244,60
 2020-04-01,"Latino","Louisiana",0.154956152057434,56
 2020-05-01,"Latino","Louisiana",0.299095314526873,44
 2020-06-01,"Latino","Louisiana",0.120342200381096,53
+2020-07-01,"Latino","Louisiana",0.0367888379873245,50
+2020-08-01,"Latino","Louisiana",0.0453501129600181,42
+2020-09-01,"Latino","Louisiana",0.0571878173817562,81
 2020-02-01,"Latino","Maryland",0.0113844477505594,78
 2020-03-01,"Latino","Maryland",0,55
 2020-04-01,"Latino","Maryland",0.0999138991845748,46
 2020-05-01,"Latino","Maryland",0.144841915961092,42
 2020-06-01,"Latino","Maryland",0.0971467178653657,40
+2020-07-01,"Latino","Maryland",0.104349434854882,49
+2020-08-01,"Latino","Maryland",0.043628006071728,69
+2020-09-01,"Latino","Maryland",0.0265706671610053,62
 2020-02-01,"Latino","Massachusetts",0.0366335436101137,113
 2020-03-01,"Latino","Massachusetts",0.0577870595470708,103
 2020-04-01,"Latino","Massachusetts",0.242976285636689,85
 2020-05-01,"Latino","Massachusetts",0.220776382535005,74
 2020-06-01,"Latino","Massachusetts",0.358600378211551,88
+2020-07-01,"Latino","Massachusetts",0.238007437151364,78
+2020-08-01,"Latino","Massachusetts",0.146582728865327,118
+2020-09-01,"Latino","Massachusetts",0.15343211287587,129
 2020-02-01,"Latino","Michigan",0.0988835952160756,46
 2020-03-01,"Latino","Michigan",0.121474601177708,36
 2020-04-01,"Latino","Michigan",0.251435065200275,41
 2020-05-01,"Latino","Michigan",0.160563029623895,58
 2020-06-01,"Latino","Michigan",0.199099785048473,62
+2020-07-01,"Latino","Michigan",0.109932282351873,57
+2020-08-01,"Latino","Michigan",0.10186247785969,56
+2020-09-01,"Latino","Michigan",0.114056760851503,67
 2020-02-01,"Latino","Minnesota",0.0536052368788033,37
 2020-03-01,"Latino","Minnesota",0,32
 2020-04-01,"Latino","Minnesota",0.0545009754288257,32
 2020-05-01,"Latino","Minnesota",0.195980379162068,39
 2020-06-01,"Latino","Minnesota",0.135953572206028,32
+2020-07-01,"Latino","Minnesota",0.0376583884193147,36
+2020-08-01,"Latino","Minnesota",0.117676987036513,38
+2020-09-01,"Latino","Minnesota",0.0219197591205751,36
+2020-06-01,"Latino","Mississippi",0.0984114027957865,21
 2020-02-01,"Latino","Missouri",0,45
 2020-03-01,"Latino","Missouri",0.165157016187181,33
 2020-04-01,"Latino","Missouri",0.257671983952955,32
+2020-05-01,"Latino","Missouri",0.0538772043546416,26
+2020-06-01,"Latino","Missouri",0.0784168961435605,28
+2020-07-01,"Latino","Missouri",0.0698070117978982,30
+2020-08-01,"Latino","Missouri",0.0618004858710413,33
+2020-09-01,"Latino","Missouri",0,35
+2020-02-01,"Latino","Montana",0,21
+2020-05-01,"Latino","Montana",0.153200995260354,22
+2020-06-01,"Latino","Montana",0.225547616244516,24
+2020-07-01,"Latino","Montana",0.218047038321869,29
+2020-08-01,"Latino","Montana",0.125622093478671,29
+2020-09-01,"Latino","Montana",0,28
 2020-02-01,"Latino","Nebraska",0.0606676796693777,89
 2020-03-01,"Latino","Nebraska",0.142875492895178,66
 2020-04-01,"Latino","Nebraska",0.0339866865503513,56
 2020-05-01,"Latino","Nebraska",0.07648651929594,58
 2020-06-01,"Latino","Nebraska",0.07318020852355,47
+2020-07-01,"Latino","Nebraska",0.131012040862391,59
+2020-08-01,"Latino","Nebraska",0.0637120561578325,71
+2020-09-01,"Latino","Nebraska",0.0730189790219126,61
 2020-02-01,"Latino","Nevada",0.0201312691111916,171
 2020-03-01,"Latino","Nevada",0.0869912815082973,159
 2020-04-01,"Latino","Nevada",0.412428486915382,153
 2020-05-01,"Latino","Nevada",0.354355030696581,132
 2020-06-01,"Latino","Nevada",0.211156376376182,131
+2020-07-01,"Latino","Nevada",0.185680883149307,122
+2020-08-01,"Latino","Nevada",0.160715810913686,132
+2020-09-01,"Latino","Nevada",0.118695337703241,179
+2020-03-01,"Latino","New Hampshire",0.0733543854019283,21
+2020-05-01,"Latino","New Hampshire",0.167636776709686,26
+2020-06-01,"Latino","New Hampshire",0.142834981251284,27
+2020-07-01,"Latino","New Hampshire",0.142081257431764,25
+2020-08-01,"Latino","New Hampshire",0.129803508069985,30
+2020-09-01,"Latino","New Hampshire",0.156582529139062,22
 2020-02-01,"Latino","New Jersey",0.0401540879263019,200
 2020-03-01,"Latino","New Jersey",0.0648419737555516,140
 2020-04-01,"Latino","New Jersey",0.321527067213276,134
 2020-05-01,"Latino","New Jersey",0.227666456552439,163
 2020-06-01,"Latino","New Jersey",0.15399092757534,161
+2020-07-01,"Latino","New Jersey",0.137104173492774,177
+2020-08-01,"Latino","New Jersey",0.102898315875601,212
+2020-09-01,"Latino","New Jersey",0.0574632603133067,178
 2020-02-01,"Latino","New Mexico",0.0469846181286668,366
 2020-03-01,"Latino","New Mexico",0.0641539407384917,307
 2020-04-01,"Latino","New Mexico",0.106702182420538,330
 2020-05-01,"Latino","New Mexico",0.0735999492110371,300
 2020-06-01,"Latino","New Mexico",0.0884957238774614,312
+2020-07-01,"Latino","New Mexico",0.160724876609894,286
+2020-08-01,"Latino","New Mexico",0.102505517292526,279
+2020-09-01,"Latino","New Mexico",0.0972122607892713,363
 2020-02-01,"Latino","New York",0.0604637010606885,414
 2020-03-01,"Latino","New York",0.0546473806173973,332
 2020-04-01,"Latino","New York",0.226283154920214,284
 2020-05-01,"Latino","New York",0.255513887640273,283
 2020-06-01,"Latino","New York",0.214725075904966,257
+2020-07-01,"Latino","New York",0.226177222747502,286
+2020-08-01,"Latino","New York",0.156006825070304,288
+2020-09-01,"Latino","New York",0.175532708187728,291
 2020-02-01,"Latino","North Carolina",0.0388683687637387,153
 2020-03-01,"Latino","North Carolina",0.07409812801744,116
 2020-04-01,"Latino","North Carolina",0.236996287646577,81
 2020-05-01,"Latino","North Carolina",0.181371966316308,62
 2020-06-01,"Latino","North Carolina",0.107117843413295,56
+2020-07-01,"Latino","North Carolina",0.0754244155696158,63
+2020-08-01,"Latino","North Carolina",0.0667545195521497,73
+2020-09-01,"Latino","North Carolina",0.08729729775887,121
+2020-02-01,"Latino","North Dakota",0.0374803270770786,26
+2020-03-01,"Latino","North Dakota",0,25
+2020-04-01,"Latino","North Dakota",0.032856338600836,23
+2020-05-01,"Latino","North Dakota",0.191333697034457,25
+2020-07-01,"Latino","North Dakota",0.123065703320382,26
+2020-08-01,"Latino","North Dakota",0.0951940276489778,25
+2020-09-01,"Latino","North Dakota",0.0534992960134913,36
 2020-02-01,"Latino","Ohio",0.110611325834517,53
 2020-03-01,"Latino","Ohio",0.0746936131073787,50
 2020-04-01,"Latino","Ohio",0.176492789064573,41
 2020-05-01,"Latino","Ohio",0.306053699523663,32
 2020-06-01,"Latino","Ohio",0.219993643854601,43
+2020-07-01,"Latino","Ohio",0.205354151294278,41
+2020-08-01,"Latino","Ohio",0.173622216982538,47
+2020-09-01,"Latino","Ohio",0.109101254331821,52
 2020-02-01,"Latino","Oklahoma",0.0164168386989128,115
 2020-03-01,"Latino","Oklahoma",0.0402214175125489,95
 2020-04-01,"Latino","Oklahoma",0.179840764228642,89
 2020-05-01,"Latino","Oklahoma",0.0999968811324243,78
 2020-06-01,"Latino","Oklahoma",0.0565887534223222,68
+2020-07-01,"Latino","Oklahoma",0.0798219549820222,65
+2020-08-01,"Latino","Oklahoma",0.108306046465325,70
+2020-09-01,"Latino","Oklahoma",0.102585278322744,99
 2020-02-01,"Latino","Oregon",0.0633567807975731,112
 2020-03-01,"Latino","Oregon",0.041733966655463,109
 2020-04-01,"Latino","Oregon",0.10726831273082,92
 2020-05-01,"Latino","Oregon",0.107087496232684,78
 2020-06-01,"Latino","Oregon",0.142797563068062,81
+2020-07-01,"Latino","Oregon",0.0792497415321065,62
+2020-08-01,"Latino","Oregon",0.0754254009527758,70
+2020-09-01,"Latino","Oregon",0.0571464649653333,76
 2020-02-01,"Latino","Pennsylvania",0.0632646455485777,83
 2020-03-01,"Latino","Pennsylvania",0.126139437228143,82
 2020-04-01,"Latino","Pennsylvania",0.136142413760718,90
 2020-05-01,"Latino","Pennsylvania",0.217230402257152,77
 2020-06-01,"Latino","Pennsylvania",0.129499608709209,74
+2020-07-01,"Latino","Pennsylvania",0.199754409878798,77
+2020-08-01,"Latino","Pennsylvania",0.164437994347283,67
+2020-09-01,"Latino","Pennsylvania",0.122820810190682,62
 2020-02-01,"Latino","Rhode Island",0.0725910474024968,59
 2020-03-01,"Latino","Rhode Island",0.109617134945595,49
 2020-04-01,"Latino","Rhode Island",0.219599121952472,47
 2020-05-01,"Latino","Rhode Island",0.237309401671935,57
 2020-06-01,"Latino","Rhode Island",0.127282294671963,53
+2020-07-01,"Latino","Rhode Island",0.191802014883504,53
+2020-08-01,"Latino","Rhode Island",0.221771154475501,42
+2020-09-01,"Latino","Rhode Island",0.1871264115386,44
 2020-02-01,"Latino","South Carolina",0.0816047154185396,39
+2020-03-01,"Latino","South Carolina",0.03802065846321,26
+2020-04-01,"Latino","South Carolina",0.124527498539621,28
+2020-05-01,"Latino","South Carolina",0.197529967710313,24
+2020-06-01,"Latino","South Carolina",0.134109022954973,27
+2020-07-01,"Latino","South Carolina",0.100008061019466,24
+2020-08-01,"Latino","South Carolina",0.0253154040096243,32
+2020-09-01,"Latino","South Carolina",0.0223190842039873,49
+2020-02-01,"Latino","South Dakota",0,24
+2020-03-01,"Latino","South Dakota",0.143052037900285,28
+2020-04-01,"Latino","South Dakota",0.208274857519916,23
+2020-09-01,"Latino","South Dakota",0.0363992210432871,21
 2020-02-01,"Latino","Tennessee",0.0370328456387574,66
 2020-03-01,"Latino","Tennessee",0.0775602341618962,37
 2020-04-01,"Latino","Tennessee",0.360040673271569,32
 2020-05-01,"Latino","Tennessee",0.166065845250722,54
 2020-06-01,"Latino","Tennessee",0.180043201241473,47
+2020-07-01,"Latino","Tennessee",0.189909415250784,48
+2020-08-01,"Latino","Tennessee",0.0726874954685134,60
+2020-09-01,"Latino","Tennessee",0.0814720850432772,60
 2020-02-01,"Latino","Texas",0.0473982165121875,1288
 2020-03-01,"Latino","Texas",0.0594685819530377,1004
 2020-04-01,"Latino","Texas",0.140202986240979,867
 2020-05-01,"Latino","Texas",0.140205761921838,790
 2020-06-01,"Latino","Texas",0.132501966554721,766
+2020-07-01,"Latino","Texas",0.0902701391068444,751
+2020-08-01,"Latino","Texas",0.0881629476769,816
+2020-09-01,"Latino","Texas",0.0973843555045597,1027
 2020-02-01,"Latino","Utah",0.0228366580844863,129
 2020-03-01,"Latino","Utah",0,106
 2020-04-01,"Latino","Utah",0.0935783445702771,100
 2020-05-01,"Latino","Utah",0.0980940933770431,104
 2020-06-01,"Latino","Utah",0.102742651566569,114
+2020-07-01,"Latino","Utah",0.0439329211082239,116
+2020-08-01,"Latino","Utah",0.0474200153055097,132
+2020-09-01,"Latino","Utah",0.0308412259471449,145
 2020-02-01,"Latino","Virginia",0.0198013092092304,98
 2020-03-01,"Latino","Virginia",0.0672450659374501,96
 2020-04-01,"Latino","Virginia",0.151080911835079,79
 2020-05-01,"Latino","Virginia",0.179709058843547,73
 2020-06-01,"Latino","Virginia",0.154796986349728,76
+2020-07-01,"Latino","Virginia",0.155060399199878,76
+2020-08-01,"Latino","Virginia",0.0783888486852684,95
+2020-09-01,"Latino","Virginia",0.0566194281824556,109
 2020-02-01,"Latino","Washington",0.0312561519079344,147
 2020-03-01,"Latino","Washington",0.0413114193720113,112
 2020-04-01,"Latino","Washington",0.239458273012881,128
 2020-05-01,"Latino","Washington",0.15303541900914,135
 2020-06-01,"Latino","Washington",0.045630925765083,108
+2020-07-01,"Latino","Washington",0.120812709396625,132
+2020-08-01,"Latino","Washington",0.0916097126916292,116
+2020-09-01,"Latino","Washington",0.0561043147164973,141
 2020-02-01,"Latino","Wisconsin",0.0412637299693122,43
 2020-03-01,"Latino","Wisconsin",0.0802445444567443,43
+2020-04-01,"Latino","Wisconsin",0.263239376127322,23
 2020-05-01,"Latino","Wisconsin",0.194257072030645,33
+2020-06-01,"Latino","Wisconsin",0.228452553380118,26
+2020-07-01,"Latino","Wisconsin",0.204823507349422,33
+2020-08-01,"Latino","Wisconsin",0.0337406899408825,32
+2020-09-01,"Latino","Wisconsin",0.0687904059341116,47
 2020-02-01,"Latino","Wyoming",0.0813634401222436,70
 2020-03-01,"Latino","Wyoming",0.0412857925598636,68
 2020-04-01,"Latino","Wyoming",0.0522495317062238,57
 2020-05-01,"Latino","Wyoming",0.0640079577931535,42
 2020-06-01,"Latino","Wyoming",0.112853232138011,47
-2020-02-01,"multiple.Not Latino","Alaska",0.0432271863317437,37
-2020-03-01,"multiple.Not Latino","Alaska",0.087851498704421,32
-2020-02-01,"multiple.Not Latino","California",0.0945071016254889,57
-2020-03-01,"multiple.Not Latino","California",0.11128779491217,51
-2020-04-01,"multiple.Not Latino","California",0.268653250940131,51
-2020-05-01,"multiple.Not Latino","California",0.150644704085489,44
-2020-06-01,"multiple.Not Latino","California",0.265545742476577,44
-2020-02-01,"multiple.Not Latino","Hawaii",0.0306224476001266,99
-2020-03-01,"multiple.Not Latino","Hawaii",0.00957533458895721,100
-2020-04-01,"multiple.Not Latino","Hawaii",0.234963406518858,93
-2020-05-01,"multiple.Not Latino","Hawaii",0.171676387511214,92
-2020-06-01,"multiple.Not Latino","Hawaii",0.0739070506698215,98
-2020-06-01,"multiple.Not Latino","Oklahoma",0.0235096243672568,32
-2020-02-01,"NHPI.Not Latino","California",0.0248937589146029,36
-2020-02-01,"NHPI.Not Latino","Hawaii",0.0372824512047948,99
-2020-03-01,"NHPI.Not Latino","Hawaii",0.0178255114494212,80
-2020-04-01,"NHPI.Not Latino","Hawaii",0.172487928958552,77
-2020-05-01,"NHPI.Not Latino","Hawaii",0.236521682841654,92
-2020-06-01,"NHPI.Not Latino","Hawaii",0.127049237128753,77
+2020-07-01,"Latino","Wyoming",0.0885143167373202,63
+2020-08-01,"Latino","Wyoming",0.0513361841224217,78
+2020-09-01,"Latino","Wyoming",0.0239485735437298,78
 2020-02-01,"White.Not Latino","Alabama",0.0226680748531443,783
 2020-03-01,"White.Not Latino","Alabama",0.0359908354338798,699
 2020-04-01,"White.Not Latino","Alabama",0.107583863353477,669
 2020-05-01,"White.Not Latino","Alabama",0.0770953020570745,647
 2020-06-01,"White.Not Latino","Alabama",0.0524619052263906,633
+2020-07-01,"White.Not Latino","Alabama",0.0580762267540538,631
+2020-08-01,"White.Not Latino","Alabama",0.0318906646984455,634
+2020-09-01,"White.Not Latino","Alabama",0.0454773880248673,712
 2020-02-01,"White.Not Latino","Alaska",0.0308547510628591,415
 2020-03-01,"White.Not Latino","Alaska",0.0357224183324137,385
 2020-04-01,"White.Not Latino","Alaska",0.0942233545045128,371
 2020-05-01,"White.Not Latino","Alaska",0.0944944721674245,380
 2020-06-01,"White.Not Latino","Alaska",0.0993400897659898,373
+2020-07-01,"White.Not Latino","Alaska",0.0576946034338848,433
+2020-08-01,"White.Not Latino","Alaska",0.0417176624857694,436
+2020-09-01,"White.Not Latino","Alaska",0.0386220274061805,415
 2020-02-01,"White.Not Latino","Arizona",0.0294249555189755,553
 2020-03-01,"White.Not Latino","Arizona",0.0442097853256547,443
 2020-04-01,"White.Not Latino","Arizona",0.116268264188353,415
 2020-05-01,"White.Not Latino","Arizona",0.0892151747719613,403
 2020-06-01,"White.Not Latino","Arizona",0.0896751295471427,406
+2020-07-01,"White.Not Latino","Arizona",0.093719623084661,452
+2020-08-01,"White.Not Latino","Arizona",0.0492547574076265,415
+2020-09-01,"White.Not Latino","Arizona",0.0636853035394372,493
 2020-02-01,"White.Not Latino","Arkansas",0.0307201984559649,773
 2020-03-01,"White.Not Latino","Arkansas",0.0377793952749572,661
 2020-04-01,"White.Not Latino","Arkansas",0.0887861752571465,631
 2020-05-01,"White.Not Latino","Arkansas",0.0807284853169513,608
 2020-06-01,"White.Not Latino","Arkansas",0.0803706754834032,534
+2020-07-01,"White.Not Latino","Arkansas",0.0616192511380574,494
+2020-08-01,"White.Not Latino","Arkansas",0.0653121829079287,530
+2020-09-01,"White.Not Latino","Arkansas",0.0576434248903376,679
 2020-02-01,"White.Not Latino","California",0.0341389261769767,2115
 2020-03-01,"White.Not Latino","California",0.0426818233166145,1928
 2020-04-01,"White.Not Latino","California",0.145507939711372,1780
 2020-05-01,"White.Not Latino","California",0.143925319642468,1793
 2020-06-01,"White.Not Latino","California",0.11916628691959,1721
+2020-07-01,"White.Not Latino","California",0.110931521586908,1651
+2020-08-01,"White.Not Latino","California",0.0919328195378799,1641
+2020-09-01,"White.Not Latino","California",0.098725426097841,1857
 2020-02-01,"White.Not Latino","Colorado",0.0259533777374336,560
 2020-03-01,"White.Not Latino","Colorado",0.0321138161422001,495
 2020-04-01,"White.Not Latino","Colorado",0.0968101389363389,488
 2020-05-01,"White.Not Latino","Colorado",0.0825798198734307,453
 2020-06-01,"White.Not Latino","Colorado",0.0834903831511971,433
+2020-07-01,"White.Not Latino","Colorado",0.0676670206086941,519
+2020-08-01,"White.Not Latino","Colorado",0.0670646640466557,562
+2020-09-01,"White.Not Latino","Colorado",0.0601742298686658,569
 2020-02-01,"White.Not Latino","Connecticut",0.0389101260121115,404
 2020-03-01,"White.Not Latino","Connecticut",0.0373847489268678,383
 2020-04-01,"White.Not Latino","Connecticut",0.0890190827681661,351
 2020-05-01,"White.Not Latino","Connecticut",0.097174622720263,357
 2020-06-01,"White.Not Latino","Connecticut",0.0986155124305625,401
+2020-07-01,"White.Not Latino","Connecticut",0.0778171710816375,406
+2020-08-01,"White.Not Latino","Connecticut",0.0746653128865419,451
+2020-09-01,"White.Not Latino","Connecticut",0.0822872087962083,442
 2020-02-01,"White.Not Latino","Delaware",0.0388250787291156,404
 2020-03-01,"White.Not Latino","Delaware",0.0349467757566677,373
 2020-04-01,"White.Not Latino","Delaware",0.114433164948688,328
 2020-05-01,"White.Not Latino","Delaware",0.157199661195232,351
 2020-06-01,"White.Not Latino","Delaware",0.13127066527789,359
+2020-07-01,"White.Not Latino","Delaware",0.0688620455484188,307
+2020-08-01,"White.Not Latino","Delaware",0.0582266622536051,368
+2020-09-01,"White.Not Latino","Delaware",0.0484508932130393,395
 2020-02-01,"White.Not Latino","District of Columbia",0.0296954355290839,586
 2020-03-01,"White.Not Latino","District of Columbia",0.0359320165957523,517
 2020-04-01,"White.Not Latino","District of Columbia",0.0477412563399674,482
 2020-05-01,"White.Not Latino","District of Columbia",0.038100912115986,461
 2020-06-01,"White.Not Latino","District of Columbia",0.0236363398546575,433
+2020-07-01,"White.Not Latino","District of Columbia",0.0402794157437244,462
+2020-08-01,"White.Not Latino","District of Columbia",0.0507710329680859,515
+2020-09-01,"White.Not Latino","District of Columbia",0.0314801334664258,483
 2020-02-01,"White.Not Latino","Florida",0.0247078648214748,1433
 2020-03-01,"White.Not Latino","Florida",0.0384889689861847,1213
 2020-04-01,"White.Not Latino","Florida",0.127724591401769,1004
 2020-05-01,"White.Not Latino","Florida",0.120279039052293,970
 2020-06-01,"White.Not Latino","Florida",0.0839461700121023,919
+2020-07-01,"White.Not Latino","Florida",0.0874101145001238,936
+2020-08-01,"White.Not Latino","Florida",0.0562166761195457,978
+2020-09-01,"White.Not Latino","Florida",0.0506673260951657,1221
 2020-02-01,"White.Not Latino","Georgia",0.0340173520804166,706
 2020-03-01,"White.Not Latino","Georgia",0.0177812365235132,560
 2020-04-01,"White.Not Latino","Georgia",0.103491294874295,519
 2020-05-01,"White.Not Latino","Georgia",0.0668641379070685,545
 2020-06-01,"White.Not Latino","Georgia",0.0615421840378074,513
+2020-07-01,"White.Not Latino","Georgia",0.0498869829971419,548
+2020-08-01,"White.Not Latino","Georgia",0.0443045791831865,528
+2020-09-01,"White.Not Latino","Georgia",0.0503700732126027,638
 2020-02-01,"White.Not Latino","Hawaii",0.0293195480980197,182
 2020-03-01,"White.Not Latino","Hawaii",0.0183710895653892,164
 2020-04-01,"White.Not Latino","Hawaii",0.195935777901473,145
 2020-05-01,"White.Not Latino","Hawaii",0.162560654241007,149
 2020-06-01,"White.Not Latino","Hawaii",0.153514665827668,149
+2020-07-01,"White.Not Latino","Hawaii",0.144043260754584,152
+2020-08-01,"White.Not Latino","Hawaii",0.136814778507717,180
+2020-09-01,"White.Not Latino","Hawaii",0.179725034832109,174
 2020-02-01,"White.Not Latino","Idaho",0.0231063226197881,892
 2020-03-01,"White.Not Latino","Idaho",0.0240854279250727,774
 2020-04-01,"White.Not Latino","Idaho",0.0983996145343103,675
 2020-05-01,"White.Not Latino","Idaho",0.0663171698191062,649
 2020-06-01,"White.Not Latino","Idaho",0.0462775481239885,645
+2020-07-01,"White.Not Latino","Idaho",0.0361515439000005,638
+2020-08-01,"White.Not Latino","Idaho",0.0536172012439524,653
+2020-09-01,"White.Not Latino","Idaho",0.0510121578748368,807
 2020-02-01,"White.Not Latino","Illinois",0.0249655207303613,1016
 2020-03-01,"White.Not Latino","Illinois",0.0358790752143464,854
 2020-04-01,"White.Not Latino","Illinois",0.151983423618472,819
 2020-05-01,"White.Not Latino","Illinois",0.122011499791903,864
 2020-06-01,"White.Not Latino","Illinois",0.117745064335726,824
+2020-07-01,"White.Not Latino","Illinois",0.100659002150334,979
+2020-08-01,"White.Not Latino","Illinois",0.0788698093820905,969
+2020-09-01,"White.Not Latino","Illinois",0.0723521294227425,1042
 2020-02-01,"White.Not Latino","Indiana",0.0306754724451693,789
 2020-03-01,"White.Not Latino","Indiana",0.0320193630133204,704
 2020-04-01,"White.Not Latino","Indiana",0.153995893195943,683
 2020-05-01,"White.Not Latino","Indiana",0.10516162101552,689
 2020-06-01,"White.Not Latino","Indiana",0.100063920581526,676
+2020-07-01,"White.Not Latino","Indiana",0.0606793394089491,667
+2020-08-01,"White.Not Latino","Indiana",0.0440739254933247,688
+2020-09-01,"White.Not Latino","Indiana",0.0512735402375731,756
 2020-02-01,"White.Not Latino","Iowa",0.0220246437766325,641
 2020-03-01,"White.Not Latino","Iowa",0.0264532565632194,598
 2020-04-01,"White.Not Latino","Iowa",0.0938081191361847,592
 2020-05-01,"White.Not Latino","Iowa",0.0929956358137496,565
 2020-06-01,"White.Not Latino","Iowa",0.0776480962659885,517
+2020-07-01,"White.Not Latino","Iowa",0.0553505920729574,522
+2020-08-01,"White.Not Latino","Iowa",0.0368147337695653,502
+2020-09-01,"White.Not Latino","Iowa",0.0297948688744334,614
 2020-02-01,"White.Not Latino","Kansas",0.0343048754649538,672
 2020-03-01,"White.Not Latino","Kansas",0.0310694511652038,597
 2020-04-01,"White.Not Latino","Kansas",0.105376098484306,592
 2020-05-01,"White.Not Latino","Kansas",0.0718040357424068,562
 2020-06-01,"White.Not Latino","Kansas",0.0546837439511894,519
+2020-07-01,"White.Not Latino","Kansas",0.0535898032866307,569
+2020-08-01,"White.Not Latino","Kansas",0.0666539086227721,570
+2020-09-01,"White.Not Latino","Kansas",0.062221303416209,540
 2020-02-01,"White.Not Latino","Kentucky",0.0348724340351922,583
 2020-03-01,"White.Not Latino","Kentucky",0.0518549582827753,513
 2020-04-01,"White.Not Latino","Kentucky",0.172138263254218,458
 2020-05-01,"White.Not Latino","Kentucky",0.0969569267325604,432
 2020-06-01,"White.Not Latino","Kentucky",0.0585864788677027,361
+2020-07-01,"White.Not Latino","Kentucky",0.0642017601275346,353
+2020-08-01,"White.Not Latino","Kentucky",0.0604266167996454,406
+2020-09-01,"White.Not Latino","Kentucky",0.0369931730850209,455
 2020-02-01,"White.Not Latino","Louisiana",0.0183917168925521,812
 2020-03-01,"White.Not Latino","Louisiana",0.0377908439357315,765
 2020-04-01,"White.Not Latino","Louisiana",0.122165502777544,647
 2020-05-01,"White.Not Latino","Louisiana",0.0821209497304068,620
 2020-06-01,"White.Not Latino","Louisiana",0.0949354652869138,590
+2020-07-01,"White.Not Latino","Louisiana",0.089282170353146,618
+2020-08-01,"White.Not Latino","Louisiana",0.0757566468073106,621
+2020-09-01,"White.Not Latino","Louisiana",0.0662219650127528,706
 2020-02-01,"White.Not Latino","Maine",0.0446000615912635,476
 2020-03-01,"White.Not Latino","Maine",0.0292205482289076,411
 2020-04-01,"White.Not Latino","Maine",0.0954890586488203,369
 2020-05-01,"White.Not Latino","Maine",0.0739166715257926,352
 2020-06-01,"White.Not Latino","Maine",0.0420103341242606,336
+2020-07-01,"White.Not Latino","Maine",0.0858955942969799,407
+2020-08-01,"White.Not Latino","Maine",0.0429483169102105,410
+2020-09-01,"White.Not Latino","Maine",0.0379007577047639,389
 2020-02-01,"White.Not Latino","Maryland",0.0254870180860451,407
 2020-03-01,"White.Not Latino","Maryland",0.0170609573184538,365
 2020-04-01,"White.Not Latino","Maryland",0.0653700579357623,353
 2020-05-01,"White.Not Latino","Maryland",0.0745894635587001,335
 2020-06-01,"White.Not Latino","Maryland",0.0589964288436774,328
+2020-07-01,"White.Not Latino","Maryland",0.0759724700361202,320
+2020-08-01,"White.Not Latino","Maryland",0.0645430487424248,401
+2020-09-01,"White.Not Latino","Maryland",0.055792845643484,359
 2020-02-01,"White.Not Latino","Massachusetts",0.0346300078784526,972
 2020-03-01,"White.Not Latino","Massachusetts",0.0352347806574602,922
 2020-04-01,"White.Not Latino","Massachusetts",0.144137605528917,828
 2020-05-01,"White.Not Latino","Massachusetts",0.153062446417989,842
 2020-06-01,"White.Not Latino","Massachusetts",0.129212780562903,818
+2020-07-01,"White.Not Latino","Massachusetts",0.114011513549409,774
+2020-08-01,"White.Not Latino","Massachusetts",0.0885745693848984,874
+2020-09-01,"White.Not Latino","Massachusetts",0.0699023150803482,917
 2020-02-01,"White.Not Latino","Michigan",0.0239693370947097,1079
 2020-03-01,"White.Not Latino","Michigan",0.0358507222225453,984
 2020-04-01,"White.Not Latino","Michigan",0.216822315231357,942
 2020-05-01,"White.Not Latino","Michigan",0.18177746200462,906
 2020-06-01,"White.Not Latino","Michigan",0.12196036835657,909
+2020-07-01,"White.Not Latino","Michigan",0.080846526826389,862
+2020-08-01,"White.Not Latino","Michigan",0.068414755993544,1025
+2020-09-01,"White.Not Latino","Michigan",0.0550417670723983,1007
 2020-02-01,"White.Not Latino","Minnesota",0.036144277049884,749
 2020-03-01,"White.Not Latino","Minnesota",0.0407232914958275,690
 2020-04-01,"White.Not Latino","Minnesota",0.0800359636412811,699
 2020-05-01,"White.Not Latino","Minnesota",0.0797368920584635,659
 2020-06-01,"White.Not Latino","Minnesota",0.0635042744075084,645
+2020-07-01,"White.Not Latino","Minnesota",0.0594636648059609,595
+2020-08-01,"White.Not Latino","Minnesota",0.0553549717679245,615
+2020-09-01,"White.Not Latino","Minnesota",0.0518932262907151,663
 2020-02-01,"White.Not Latino","Mississippi",0.0335733971767554,617
 2020-03-01,"White.Not Latino","Mississippi",0.0304437383235066,568
 2020-04-01,"White.Not Latino","Mississippi",0.133870086646257,512
 2020-05-01,"White.Not Latino","Mississippi",0.0928550869522577,508
 2020-06-01,"White.Not Latino","Mississippi",0.0898617272176984,528
+2020-07-01,"White.Not Latino","Mississippi",0.0759888676417847,490
+2020-08-01,"White.Not Latino","Mississippi",0.0741981209668053,474
+2020-09-01,"White.Not Latino","Mississippi",0.0341961021326712,566
 2020-02-01,"White.Not Latino","Missouri",0.0354552366701414,624
 2020-03-01,"White.Not Latino","Missouri",0.0362363441079449,542
 2020-04-01,"White.Not Latino","Missouri",0.108855107601655,562
 2020-05-01,"White.Not Latino","Missouri",0.0880055172618092,578
 2020-06-01,"White.Not Latino","Missouri",0.0731288116694715,566
+2020-07-01,"White.Not Latino","Missouri",0.0624215736771994,603
+2020-08-01,"White.Not Latino","Missouri",0.0501958798225156,587
+2020-09-01,"White.Not Latino","Missouri",0.0333554979906034,690
 2020-02-01,"White.Not Latino","Montana",0.0405200879820263,968
 2020-03-01,"White.Not Latino","Montana",0.0438232198551546,854
 2020-04-01,"White.Not Latino","Montana",0.110656575888329,881
 2020-05-01,"White.Not Latino","Montana",0.0806442824405422,851
 2020-06-01,"White.Not Latino","Montana",0.0608715476879208,827
+2020-07-01,"White.Not Latino","Montana",0.0537387041814931,910
+2020-08-01,"White.Not Latino","Montana",0.0451594359186147,936
+2020-09-01,"White.Not Latino","Montana",0.0345393923085344,946
 2020-02-01,"White.Not Latino","Nebraska",0.0270069903409901,680
 2020-03-01,"White.Not Latino","Nebraska",0.0296748498903673,680
 2020-04-01,"White.Not Latino","Nebraska",0.0789944558303576,631
 2020-05-01,"White.Not Latino","Nebraska",0.0404795226265616,561
 2020-06-01,"White.Not Latino","Nebraska",0.067725540036938,558
+2020-07-01,"White.Not Latino","Nebraska",0.0385580565076894,589
+2020-08-01,"White.Not Latino","Nebraska",0.032865111266759,691
+2020-09-01,"White.Not Latino","Nebraska",0.0383818577070363,699
 2020-02-01,"White.Not Latino","Nevada",0.0416148114112572,445
 2020-03-01,"White.Not Latino","Nevada",0.0400279818591818,408
 2020-04-01,"White.Not Latino","Nevada",0.24918942017177,341
 2020-05-01,"White.Not Latino","Nevada",0.181660251057944,328
 2020-06-01,"White.Not Latino","Nevada",0.12998862968109,320
+2020-07-01,"White.Not Latino","Nevada",0.128914792812575,325
+2020-08-01,"White.Not Latino","Nevada",0.106590696085252,369
+2020-09-01,"White.Not Latino","Nevada",0.0956658193510583,394
 2020-02-01,"White.Not Latino","New Hampshire",0.0293263584523,764
 2020-03-01,"White.Not Latino","New Hampshire",0.0170088098182928,667
 2020-04-01,"White.Not Latino","New Hampshire",0.141269361489489,682
 2020-05-01,"White.Not Latino","New Hampshire",0.109757510712116,703
 2020-06-01,"White.Not Latino","New Hampshire",0.0930142942863287,693
+2020-07-01,"White.Not Latino","New Hampshire",0.0764668933363302,757
+2020-08-01,"White.Not Latino","New Hampshire",0.0500963646015079,747
+2020-09-01,"White.Not Latino","New Hampshire",0.0445515222130707,733
 2020-02-01,"White.Not Latino","New Jersey",0.0267922090533568,669
 2020-03-01,"White.Not Latino","New Jersey",0.0205034144930926,562
 2020-04-01,"White.Not Latino","New Jersey",0.140901481043627,544
 2020-05-01,"White.Not Latino","New Jersey",0.113490709788195,549
 2020-06-01,"White.Not Latino","New Jersey",0.155201131387648,547
+2020-07-01,"White.Not Latino","New Jersey",0.121132560048865,602
+2020-08-01,"White.Not Latino","New Jersey",0.10635187279505,640
+2020-09-01,"White.Not Latino","New Jersey",0.0851500378897311,599
 2020-02-01,"White.Not Latino","New Mexico",0.0473988002073049,410
 2020-03-01,"White.Not Latino","New Mexico",0.0471645900743816,350
 2020-04-01,"White.Not Latino","New Mexico",0.0903882906626459,329
 2020-05-01,"White.Not Latino","New Mexico",0.0972436607561871,327
 2020-06-01,"White.Not Latino","New Mexico",0.0939952926468351,305
+2020-07-01,"White.Not Latino","New Mexico",0.106279264900183,315
+2020-08-01,"White.Not Latino","New Mexico",0.0873811014674721,307
+2020-09-01,"White.Not Latino","New Mexico",0.0721813576669964,403
 2020-02-01,"White.Not Latino","New York",0.0291889057853256,1354
 2020-03-01,"White.Not Latino","New York",0.0402472670253938,1190
 2020-04-01,"White.Not Latino","New York",0.145181083228226,1142
 2020-05-01,"White.Not Latino","New York",0.111636954448158,1130
 2020-06-01,"White.Not Latino","New York",0.112577535001514,1155
+2020-07-01,"White.Not Latino","New York",0.113881040484737,1259
+2020-08-01,"White.Not Latino","New York",0.103975061037483,1280
+2020-09-01,"White.Not Latino","New York",0.0715534421203016,1283
 2020-02-01,"White.Not Latino","North Carolina",0.0233007951378065,813
 2020-03-01,"White.Not Latino","North Carolina",0.0320719284434918,713
 2020-04-01,"White.Not Latino","North Carolina",0.11921308242507,661
 2020-05-01,"White.Not Latino","North Carolina",0.116242985025889,634
 2020-06-01,"White.Not Latino","North Carolina",0.0753277944870672,587
+2020-07-01,"White.Not Latino","North Carolina",0.0929753711588543,600
+2020-08-01,"White.Not Latino","North Carolina",0.0574859687415759,573
+2020-09-01,"White.Not Latino","North Carolina",0.0554081780866585,761
 2020-02-01,"White.Not Latino","North Dakota",0.0282060192050866,825
 2020-03-01,"White.Not Latino","North Dakota",0.0267299557882166,819
 2020-04-01,"White.Not Latino","North Dakota",0.0903068422155071,792
 2020-05-01,"White.Not Latino","North Dakota",0.072136926822286,801
 2020-06-01,"White.Not Latino","North Dakota",0.055591192815783,752
+2020-07-01,"White.Not Latino","North Dakota",0.055541537025667,818
+2020-08-01,"White.Not Latino","North Dakota",0.0455453576736389,854
+2020-09-01,"White.Not Latino","North Dakota",0.0346695793688134,882
 2020-02-01,"White.Not Latino","Ohio",0.0390553217360529,1216
 2020-03-01,"White.Not Latino","Ohio",0.0391549315373667,1028
 2020-04-01,"White.Not Latino","Ohio",0.154310612905743,939
 2020-05-01,"White.Not Latino","Ohio",0.118750020140955,966
 2020-06-01,"White.Not Latino","Ohio",0.0895433053364372,955
+2020-07-01,"White.Not Latino","Ohio",0.0934773750563663,909
+2020-08-01,"White.Not Latino","Ohio",0.0739459127785244,954
+2020-09-01,"White.Not Latino","Ohio",0.0642412240025327,1132
 2020-02-01,"White.Not Latino","Oklahoma",0.0286945108213502,640
 2020-03-01,"White.Not Latino","Oklahoma",0.0201473401426817,560
 2020-04-01,"White.Not Latino","Oklahoma",0.105928951891577,484
 2020-05-01,"White.Not Latino","Oklahoma",0.0722876659229207,489
 2020-06-01,"White.Not Latino","Oklahoma",0.0651597439148046,464
+2020-07-01,"White.Not Latino","Oklahoma",0.0625685271848566,450
+2020-08-01,"White.Not Latino","Oklahoma",0.0422241129884005,492
+2020-09-01,"White.Not Latino","Oklahoma",0.0348899105720927,560
 2020-02-01,"White.Not Latino","Oregon",0.0392723586602484,793
 2020-03-01,"White.Not Latino","Oregon",0.0444336871660943,729
 2020-04-01,"White.Not Latino","Oregon",0.134588898573715,666
 2020-05-01,"White.Not Latino","Oregon",0.101228581661645,652
 2020-06-01,"White.Not Latino","Oregon",0.0986817945259747,623
+2020-07-01,"White.Not Latino","Oregon",0.10045872714358,573
+2020-08-01,"White.Not Latino","Oregon",0.0752066578563028,602
+2020-09-01,"White.Not Latino","Oregon",0.0824750419988738,678
 2020-02-01,"White.Not Latino","Pennsylvania",0.0407611450330236,1329
 2020-03-01,"White.Not Latino","Pennsylvania",0.0474832079582416,1199
 2020-04-01,"White.Not Latino","Pennsylvania",0.141268518471948,1124
 2020-05-01,"White.Not Latino","Pennsylvania",0.115797804446284,1098
 2020-06-01,"White.Not Latino","Pennsylvania",0.114343747896674,985
+2020-07-01,"White.Not Latino","Pennsylvania",0.0983749714168605,1041
+2020-08-01,"White.Not Latino","Pennsylvania",0.0728983454977231,1054
+2020-09-01,"White.Not Latino","Pennsylvania",0.0635719205853882,1079
 2020-02-01,"White.Not Latino","Rhode Island",0.0399428398687424,465
 2020-03-01,"White.Not Latino","Rhode Island",0.0295963518853967,360
 2020-04-01,"White.Not Latino","Rhode Island",0.159026262961472,330
 2020-05-01,"White.Not Latino","Rhode Island",0.107650628566151,329
 2020-06-01,"White.Not Latino","Rhode Island",0.0907363720986836,287
+2020-07-01,"White.Not Latino","Rhode Island",0.112013667608315,420
+2020-08-01,"White.Not Latino","Rhode Island",0.134944991797449,410
+2020-09-01,"White.Not Latino","Rhode Island",0.079629724713254,454
 2020-02-01,"White.Not Latino","South Carolina",0.0276293133831473,596
 2020-03-01,"White.Not Latino","South Carolina",0.0324003528060887,567
 2020-04-01,"White.Not Latino","South Carolina",0.0842432962148721,511
 2020-05-01,"White.Not Latino","South Carolina",0.0969713229851069,476
 2020-06-01,"White.Not Latino","South Carolina",0.0552402520702083,472
+2020-07-01,"White.Not Latino","South Carolina",0.07381274303941,444
+2020-08-01,"White.Not Latino","South Carolina",0.0503569365779141,470
+2020-09-01,"White.Not Latino","South Carolina",0.0460813000786471,578
 2020-02-01,"White.Not Latino","South Dakota",0.0201755535893191,593
 2020-03-01,"White.Not Latino","South Dakota",0.0280360585505061,574
 2020-04-01,"White.Not Latino","South Dakota",0.0774736385808305,579
 2020-05-01,"White.Not Latino","South Dakota",0.0519227862920314,512
 2020-06-01,"White.Not Latino","South Dakota",0.0354376004288846,517
+2020-07-01,"White.Not Latino","South Dakota",0.0376050899409525,568
+2020-08-01,"White.Not Latino","South Dakota",0.0266391766462298,571
+2020-09-01,"White.Not Latino","South Dakota",0.0255731526843624,647
 2020-02-01,"White.Not Latino","Tennessee",0.0300039428178696,848
 2020-03-01,"White.Not Latino","Tennessee",0.0281520102154013,736
 2020-04-01,"White.Not Latino","Tennessee",0.144218151475248,723
 2020-05-01,"White.Not Latino","Tennessee",0.0915163700798937,700
 2020-06-01,"White.Not Latino","Tennessee",0.0991066867951719,690
+2020-07-01,"White.Not Latino","Tennessee",0.076023959029108,651
+2020-08-01,"White.Not Latino","Tennessee",0.0506403835481932,634
+2020-09-01,"White.Not Latino","Tennessee",0.0498016671239551,773
 2020-02-01,"White.Not Latino","Texas",0.026169236500482,1458
 2020-03-01,"White.Not Latino","Texas",0.0325150992731608,1300
 2020-04-01,"White.Not Latino","Texas",0.0910042983046337,1185
 2020-05-01,"White.Not Latino","Texas",0.0750743809227454,1160
 2020-06-01,"White.Not Latino","Texas",0.061486153958086,1112
+2020-07-01,"White.Not Latino","Texas",0.0791642645469962,1194
+2020-08-01,"White.Not Latino","Texas",0.0484347254880745,1219
+2020-09-01,"White.Not Latino","Texas",0.0546986254061315,1396
 2020-02-01,"White.Not Latino","Utah",0.0211403085949897,782
 2020-03-01,"White.Not Latino","Utah",0.0325553760057639,726
 2020-04-01,"White.Not Latino","Utah",0.106833787767757,741
 2020-05-01,"White.Not Latino","Utah",0.0775757016806948,698
 2020-06-01,"White.Not Latino","Utah",0.0526958482511695,695
+2020-07-01,"White.Not Latino","Utah",0.045208455475872,666
+2020-08-01,"White.Not Latino","Utah",0.0430984860749306,738
+2020-09-01,"White.Not Latino","Utah",0.0389510922368848,780
 2020-02-01,"White.Not Latino","Vermont",0.0192712128954111,738
 2020-03-01,"White.Not Latino","Vermont",0.0265933357698773,700
 2020-04-01,"White.Not Latino","Vermont",0.143908451734542,726
 2020-05-01,"White.Not Latino","Vermont",0.0876320812810918,682
 2020-06-01,"White.Not Latino","Vermont",0.0805145764924678,702
+2020-07-01,"White.Not Latino","Vermont",0.0640400886009237,708
+2020-08-01,"White.Not Latino","Vermont",0.044626069320355,712
+2020-09-01,"White.Not Latino","Vermont",0.0490951981165867,685
 2020-02-01,"White.Not Latino","Virginia",0.0214334539722485,747
 2020-03-01,"White.Not Latino","Virginia",0.0178676281713945,641
 2020-04-01,"White.Not Latino","Virginia",0.0944075412075416,607
 2020-05-01,"White.Not Latino","Virginia",0.064111741486771,591
 2020-06-01,"White.Not Latino","Virginia",0.0685099814128661,606
+2020-07-01,"White.Not Latino","Virginia",0.0522810569210197,594
+2020-08-01,"White.Not Latino","Virginia",0.0361014707946667,585
+2020-09-01,"White.Not Latino","Virginia",0.0442467812843886,638
 2020-02-01,"White.Not Latino","Washington",0.0328824036780831,847
 2020-03-01,"White.Not Latino","Washington",0.0450254429113653,781
 2020-04-01,"White.Not Latino","Washington",0.138501444060269,762
 2020-05-01,"White.Not Latino","Washington",0.124757287131695,793
 2020-06-01,"White.Not Latino","Washington",0.0881148494846116,714
+2020-07-01,"White.Not Latino","Washington",0.0994712623191532,700
+2020-08-01,"White.Not Latino","Washington",0.0796532697981103,679
+2020-09-01,"White.Not Latino","Washington",0.065021872980588,686
 2020-02-01,"White.Not Latino","West Virginia",0.0418655052208341,1039
 2020-03-01,"White.Not Latino","West Virginia",0.0514547098615238,883
 2020-04-01,"White.Not Latino","West Virginia",0.136569083525982,841
 2020-05-01,"White.Not Latino","West Virginia",0.108138726277455,804
 2020-06-01,"White.Not Latino","West Virginia",0.100415429352462,740
+2020-07-01,"White.Not Latino","West Virginia",0.10369460720911,773
+2020-08-01,"White.Not Latino","West Virginia",0.0831050835615288,887
+2020-09-01,"White.Not Latino","West Virginia",0.0824215306966155,887
 2020-02-01,"White.Not Latino","Wisconsin",0.0281234472483757,765
 2020-03-01,"White.Not Latino","Wisconsin",0.0234211874424322,705
 2020-04-01,"White.Not Latino","Wisconsin",0.120161216882177,690
 2020-05-01,"White.Not Latino","Wisconsin",0.102100641662839,667
 2020-06-01,"White.Not Latino","Wisconsin",0.0748888755706797,639
+2020-07-01,"White.Not Latino","Wisconsin",0.0542549365151884,643
+2020-08-01,"White.Not Latino","Wisconsin",0.0520931143689358,622
+2020-09-01,"White.Not Latino","Wisconsin",0.0343043091158088,674
 2020-02-01,"White.Not Latino","Wyoming",0.0365599639380552,752
 2020-03-01,"White.Not Latino","Wyoming",0.0350857316687316,650
 2020-04-01,"White.Not Latino","Wyoming",0.0561632693604517,672
 2020-05-01,"White.Not Latino","Wyoming",0.0794656359766793,632
 2020-06-01,"White.Not Latino","Wyoming",0.0652997083477043,650
+2020-07-01,"White.Not Latino","Wyoming",0.0667606868871551,732
+2020-08-01,"White.Not Latino","Wyoming",0.0533525406173052,737
+2020-09-01,"White.Not Latino","Wyoming",0.0449084154891802,804
