@@ -9,20 +9,18 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## 
+## do labor force participation for women
 
-```{r}
-library(ipumsr)
-library(dplyr)
-library(car)
-library(zoo)
-library(ggplot2)
-library(questionr)
-library(tidyquant)
-library(fpp)
-library(survey)
- test<-sessioninfo::session_info()
-knitr::write_bib(test$packages$package, file = "~/Documents/loadedpkgs.bib")
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(ipumsr,quietly = T)
+library(dplyr,quietly = T)
+library(car,quietly = T)
+library(zoo,quietly = T)
+library(ggplot2,quietly = T)
+library(questionr,quietly = T)
+library(tidyquant,quietly = T)
+library(fpp,quietly = T)
+library(survey,quietly = T)
 ```
 #read from original IPUMS
 ```{r, eval=FALSE}
@@ -31,7 +29,7 @@ cpsdat2<-read_ipums_micro(ddi)
 cpsdat2<-zap_labels(cpsdat2)
 ```
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, echo=FALSE}
 
 stfips<-data.frame(stfip=unique(tidycensus::fips_codes$state_code), stname=unique(tidycensus::fips_codes$state_name))
 head(stfips)
@@ -58,7 +56,7 @@ cpsdat2<-merge(cpsdat2, stfips, by.x="stfip", by.y= "stfip")
 ```
 
 ## recoding from original data
-```{r, eval=FALSE}
+```{r, eval=FALSE, echo=FALSE}
 cpsdat2<-cpsdat2%>%
   filter(YEAR >2009,AGE>16,EMPSTAT%in%c(10,12,21,22))%>%
   mutate(emp = Recode(EMPSTAT, recodes = "0 = NA; 1='af'; 10='curr work'; 12 = 'recent no job'; 20:22='unemp'"),
@@ -92,7 +90,7 @@ cpsdat2<-cpsdat2%>%
   arrange(CPSIDP, MONTH)
 ```
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, echo=FALSE}
 #head(cpsdat2)
 #rm(cpsdat2)
 #rm(cpsdat2)
@@ -100,7 +98,7 @@ cpsdat2<-cpsdat2%>%
 cpsdat2<-cpsdat2%>%
   filter(race_eth2!="multiple.Not Latino",race_eth2!="AIAE.Not Latino", race_eth2!="NHPI.Not Latino", race_eth2!="Asian.Not Latino")
 
-saveRDS(cpsdat2, file="~/cpsdat.rds")
+saveRDS(cpsdat2, file="data/cpsdat.rds")
 
 des<-survey::svydesign(ids=~1,  weights = ~WTFINL, data=cpsdat2)
 #rm(cpsdat2)
@@ -108,12 +106,17 @@ gc()
 ```
 # Load data file
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, echo=FALSE}
 setwd('path to file')
 load("cpsdat.rds")
 ```
 
-```{r, eval=FALSE}
+```{r}
+cpsdat2<-readRDS("data/cpsdat.rds")
+```
+
+
+```{r, eval=FALSE, echo=FALSE}
 cpsdat2%>%
   #filter(recentloss==1)%>%
   #filter(emp=="unemp")%>%
@@ -135,7 +138,7 @@ cpsdat2%>%
 ```
 
 ## basic models for month * race * sex variation
-```{r}
+```{r, echo=FALSE, eval=FALSE}
 m1<-svyglm(emp_bin~factor(race_eth2)+sex+factor(race_eth2)*factor(month), des, family=binomial)
 summary(m1)
 anova(m1)
@@ -175,7 +178,7 @@ outna%>%
   filter(race_eth2!="multiple.Not Latino",race_eth2!="AIAE.Not Latino", race_eth2!="NHPI.Not Latino", race_eth2!="Asian.Not Latino")%>%
   ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed by Race/Ethnicity",subtitle = "February to June 2020",
+  labs(title = "Percent Unemployed by Race/Ethnicity",subtitle = "February to september 2020",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+ylim(c(0, .2))+
@@ -189,7 +192,7 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 #p
 #<<<<<<< HEAD
 ggsave(filename = "~/national_unemp.eps",height=8, width=10, dpi = "print" )
-=======
+#=======
 #ggsave(filename = "~/national_unemp.png",height=8, width=10, dpi = "print" )
 #write.csv(outna, file="~/Documents/GitHub/unemployment/fig1_rate.csv", row.names = F)
 
@@ -198,7 +201,7 @@ ggsave(filename = "~/national_unemp.eps",height=8, width=10, dpi = "print" )
 ```
 
 ## gender
-```{r}
+```{r, fig.width=10, fig.height=8}
 outna2<-cpsdat2%>%
   filter(is.na(race_eth2)==F)%>%
   #mutate(Group = ifelse(stname=="Texas", "Texas","Rest of US"))%>%
@@ -217,7 +220,7 @@ outna2%>%
 
   ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed by Race/Ethnicity and Gender",subtitle = "February to June 2020",
+  labs(title = "Percent Unemployed by Race/Ethnicity and Gender",subtitle = "February to september 2020",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+ylim(c(0, .25))+
@@ -237,7 +240,7 @@ ggsave(filename = "~/national_unemp_sex.eps",height=8, width=10, dpi = "print" )
 ```
 
 ## gender x race X education
-```{r}
+```{r, fig.width=10, fig.height=8}
 outna2<-cpsdat2%>%
   filter(is.na(race_eth2)==F)%>%
   #mutate(Group = ifelse(stname=="Texas", "Texas","Rest of US"))%>%
@@ -278,7 +281,7 @@ ggsave(filename = "~/national_unemp_sex_educ.eps",height=8, width=10, dpi = "pri
 
 
 ## foreign born
-```{r}
+```{r, fig.width=10, fig.height=8}
 outna2<-cpsdat2%>%
   filter(is.na(race_eth2)==F)%>%
   #mutate(Group = ifelse(stname=="Texas", "Texas","Rest of US"))%>%
@@ -297,7 +300,7 @@ outna2%>%
   filter(race_eth2!="multiple.Not Latino",race_eth2!="AIAE.Not Latino", race_eth2!="Asian.Not Latino", race_eth2!="NHPI.Not Latino", group!="AIAE.Not Latino-Non-citizen")%>%
   ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed by Race/Ethnicity and Nativity Status",subtitle = "February to June 2020",
+  labs(title = "Percent Unemployed by Race/Ethnicity and Nativity Status",subtitle = "February to september 2020",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+ylim(c(0, .25))+
@@ -317,7 +320,7 @@ ggsave(filename = "~/national_unemp_sex_fb.png",height=8, width=10, dpi = "print
 ```
 
 ### State rate map
-```{r}
+```{r, eval=FALSE, echo=FALSE}
 library(geofacet)
 outst<-cpsdat2%>%
   filter(is.na(race_eth2)==F)%>%
@@ -335,7 +338,7 @@ p<-outst%>%
   #filter(emprate!=0)%>%
   ggplot()+geom_line(aes(x=month, y=emprate, color=emprate))+facet_geo(~stname, grid="us_state_grid2", label="name")+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed by State",subtitle = "February to June 2020",
+  labs(title = "Percent Unemployed by State",subtitle = "February to september 2020",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+
@@ -355,7 +358,7 @@ write.csv(outst, file="~/Documents/GitHub/unemployment/figst_rate.csv", row.name
 
 ```
 
-```{r}
+```{r, echo=FALSE, eval=FALSE}
 outst<-cpsdat2%>%
   filter(is.na(race_eth2)==F)%>%
   #mutate(Group = ifelse(stname=="Texas", "Texas","Rest of US"))%>%
@@ -392,7 +395,7 @@ p<-outst%>%
   #filter(emprate!=0)%>%
   ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+facet_geo(~stname, grid="us_state_grid2", label="name")+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed by State and Race/Ethnicity",subtitle = "February to June 2020",
+  labs(title = "Percent Unemployed by State and Race/Ethnicity",subtitle = "February to september 2020",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+
@@ -410,7 +413,7 @@ p
 #   #filter(emprate!=0)%>%
 #   ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+facet_geo(~stname, grid="us_state_grid2", label="name")+
 #   #scale_fill_discrete(name=)+
-#   labs(title = "Percent Unemployed by State and Race/Ethnicity",subtitle = "February to June 2020",
+#   labs(title = "Percent Unemployed by State and Race/Ethnicity",subtitle = "February to september 2020",
 #        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
 #        x = "Month",
 #        y = "Percent Unemployed")+
@@ -426,7 +429,7 @@ ggsave(plot = p,filename = "~/stunemp.png",height=12, width=16, dpi = "print" )
 write.csv(outst, file="~/Documents/GitHub/unemployment/fig_state_race.csv", row.names = F)
 ```
 ## gender x race X education
-```{r}
+```{r, fig.width=10, fig.height=8}
 outna2<-cpsdat2%>%
   filter(is.na(race_eth2)==F)%>%
   #mutate(Group = ifelse(stname=="Texas", "Texas","Rest of US"))%>%
@@ -468,7 +471,7 @@ write.csv(outna2, file="~/Documents/GitHub/unemployment/fig_gender_edu.csv", row
 
 
 ## race* age
-```{r}
+```{r, fig.width=10, fig.height=8}
 outna2<-cpsdat2%>%
   filter(is.na(race_eth2)==F)%>%
   mutate(Age_Group = cut(AGE, breaks = c(16,24, 34, 44, 54, 64, 86), labels = c("16 to 24", "25 to 34", "35 to 44", "45 to 54", "55 to 64", "65 or older"),include.lowest = T))%>%
@@ -510,7 +513,7 @@ write.csv(outna2, file="~/Documents/GitHub/unemployment/fig_2.csv", row.names = 
 #>>>>>>> a84ccb9e5b8bcff0b7f9cf5252e05dbf049207d3
 ```
 ## metro status
-```{r}
+```{r, fig.width=10, fig.height=8}
 outna2<-cpsdat2%>%
   filter(is.na(race_eth2)==F, month>=as.Date('2019-12-01'))%>%
    filter(METRO!=0, METRO!=4)%>%
@@ -527,7 +530,7 @@ outna2%>%
 mutate(metro = car::Recode(METRO, recodes = "1='Not Metro';2='Central City'; 3='Outside Central City'"))%>%
   ggplot()+geom_line(aes(x=month, y=emprate,color=metro, group=metro))+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed by Metropolitan Residence",subtitle = "February to June 2020",
+  labs(title = "Percent Unemployed by Metropolitan Residence",subtitle = "February to september 2020",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+#ylim(c(0, .4))+
@@ -539,7 +542,7 @@ ggsave(filename = "~/national_metro.png",height=8, width=10, dpi = "print" )
 
 ```
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, echo=FALSE}
 #p$labels$colour<-"Race/Ethnicity"
 #p
 
@@ -551,7 +554,7 @@ ggsave(filename = "~/national_metro.png",height=8, width=10, dpi = "print" )
 #   mutate(metro = car::Recode(METRO, recodes = "1='Not Metro';2='Central City'; 3='Outside Central City'"))%>%
 #   ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+
 #   #scale_fill_discrete(name=)+
-#   labs(title = "Percent Unemployed byand Race/Ethnicity and Metropolitan Residence",subtitle = "February to June 2020",
+#   labs(title = "Percent Unemployed byand Race/Ethnicity and Metropolitan Residence",subtitle = "February to september 2020",
 #        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
 #        x = "Month",
 #        y = "Percent Unemployed")+#ylim(c(0, .4))+
@@ -584,7 +587,7 @@ outna2%>%
   mutate(metro = car::Recode(METRO, recodes = "1='Not Metro';2='Central City'; 3='Outside Central City'"))%>%
   ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed byand Race/Ethnicity and Metropolitan Residence",subtitle = "February to June 2020",
+  labs(title = "Percent Unemployed byand Race/Ethnicity and Metropolitan Residence",subtitle = "February to september 2020",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+#ylim(c(0, .4))+
@@ -600,7 +603,7 @@ ggsave(filename = "~/national_metro_sex.png",height=8, width=10, dpi = "print" )
 ```
 
 ### additional figures by Rogelio
-```{r, eval=FALSE}
+```{r, eval=FALSE, echo=FALSE}
 dat<-read.csv("./data/rogrank.csv", header=T)
 
 library(dplyr)
