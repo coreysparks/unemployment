@@ -24,7 +24,7 @@ library(survey,quietly = T)
 ```
 #read from original IPUMS
 ```{r, eval=FALSE}
-ddi<-read_ipums_ddi("~/OneDrive - University of Texas at San Antonio//cps_00032.xml")
+ddi<-read_ipums_ddi("~/OneDrive - University of Texas at San Antonio//cps_00033.xml")
 cpsdat2<-read_ipums_micro(ddi)
 cpsdat2<-zap_labels(cpsdat2)
 ```
@@ -95,8 +95,8 @@ cpsdat2<-cpsdat2%>%
 #rm(cpsdat2)
 #rm(cpsdat2)
 #rm(cntpep)
-cpsdat2<-cpsdat2%>%
-  filter(race_eth2!="multiple.Not Latino",race_eth2!="AIAE.Not Latino", race_eth2!="NHPI.Not Latino", race_eth2!="Asian.Not Latino")
+# cpsdat2<-cpsdat2%>%
+#   filter(race_eth2!="multiple.Not Latino",race_eth2!="AIAE.Not Latino", race_eth2!="NHPI.Not Latino", race_eth2!="Asian.Not Latino")
 
 saveRDS(cpsdat2, file="data/cpsdat.rds")
 
@@ -116,11 +116,17 @@ cpsdat2<-readRDS("data/cpsdat.rds")
 ```
 
 
+```{r}
+table(cpsdat2$race_eth2)
+```
+
+
 ```{r, eval=FALSE, echo=FALSE}
+levs<-levels(as.factor(cpsdat2$race_eth2))
 cpsdat2%>%
   #filter(recentloss==1)%>%
   #filter(emp=="unemp")%>%
-  filter(race_eth2!="multiple.Not Latino",race_eth2!="AIAE.Not Latino", race_eth2!="NHPI.Not Latino")%>%
+  filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino", emprate!=0, race_eth2!="Asian.Not Latino")%>%
   group_by(race_eth2, month, sex)%>%
   summarise(meanweeks=mean(duremp_c, na.rm=T), 
             ahrs=mean(avghrs, na.rm=T))%>%
@@ -160,7 +166,7 @@ Anova(m3)
 
 
 ```{r}
-
+levs<-levels(as.factor(cpsdat2$race_eth2))
 outna<-cpsdat2%>%
   filter(is.na(race_eth2)==F, month>=as.Date('2020-02-01'))%>%
   #mutate(Group = ifelse(stname=="Texas", "Texas","Rest of US"))%>%
@@ -175,10 +181,10 @@ outna<-cpsdat2%>%
 head(outna)
 
 outna%>%
-  filter(race_eth2!="multiple.Not Latino",race_eth2!="AIAE.Not Latino", race_eth2!="NHPI.Not Latino", race_eth2!="Asian.Not Latino")%>%
+ filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino", emprate!=0, race_eth2!="Asian.Not Latino")%>%
   ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed by Race/Ethnicity",subtitle = "February to september 2020",
+  labs(title = "Percent Unemployed by Race/Ethnicity",subtitle = "February to October 2020",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+ylim(c(0, .2))+
@@ -191,7 +197,7 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 #p$labels$colour<-"Race/Ethnicity"
 #p
 #<<<<<<< HEAD
-ggsave(filename = "~/national_unemp.eps",height=8, width=10, dpi = "print" )
+ggsave(filename = "~/national_unemp.png",height=8, width=10, dpi = "print" )
 #=======
 #ggsave(filename = "~/national_unemp.png",height=8, width=10, dpi = "print" )
 #write.csv(outna, file="~/Documents/GitHub/unemployment/fig1_rate.csv", row.names = F)
@@ -216,11 +222,11 @@ outna2<-cpsdat2%>%
 head(outna2)
 
 outna2%>%
-    filter(race_eth2!="multiple.Not Latino",race_eth2!="AIAE.Not Latino", race_eth2!="NHPI.Not Latino", race_eth2!="Asian.Not Latino")%>%
+    filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino", emprate!=0, race_eth2!="Asian.Not Latino")%>%
 
   ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed by Race/Ethnicity and Gender",subtitle = "February to september 2020",
+  labs(title = "Percent Unemployed by Race/Ethnicity and Gender",subtitle = "February to October 2020",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+ylim(c(0, .25))+
@@ -232,7 +238,7 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 #p$labels$colour<-"Race/Ethnicity"
 #p
 #<<<<<<< HEAD
-ggsave(filename = "~/national_unemp_sex.eps",height=8, width=10, dpi = "print" )
+ggsave(filename = "~/national_unemp_sex.png",height=8, width=10, dpi = "print" )
 #=======
 #ggsave(filename = "~/national_unemp_sex.png",height=8, width=10, dpi = "print" )
 #write.csv(outna, file="~/Documents/GitHub/unemployment/fig4_rate.csv", row.names = F)
@@ -255,7 +261,7 @@ outna2<-cpsdat2%>%
 head(outna2)
 library(forcats)
 outna2%>%
-    filter(race_eth2!="multiple.Not Latino",race_eth2!="AIAE.Not Latino", race_eth2!="NHPI.Not Latino", race_eth2!="Asian.Not Latino", is.na(educ)==F)%>%
+    filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino", emprate!=0, race_eth2!="Asian.Not Latino")%>%
 
   mutate(educ=fct_relevel(educ,"< High School","High School","Some college","Bachelors +" ))%>%
   ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+
@@ -272,7 +278,7 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 #p$labels$colour<-"Race/Ethnicity"
 #p
 #<<<<<<< HEAD
-ggsave(filename = "~/national_unemp_sex_educ.eps",height=8, width=10, dpi = "print" )
+ggsave(filename = "~/national_unemp_sex_educ.png",height=8, width=10, dpi = "print" )
 #=======
 #ggsave(filename = "~/national_unemp_sex_educ.png",height=8, width=10, dpi = "print" )
 #write.csv(outna2, file="~/Documents/GitHub/unemployment/fig_3_rate.csv", row.names = F)
@@ -297,10 +303,10 @@ head(outna2)
 
 outna2%>%
   mutate(group=paste(race_eth2, fb, sep = "-"))%>%
-  filter(race_eth2!="multiple.Not Latino",race_eth2!="AIAE.Not Latino", race_eth2!="Asian.Not Latino", race_eth2!="NHPI.Not Latino", group!="AIAE.Not Latino-Non-citizen")%>%
+  filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino", emprate!=0, race_eth2!="Asian.Not Latino")%>%
   ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed by Race/Ethnicity and Nativity Status",subtitle = "February to september 2020",
+  labs(title = "Percent Unemployed by Race/Ethnicity and Nativity Status",subtitle = "February to October 2020",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+ylim(c(0, .25))+
@@ -312,7 +318,7 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 #p$labels$colour<-"Race/Ethnicity"
 #p
 #<<<<<<< HEAD
-#ggsave(filename = "~/national_unemp_sex_fb.eps",height=8, width=10, dpi = "print" )
+#ggsave(filename = "~/national_unemp_sex_fb.png",height=8, width=10, dpi = "print" )
 #=======
 ggsave(filename = "~/national_unemp_sex_fb.png",height=8, width=10, dpi = "print" )
 #write.csv(outna2, file="~/Documents/GitHub/unemployment/fig_5rates.csv", row.names = F)
@@ -338,7 +344,7 @@ p<-outst%>%
   #filter(emprate!=0)%>%
   ggplot()+geom_line(aes(x=month, y=emprate, color=emprate))+facet_geo(~stname, grid="us_state_grid2", label="name")+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed by State",subtitle = "February to september 2020",
+  labs(title = "Percent Unemployed by State",subtitle = "February to October 2020",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+
@@ -395,7 +401,7 @@ p<-outst%>%
   #filter(emprate!=0)%>%
   ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+facet_geo(~stname, grid="us_state_grid2", label="name")+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed by State and Race/Ethnicity",subtitle = "February to september 2020",
+  labs(title = "Percent Unemployed by State and Race/Ethnicity",subtitle = "February to October 2020",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+
@@ -413,7 +419,7 @@ p
 #   #filter(emprate!=0)%>%
 #   ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+facet_geo(~stname, grid="us_state_grid2", label="name")+
 #   #scale_fill_discrete(name=)+
-#   labs(title = "Percent Unemployed by State and Race/Ethnicity",subtitle = "February to september 2020",
+#   labs(title = "Percent Unemployed by State and Race/Ethnicity",subtitle = "February to October 2020",
 #        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
 #        x = "Month",
 #        y = "Percent Unemployed")+
@@ -462,7 +468,7 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 #p$labels$colour<-"Race/Ethnicity"
 #p
 #<<<<<<< HEAD
-#ggsave(filename = "~/national_unemp_sex_educ.eps",height=8, width=10, dpi = "print" )
+#ggsave(filename = "~/national_unemp_sex_educ.png",height=8, width=10, dpi = "print" )
 #=======
 ggsave(filename = "~/national_unemp_sex_educ.png",height=8, width=10, dpi = "print" )
 write.csv(outna2, file="~/Documents/GitHub/unemployment/fig_gender_edu.csv", row.names = F)
@@ -489,11 +495,11 @@ outna2<-cpsdat2%>%
 head(outna2)
 library(forcats)
 outna2%>%
-  filter(nsamp>30,race_eth2!="multiple.Not Latino",race_eth2!="AIAE.Not Latino", race_eth2!="NHPI.Not Latino", is.na(Age_Group)==F, race_eth2!="Asian.Not Latino")%>%
+  filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino", emprate!=0, race_eth2!="Asian.Not Latino")%>%
   #mutate(educ=fct_relevel(educ,"< High School","High School","Some college","Bachelors +" ))%>%
   ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed by Race/Ethnicity, and Age Group",subtitle = "February to May 2020",
+  labs(title = "Percent Unemployed by Race/Ethnicity, and Age Group",subtitle = "February to October 2020",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+ylim(c(0, .4))+
@@ -505,7 +511,7 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 #p$labels$colour<-"Race/Ethnicity"
 #p
 # <<<<<<< HEAD
-# ggsave(filename = "~/national_unemp_age.epsfig3
+# ggsave(filename = "~/national_unemp_age.pngfig3
 #        figure",height=8, width=10, dpi = "print" )
 # =======
 ggsave(filename = "~/national_unemp_age.png",height=8, width=10, dpi = "print" )
@@ -530,7 +536,7 @@ outna2%>%
 mutate(metro = car::Recode(METRO, recodes = "1='Not Metro';2='Central City'; 3='Outside Central City'"))%>%
   ggplot()+geom_line(aes(x=month, y=emprate,color=metro, group=metro))+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed by Metropolitan Residence",subtitle = "February to september 2020",
+  labs(title = "Percent Unemployed by Metropolitan Residence",subtitle = "February to October 2020",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+#ylim(c(0, .4))+
@@ -554,7 +560,7 @@ ggsave(filename = "~/national_metro.png",height=8, width=10, dpi = "print" )
 #   mutate(metro = car::Recode(METRO, recodes = "1='Not Metro';2='Central City'; 3='Outside Central City'"))%>%
 #   ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+
 #   #scale_fill_discrete(name=)+
-#   labs(title = "Percent Unemployed byand Race/Ethnicity and Metropolitan Residence",subtitle = "February to september 2020",
+#   labs(title = "Percent Unemployed byand Race/Ethnicity and Metropolitan Residence",subtitle = "February to October 2020",
 #        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
 #        x = "Month",
 #        y = "Percent Unemployed")+#ylim(c(0, .4))+
@@ -587,7 +593,7 @@ outna2%>%
   mutate(metro = car::Recode(METRO, recodes = "1='Not Metro';2='Central City'; 3='Outside Central City'"))%>%
   ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed byand Race/Ethnicity and Metropolitan Residence",subtitle = "February to september 2020",
+  labs(title = "Percent Unemployed byand Race/Ethnicity and Metropolitan Residence",subtitle = "February to October 2020",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+#ylim(c(0, .4))+
