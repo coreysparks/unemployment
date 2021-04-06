@@ -101,6 +101,7 @@ cpsdat2<-cpsdat2%>%
 saveRDS(cpsdat2, file="data/cpsdat.rds")
 
 des<-survey::svydesign(ids=~1,  weights = ~WTFINL, data=cpsdat2)
+des2<-survey::svydesign(ids=~1,strata=~stname+MONTH,  weights = ~WTFINL, data=cpsdat2)
 #rm(cpsdat2)
 gc()
 ```
