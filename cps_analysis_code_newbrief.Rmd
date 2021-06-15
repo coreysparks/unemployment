@@ -720,5 +720,109 @@ p8b<-dat6%>%
 p8b
 ggsave(p8b, filename="~/rogeliofig3.png", height = 6, width = 6, dpi = "print") 
 write.csv(outna, file="~/Documents/GitHub/unemployment/fig4_rate.csv", row.names = F)
+
 ```
 
+```{r}
+
+dat7<-read.csv("./data/monthly_unemp_gender.csv", header=T)
+#names(dat4)<-c("Group", "Feb_Workers", "Feb_April")
+
+#dat7$diff_feb20 <- dat7$Employed[]
+
+
+
+p8b<-dat7%>%
+  #group_by(Race, Gender)%>%
+  #mutate(mon = substr(Month, 1,3))
+   mutate(month= as.Date(as.yearmon(paste(dat7$year,dat7$month, sep="/"), format = "%Y/%m")))%>%
+ # mutate(diffemp = lag(Employed, n = 1))
+  #filter(group%in%c("Asian", "Black", "Latino", "White"))%>%
+  #mutate(time=fct_relevel(time,"Pct. Jobs Feb.","Pct. of Feb. Jobs in May", "Pct. of Feb. Jobs in June"))%>%
+  ggplot()+
+  geom_line(aes(x=month, y=Difference, group=Race, color=Race), lwd=1.25)+
+  facet_wrap(~Gender)+
+  scale_color_carsey( name = "Time")+
+  theme(axis.text.x = element_text(angle = 45))+
+  theme_minimal()+
+  labs(title = "Percent of February 2020 Jobs Recovered \nin April 2021 by Race/Ethnic Group",
+       caption = "Source: IPUMS CPS Monthly Data \n Calculations by Rogelio Saenz, Ph.D.",
+       x = "Month",
+       y = "% Recovered Jobs")
+  
+
+p8b
+ggsave(p8b, filename="images/pct_change_race.png", height = 6, width = 8, dpi = "print") 
+
+```
+
+```{r}
+
+dat7<-read.csv("./data/monthly_gender_edu.csv", header=T)
+#names(dat4)<-c("Group", "Feb_Workers", "Feb_April")
+
+#dat7$diff_feb20 <- dat7$Employed[]
+
+
+
+p8b<-dat7%>%
+  #group_by(Race, Gender)%>%
+  #mutate(mon = substr(Month, 1,3))
+   mutate(month= as.Date(as.yearmon(paste(dat7$Year,dat7$Month, sep="/"), format = "%Y/%m")))%>%
+ # mutate(diffemp = lag(Employed, n = 1))
+  #filter(group%in%c("Asian", "Black", "Latino", "White"))%>%
+  #mutate(time=fct_relevel(time,"Pct. Jobs Feb.","Pct. of Feb. Jobs in May", "Pct. of Feb. Jobs in June"))%>%
+  ggplot()+
+  geom_line(aes(x=month, y=Difference, group=CollegeGrad, color=CollegeGrad), lwd=1.25)+
+  facet_wrap(~Gender)+
+  scale_color_carsey( name = "Month")+
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 45))+
+  labs(title = "Percent of February 2020 Jobs Recovered \nin April 2021 by Education Level",
+       caption = "Source: IPUMS CPS Monthly Data \n Calculations by Rogelio Saenz, Ph.D.",
+       x = "Month",
+       y = "% Recovered Jobs")
+  
+
+p8b
+ggsave(p8b, filename="images/pct_change_Gender_edu.png", height = 6, width = 8, dpi = "print") 
+
+```
+
+
+```{r}
+
+dat8<-read.csv("./data/monthly_unemp.csv", header=T)
+#names(dat4)<-c("Group", "Feb_Workers", "Feb_April")
+
+#dat7$diff_feb20 <- dat7$Employed[]
+
+
+
+p8b<-dat8%>%
+  filter(is.na(Difference)==F)%>%
+  #group_by(Race, Gender)%>%
+  #mutate(mon = substr(Month, 1,3))
+   mutate(month= as.Date(as.yearmon(paste(year,month, sep="/"), format = "%Y/%m")),
+          jobs = as.numeric(Employ)/10000000)%>%
+ # mutate(diffemp = lag(Employed, n = 1))
+  #filter(group%in%c("Asian", "Black", "Latino", "White"))%>%
+  #mutate(time=fct_relevel(time,"Pct. Jobs Feb.","Pct. of Feb. Jobs in May", "Pct. of Feb. Jobs in June"))%>%
+  ggplot()+
+  geom_line(aes(x=month, y=Difference), color=carsey_cols()[1], lwd=1.25)+
+  #geom_line(aes(x=month,y = jobs), lwd=1.25)+
+  #facet_wrap(~Gender)+
+  #scale_y_continuous(sec.axis = sec_axis(~./10, name="Total Jobs")  ) 
+  scale_color_carsey( name = "Time")+
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 45))+
+  labs(title = "Percent of February 2020 Jobs Recovered \nin April 2021",
+       caption = "Source: IPUMS CPS Monthly Data \n Calculations by Rogelio Saenz, Ph.D.",
+       x = "Month",
+       y = "% Recovered Jobs")
+  
+
+p8b
+ggsave(p8b, filename="images/pct_change_jobs.png", height = 6, width = 8, dpi = "print") 
+
+```
