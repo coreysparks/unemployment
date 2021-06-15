@@ -31,7 +31,7 @@ cpsdat<-zap_labels(cpsdat)
 
 ```{r}
 load("~/OneDrive - University of Texas at San Antonio/projects/carsey_brief/cpsbriefdata.Rdata")
-
+source("C:/Users/ozd504/Documents/GitHub/carseycolors/carsey_colors.R")
 ```
 
 
@@ -136,7 +136,8 @@ cpsdat%>%
   group_by(race_eth2, month, sex)%>%
   summarise(meanweeks=mean(duremp_c, na.rm=T), 
             ahrs=mean(avghrs, na.rm=T))%>%
-  ggplot()+geom_line(aes(x=month, y=meanweeks, color=race_eth2))+facet_wrap(~sex)
+  ggplot()+geom_line(aes(x=month, y=meanweeks, color=race_eth2))+
+  facet_wrap(~sex)
 
 cpsdat%>%
   #filter(recentloss==1)%>%
@@ -190,11 +191,11 @@ outna%>%
  filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino", emprate!=0, race_eth2!="Asian.Not Latino")%>%
   ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed by Race/Ethnicity",subtitle = "February 2020 to February 2021",
+  labs(title = "Percent Unemployed by Race/Ethnicity",subtitle = "February 2020 to April 2021",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+ylim(c(0, .2))+
-  scale_color_brewer(type="qual", palette = "Set1", name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))+
+  scale_color_carsey( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))+
   scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
@@ -232,11 +233,11 @@ outna2%>%
 
   ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed by Race/Ethnicity and Gender",subtitle = "February 2020 to February 2021",
+  labs(title = "Percent Unemployed by Race/Ethnicity and Gender",subtitle = "February 2020 to April 2021",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+ylim(c(0, .25))+
-  scale_color_brewer(type="qual", palette = "Set1", name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))+facet_wrap(~sex)+scale_y_continuous(labels = scales::percent)+
+  scale_color_carsey(  name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))+facet_wrap(~sex)+scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
 theme_minimal()+theme(axis.text.x = element_text(angle = 45))
@@ -277,7 +278,7 @@ outna2%>%
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+#ylim(c(0, .6))+
-  scale_color_brewer(type="qual", palette = "Set1", name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))+facet_wrap(~educ+sex, ncol = 4)+scale_y_continuous(labels = scales::percent)+
+  scale_color_carsey( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))+facet_wrap(~educ+sex, ncol = 4)+scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
 theme_minimal()+theme(axis.text.x = element_text(angle = 45))
@@ -313,11 +314,11 @@ outna2%>%
   filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino", emprate!=0, race_eth2!="Asian.Not Latino")%>%
   ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed by Race/Ethnicity and Nativity Status",subtitle = "February 2020 to February 2021",
+  labs(title = "Percent Unemployed by Race/Ethnicity and Nativity Status",subtitle = "February 2020 to April 2021",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+ylim(c(0, .25))+
-  scale_color_brewer(type="qual", palette = "Set1", name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))+facet_wrap(~fb+sex)+scale_y_continuous(labels = scales::percent)+
+  scale_color_carsey( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))+facet_wrap(~fb+sex)+scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
 theme_minimal()+theme(axis.text.x = element_text(angle = 45))
@@ -351,7 +352,7 @@ p<-outst%>%
   #filter(emprate!=0)%>%
   ggplot()+geom_line(aes(x=month, y=emprate, color=emprate))+facet_geo(~stname, grid="us_state_grid2", label="name")+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed by State",subtitle = "February 2020 to February 2021",
+  labs(title = "Percent Unemployed by State",subtitle = "February 2020 to April 2021",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+
@@ -396,7 +397,7 @@ usavg<-cpsdat%>%
   ungroup()%>%
   arrange( month )
 
-outst%>%filter(stname=="New Hampshire")%>%ggplot(aes(x=month, y=emprate, color=race_eth2))+geom_line(aes(group=race_eth2), lwd=1.75)+ggtitle("New Hampshire Unemployment Rates", subtitle = "February 2020 to February 2021")+geom_line(data=usavg, aes(x=month, y=emprate, group="National Rate"), col="black")+scale_y_continuous(labels = scales::percent)+
+outst%>%filter(stname=="New Hampshire")%>%ggplot(aes(x=month, y=emprate, color=race_eth2))+geom_line(aes(group=race_eth2), lwd=1.75)+ggtitle("New Hampshire Unemployment Rates", subtitle = "February 2020 to April 2021")+geom_line(data=usavg, aes(x=month, y=emprate, group="National Rate"), col="black")+scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
 theme_minimal()+theme(axis.text.x = element_text(angle = 45))
@@ -408,7 +409,7 @@ p<-outst%>%
   #filter(emprate!=0)%>%
   ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+facet_geo(~stname, grid="us_state_grid2", label="name")+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed by State and Race/Ethnicity",subtitle = "February to February 2021",
+  labs(title = "Percent Unemployed by State and Race/Ethnicity",subtitle = "February to April 2021",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+
@@ -426,7 +427,7 @@ p
 #   #filter(emprate!=0)%>%
 #   ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+facet_geo(~stname, grid="us_state_grid2", label="name")+
 #   #scale_fill_discrete(name=)+
-#   labs(title = "Percent Unemployed by State and Race/Ethnicity",subtitle = "February to February 2021",
+#   labs(title = "Percent Unemployed by State and Race/Ethnicity",subtitle = "February to April 2021",
 #        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
 #        x = "Month",
 #        y = "Percent Unemployed")+
@@ -467,7 +468,7 @@ outna2%>%
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+ylim(c(0, .4))+
-  scale_color_brewer(type="qual", palette = "Set1", name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))+facet_wrap(~educ+sex, ncol = 4)+scale_y_continuous(labels = scales::percent)+
+ scale_color_carsey( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))+facet_wrap(~educ+sex, ncol = 4)+scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
 theme_minimal()+theme(axis.text.x = element_text(angle = 45))
@@ -506,11 +507,11 @@ outna2%>%
   #mutate(educ=fct_relevel(educ,"< High School","High School","Some college","Bachelors +" ))%>%
   ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed by Race/Ethnicity, and Age Group",subtitle = "February 2020 to February 2021",
+  labs(title = "Percent Unemployed by Race/Ethnicity, and Age Group",subtitle = "February 2020 to April 2021",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+ylim(c(0, .4))+
-  scale_color_brewer(type="qual", palette = "Set1", name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))+facet_wrap(~Age_Group, ncol = 3)+scale_y_continuous(labels = scales::percent)+
+  scale_color_carsey( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))+facet_wrap(~Age_Group, ncol = 3)+scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
 theme_minimal()+theme(axis.text.x = element_text(angle = 45))
@@ -543,11 +544,11 @@ outna2%>%
 mutate(metro = car::Recode(METRO, recodes = "1='Not Metro';2='Central City'; 3='Outside Central City'"))%>%
   ggplot()+geom_line(aes(x=month, y=emprate,color=metro, group=metro))+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed by Metropolitan Residence",subtitle = "February to February 2021",
+  labs(title = "Percent Unemployed by Metropolitan Residence",subtitle = "February to April 2021",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+#ylim(c(0, .4))+
-  scale_color_brewer(type="qual", palette = "Set1", name = "Location")+scale_y_continuous(labels = scales::percent)+
+  scale_color_carsey( name = "Location")+scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
 theme_minimal()+theme(axis.text.x = element_text(angle = 45))
@@ -567,7 +568,7 @@ ggsave(filename = "images/national_metro.png",height=8, width=10, dpi = "print" 
 #   mutate(metro = car::Recode(METRO, recodes = "1='Not Metro';2='Central City'; 3='Outside Central City'"))%>%
 #   ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+
 #   #scale_fill_discrete(name=)+
-#   labs(title = "Percent Unemployed byand Race/Ethnicity and Metropolitan Residence",subtitle = "February to February 2021",
+#   labs(title = "Percent Unemployed byand Race/Ethnicity and Metropolitan Residence",subtitle = "February to April 2021",
 #        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
 #        x = "Month",
 #        y = "Percent Unemployed")+#ylim(c(0, .4))+
@@ -600,7 +601,7 @@ outna2%>%
   mutate(metro = car::Recode(METRO, recodes = "1='Not Metro';2='Central City'; 3='Outside Central City'"))%>%
   ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed byand Race/Ethnicity and Metropolitan Residence",subtitle = "February to February 2021",
+  labs(title = "Percent Unemployed byand Race/Ethnicity and Metropolitan Residence",subtitle = "February to April 2021",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+#ylim(c(0, .4))+
