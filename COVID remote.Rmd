@@ -98,7 +98,7 @@ head (out_remote)
 out_remote%>%
   filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino", remoterate!=0, race_eth2!="Asian.Not Latino")%>%
   ggplot()+geom_line(aes(x=month, y=remoterate,color=race_eth2, group=race_eth2), lwd=2)+
-  labs(title = "Remote Work by Race/Ethnicity",subtitle = "May 2020 to April 2021",
+  labs(title = "Remote Work by Race/Ethnicity",subtitle = "May 2020 to May 2021",
        caption = "Source: IPUMS CPS Monthly Data ",
        x = "Month",
        y = "Percent of working remotely")+ylim(c(0, .2))+
@@ -125,7 +125,7 @@ head(out_gender)
 out_gender%>%
   filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino", remoterate!=0, race_eth2!="Asian.Not Latino")%>%
   ggplot()+geom_line(aes(x=month, y=remoterate,color=race_eth2, group=race_eth2), lwd=2)+
-  labs(title = "Remote Work by Race/Ethnicity and Gender",subtitle = "May 2020 to April 2021",
+  labs(title = "Remote Work by Race/Ethnicity and Gender",subtitle = "May 2020 to May 2021",
        caption = "Source: IPUMS CPS Monthly Data",
        x = "Month",
        y = "Percent working remotely")+ylim(c(0, .25))+
@@ -151,7 +151,7 @@ out_foreign%>%
   mutate(group=paste(race_eth2, fb, sep = "-"))%>%
   filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino", remoterate!=0, race_eth2!="Asian.Not Latino")%>%
   ggplot()+geom_line(aes(x=month, y=remoterate,color=race_eth2, group=race_eth2), lwd=2)+
-  labs(title = "Remote work by Race/Ethnicity, Gender and Nativity Status",subtitle = "May 2020 to April 2021",
+  labs(title = "Remote work by Race/Ethnicity, Gender and Nativity Status",subtitle = "May 2020 to May 2021",
        caption = "Source: IPUMS CPS Monthly Data",
        x = "Month",
        y = "Percent working remotely")+ylim(c(0, .25))+
