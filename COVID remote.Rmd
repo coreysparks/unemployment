@@ -105,7 +105,7 @@ out_remote%>%
   scale_color_carsey( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))+
   scale_y_continuous(labels = scales::percent)+
   theme_minimal()+theme(axis.text.x = element_text(angle = 45))  
-ggsave("~/OneDrive - University of Texas at San Antonio/projects/carsey_brief/rwraceeth.png",height=8, width=10, dpi = "print")
+ggsave("images/rwraceeth.png",height=8, width=10, dpi = "print")
 #rm(out_remout) 
 ```
 
@@ -132,7 +132,7 @@ out_gender%>%
   scale_color_carsey( name = "Race/Ethnicity",labels=c("Black", "Latino"," White"))+facet_wrap(~sex)+scale_y_continuous(labels = scales::percent)+
   theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 
-ggsave("~/OneDrive - University of Texas at San Antonio/projects/carsey_brief/rwregender.png",height=8, width=10, dpi = "print")
+ggsave("images/rwregender.png",height=8, width=10, dpi = "print")
 ```
 
 # Foreign born
@@ -159,7 +159,7 @@ out_foreign%>%
   theme_minimal()+theme(axis.text.x = element_text(angle = 45))  
 
 
- ggsave("~/OneDrive - University of Texas at San Antonio/projects/carsey_brief/rwfb.png",height=8, width=10, dpi = "print")
+ ggsave("images/rwfb.png",height=8, width=10, dpi = "print")
 ```
 
 # Education
@@ -181,14 +181,14 @@ out_educ<-cpsdat%>%
    
    mutate(educ=fct_relevel(educ,"< High School","High School","Some college","Bachelors +" ))%>%
    ggplot()+geom_line(aes(x=month, y=remoterate,color=race_eth2, group=race_eth2), lwd=1.1)+
-   labs(title = "Remote work by Race/Ethnicity and Education",subtitle = "May 2020 to April  2021",
+   labs(title = "Remote work by Race/Ethnicity and Education",subtitle = "May 2020 to May 2021",
         caption = "Source: IPUMS CPS Monthly Data ",
         x = "Month",
         y = "Percent working remotely")+
    scale_color_carsey( name = "Race/Ethnicity",labels=c("Black", "Latino"," White"))+facet_wrap(~educ, ncol = 4)+
    scale_y_continuous(labels = scales::percent)+
    theme_minimal()+theme(axis.text.x = element_text(angle = 45))
-ggsave("~/OneDrive - University of Texas at San Antonio/projects/carsey_brief/rweduc.png",height=8, width=10, dpi = "print")
+ggsave("images/rweduc.png",height=8, width=10, dpi = "print")
 ```
 
 # Education, gender, race

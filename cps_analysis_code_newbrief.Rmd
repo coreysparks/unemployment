@@ -201,16 +201,9 @@ outna%>%
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
 theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 
-#p$labels$colour<-"Race/Ethnicity"
-#p
-#<<<<<<< HEAD
+
 ggsave(filename = "images/national_unemp.png",height=8, width=10, dpi = "print" )
-#=======
-#ggsave(filename = "~/national_unemp.png",height=8, width=10, dpi = "print" )
-#write.csv(outna, file="~/Documents/GitHub/unemployment/fig1_rate.csv", row.names = F)
 
-
-#>>>>>>> a84ccb9e5b8bcff0b7f9cf5252e05dbf049207d3
 ```
 
 ## gender
