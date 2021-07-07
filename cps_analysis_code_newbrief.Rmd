@@ -117,6 +117,8 @@ setwd('path to file')
 load("cpsdat.rds")
 ```
 
+
+# Load data
 ```{r}
 cpsdat<-readRDS("data/cpsdat_newbrief.rds")
 ```
@@ -441,22 +443,23 @@ write.csv(outst, file="docs/fig_state_race.csv", row.names = F)
 ```{r, fig.width=10, fig.height=8}
 outna2<-cpsdat%>%
   filter(is.na(race_eth2)==F)%>%
+  mutate(educ2 = ifelse(educ %in% c("< High School", "High School", "Some college"), "Not College Graduate", "College Graduate"))%>%
   #mutate(Group = ifelse(stname=="Texas", "Texas","Rest of US"))%>%
-  group_by(month,  educ, sex )%>%
+  group_by(month,  educ2, sex )%>%
   summarise(unemprate =(wtd.mean(recentloss,weights = WTFINL, na.rm=T)),
           #avghrs=wtd.mean(AHRSWORKT,weights = WTFINL, na.rm=T),
           emprate =(1- wtd.mean(curremp,weights = WTFINL, na.rm=T)),
           nsamp=n())%>%
   arrange( month)%>%
   ungroup()%>%
-  arrange( sex,educ, month )
+  arrange( sex,educ2, month )
 
 #write.csv(outna2,file = "docs/unemp_to_rogelio.csv", row.names = F)
 head(outna2)
 library(forcats)
 outna2%>%
-  filter(nsamp>30, is.na(educ)==F)%>%
-  mutate(educ=fct_relevel(educ,"< High School","High School","Some college","Bachelors +" ))%>%
+  filter(nsamp>30, is.na(educ2)==F)%>%
+   mutate(educ=fct_relevel(educ2,"Not College Graduate","College Graduate" ))%>%
   ggplot()+
   geom_line(aes(x=month, y=emprate,color=educ, group=educ), lwd=2)+
  # geom_hline(aes( yintercept = max(emprate), group=educ), lty=2, cex=.5)+
@@ -468,7 +471,7 @@ outna2%>%
        y = "Percent Unemployed")+
   ylim(c(0, .4))+
   
- scale_color_carsey( name = "Education",labels=c("< High School","High School","Some college","Bachelors +"))+
+ scale_color_carsey( name = "Education",labels=c("College Graduate","Not College Graduate"))+
   facet_wrap(~sex, ncol = 4)+scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
@@ -488,38 +491,42 @@ ggsave(filename = "images/national_unemp_sex_educ.png",height=8, width=10, dpi =
 ```{r, fig.width=10, fig.height=8}
 outna2<-cpsdat%>%
   filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino",  race_eth2!="Asian.Not Latino")%>%
+  mutate(educ2 = ifelse(educ %in% c("< High School", "High School", "Some college"), "Not College Graduate", "College Graduate"))%>%
   #mutate(Group = ifelse(stname=="Texas", "Texas","Rest of US"))%>%
-  group_by(month,race_eth2,  educ, sex )%>%
+  group_by(month,race_eth2,  educ2, sex )%>%
   summarise(unemprate =(wtd.mean(recentloss,weights = WTFINL, na.rm=T)),
           #avghrs=wtd.mean(AHRSWORKT,weights = WTFINL, na.rm=T),
           emprate =(1- wtd.mean(curremp,weights = WTFINL, na.rm=T)),
           nsamp=n())%>%
   arrange( month)%>%
   ungroup()%>%
-  arrange( sex,educ,race_eth2, month )
+  arrange( sex,educ2,race_eth2, month )
 
 #write.csv(outna2,file = "docs/unemp_to_rogelio.csv", row.names = F)
 head(outna2)
 library(forcats)
 outna2%>%
-  filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino",  race_eth2!="Asian.Not Latino",nsamp>30, is.na(educ)==F)%>%
-  mutate(educ=fct_relevel(educ,"< High School","High School","Some college","Bachelors +" ))%>%
+  filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino",  race_eth2!="Asian.Not Latino",nsamp>30, is.na(educ2)==F)%>%
+   mutate(educ=fct_relevel(educ2,"Not College Graduate","College Graduate" ))%>%
   ggplot()+
   geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+
  # geom_hline(aes( yintercept = max(emprate), group=educ), lty=2, cex=.5)+
 #  geom_hline(yintercept = min(outna2$emprate[outna$month=="2021-05-01"]), lty=2, cex=.5)+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed by Gender and Education",subtitle = "February 2020 to May 2021",
+  labs(title = "Percent Unemployed by Gender and Education",
+       subtitle = "February 2020 to May 2021",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+
   ylim(c(0, .4))+
   
  scale_color_carsey( name = "Education",labels=c(" Black", "Latino"," White"))+
-  facet_wrap(~sex+educ, ncol = 4)+scale_y_continuous(labels = scales::percent)+
+  facet_wrap(~sex+educ, ncol = 2)+
+  scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
-theme_minimal()+theme(axis.text.x = element_text(angle = 45))
+theme_minimal()+
+  theme(axis.text.x = element_text(angle = 45))
 
 #p$labels$colour<-"Race/Ethnicity"
 #p
@@ -709,7 +716,36 @@ ggsave(filename = "images/national_metro_sex.png",height=8, width=10, dpi = "pri
 
 ```{r}
 
-S
+outna2<-cpsdat%>%
+  filter(is.na(race_eth2)==F)%>%
+  filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino", race_eth2!="Asian.Not Latino")%>%
+  #mutate(Group = ifelse(stname=="Texas", "Texas","Rest of US"))%>%
+  group_by(month,  sex )%>%
+  summarise(#unemprate =(wtd.mean(recentloss,weights = WTFINL, na.rm=T)),
+          #avghrs=wtd.mean(AHRSWORKT,weights = WTFINL, na.rm=T),
+          emprate =(1- wtd.mean(curremp,weights = WTFINL, na.rm=T)))%>%
+  arrange( month)%>%
+  ungroup()%>%
+  arrange( sex, month )
+
+head(outna2)
+
+outna2%>%
+    filter( emprate!=0)%>%
+
+  ggplot()+geom_line(aes(x=month, y=emprate,color=sex, group=sex), lwd=2)+
+  #scale_fill_discrete(name=)+
+  labs(title = "Percent Unemployed by Race/Ethnicity and Gender",subtitle = "February 2020 to May 2021",
+       caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
+       x = "Month",
+       y = "Percent Unemployed")+ylim(c(0, .25))+
+  scale_color_carsey(  name = "Race/Ethnicity",)+
+  #facet_wrap(~sex)+
+  scale_y_continuous(labels = scales::percent)+
+  #guides(fill=guide_legend(title="Race/Ethnicity"))+
+  #geom_hline(yintercept = 0, col="red", lwd=1.1)+
+theme_minimal()+theme(axis.text.x = element_text(angle = 45))
+
 #p$labels$colour<-"Race/Ethnicity"
 #p
 #<<<<<<< HEAD
