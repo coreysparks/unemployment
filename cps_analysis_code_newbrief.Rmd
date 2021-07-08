@@ -126,6 +126,17 @@ cpsdat<-readRDS("data/cpsdat_newbrief.rds")
 
 ```{r}
 table(cpsdat$race_eth2)
+
+cpsdat%>%
+  filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino",
+         race_eth2!="Asian.Not Latino")%>%
+  group_by(month, sex )%>%
+  summarise(#unemprate =(wtd.mean(recentloss,weights = WTFINL, na.rm=T)),
+         # avghrs=wtd.mean(AHRSWORKT,weights = WTFINL, na.rm=T),
+          emprate =(1- wtd.mean(curremp,weights = WTFINL, na.rm=T)))%>%
+  arrange( month)%>%
+  ungroup()%>%
+  arrange( sex, month )
 ```
 
 
@@ -735,11 +746,11 @@ outna2%>%
 
   ggplot()+geom_line(aes(x=month, y=emprate,color=sex, group=sex), lwd=2)+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed by Race/Ethnicity and Gender",subtitle = "February 2020 to May 2021",
+  labs(title = "Percent Unemployed by Gender",subtitle = "February 2020 to May 2021",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+ylim(c(0, .25))+
-  scale_color_carsey(  name = "Race/Ethnicity",)+
+  scale_color_carsey(  name = "Gender",labels = c("Female", "Male"))+
   #facet_wrap(~sex)+
   scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
