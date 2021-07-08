@@ -210,7 +210,7 @@ outna%>%
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+ylim(c(0, .2))+
-  scale_color_carsey( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))+
+  scale_color_manual( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"), values = c("#004f9e","#e36c2c","#4eaf49"))+
   scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
@@ -245,7 +245,7 @@ outna2%>%
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+ylim(c(0, .25))+
-  scale_color_carsey(  name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))+facet_wrap(~sex)+scale_y_continuous(labels = scales::percent)+
+  scale_color_manual( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"), values = c("#004f9e","#e36c2c","#4eaf49"))+facet_wrap(~sex)+scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
 theme_minimal()+theme(axis.text.x = element_text(angle = 45))
@@ -286,7 +286,7 @@ outna2%>%
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+#ylim(c(0, .6))+
-  scale_color_carsey( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))+facet_wrap(~educ+sex, ncol = 4)+scale_y_continuous(labels = scales::percent)+
+  scale_color_manual( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"), values = c("#004f9e","#e36c2c","#4eaf49"))+facet_wrap(~educ+sex, ncol = 4)+scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
 theme_minimal()+theme(axis.text.x = element_text(angle = 45))
@@ -326,7 +326,7 @@ outna2%>%
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+ylim(c(0, .25))+
-  scale_color_carsey( name = "Nativity",labels=c("Foreign Born", "Native Born"))+facet_wrap(~sex)+scale_y_continuous(labels = scales::percent)+
+  scale_color_manual( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"), values = c("#004f9e","#e36c2c","#4eaf49"))+facet_wrap(~sex)+scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
 theme_minimal()+theme(axis.text.x = element_text(angle = 45))
@@ -481,8 +481,8 @@ outna2%>%
        x = "Month",
        y = "Percent Unemployed")+
   ylim(c(0, .4))+
-  
- scale_color_carsey( name = "Education",labels=c("College Graduate","Not College Graduate"))+
+  scale_color_manual( name = "Education",labels=c("College Graduate","Not College Graduate"), values = c("#004f9e","#e36c2c","#4eaf49"))+
+ #scale_color_carsey( name = ,labels=c())+
   facet_wrap(~sex, ncol = 4)+scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
@@ -576,7 +576,8 @@ outna2%>%
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+ylim(c(0, .25))+
-  scale_color_carsey( name = "Nativity",labels=c("Foreign Born", "Native Born"))+facet_wrap(~sex+educ2)+scale_y_continuous(labels = scales::percent)+
+  scale_color_carsey( name = "Nativity",labels=c("Foreign Born", "Native Born"))+
+  facet_wrap(~sex+educ2)+scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
 theme_minimal()+theme(axis.text.x = element_text(angle = 45))
@@ -617,8 +618,11 @@ outna2%>%
   labs(title = "Percent Unemployed by Race/Ethnicity, and Age Group",subtitle = "February 2020 to May 2021",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
-       y = "Percent Unemployed")+ylim(c(0, .4))+
-  scale_color_carsey( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))+facet_wrap(~Age_Group, ncol = 3)+scale_y_continuous(labels = scales::percent)+
+       y = "Percent Unemployed")+
+  ylim(c(0, .4))+
+  scale_color_manual( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"), values = c("#004f9e","#e36c2c","#4eaf49"))+
+  #scale_color_carsey( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))
+  facet_wrap(~Age_Group, ncol = 3)+scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
 theme_minimal()+theme(axis.text.x = element_text(angle = 45))
@@ -655,7 +659,8 @@ mutate(metro = car::Recode(METRO, recodes = "1='Not Metro';2='Central City'; 3='
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+#ylim(c(0, .4))+
-  scale_color_carsey( name = "Location")+scale_y_continuous(labels = scales::percent)+
+  scale_color_manual( name = "Location", values = c("#004f9e","#e36c2c","#4eaf49"))+
+  scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
 theme_minimal()+theme(axis.text.x = element_text(angle = 45))
@@ -750,7 +755,8 @@ outna2%>%
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+ylim(c(0, .25))+
-  scale_color_carsey(  name = "Gender",labels = c("Female", "Male"))+
+  scale_color_manual( name = "Gender",labels = c("Female", "Male"), values = c("#004f9e","#e36c2c","#4eaf49"))+
+  #scale_color_carsey(  name = "Gender",labels = c("Female", "Male"))+
   #facet_wrap(~sex)+
   scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
@@ -940,7 +946,7 @@ ggsave(p8b, filename="images/pct_change_Gender_edu.png", height = 6, width = 8, 
 ```
 
 
-```{r}
+```{r, eval = FALSE}
 
 dat8<-read.csv("./data/monthly_unemp.csv", header=T)
 #names(dat4)<-c("Group", "Feb_Workers", "Feb_April")

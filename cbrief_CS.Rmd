@@ -20,7 +20,7 @@ library(survey,quietly = T)
 
 load("~/OneDrive - University of Texas at San Antonio/projects/carsey_brief//cpsbriefdata.Rdata")
 #View(cpsdat)
-
+source("C:/Users/ozd504/Documents/GitHub/carseycolors/carsey_colors.R")
 names(cpsdat) <- tolower(names(cpsdat))
 #names(cpsdat)
 
@@ -78,25 +78,56 @@ lfpartreg$february<-febreg$february
 #str(lfpartreg)
 
 #library(forcats)
+feb <- lfpartreg$Freq[lfpartreg$yr_month=="2020-02-01"]
+may <- lfpartreg$Freq[lfpartreg$yr_month=="2021-05-01"]
+diff<- lfpartreg$Freq[lfpartreg$yr_month=="2020-02-01"] - lfpartreg$Freq[lfpartreg$yr_month=="2021-05-01"]
 
 lfpartreg%>%
  # filter(is.na(differnce)==F,  yr_month!=('2020-01-01'))%>%
-  mutate(pct_ch = (Freq/february)*100-100)%>%
-  ggplot()+
-  geom_line(aes(x=yr_month, y=pct_ch, group="Change"),color=carsey_colors[1], lwd=1.15)+
-  geom_hline(yintercept = 0, lwd=.7, lty=2)+
+  mutate(pct_ch = (Freq))%>%
+  ggplot(aes(x=yr_month, y=pct_ch, group="Change"))+
+  geom_line(color=carsey_colors[1], lwd=1.15)+
+  geom_hline(yintercept = max(lfpartreg$Freq), lwd=.7, lty=2)+
+  geom_hline(yintercept = lfpartreg$Freq[lfpartreg$yr_month=="2021-05-01"], lwd=.7, lty=2)+
+  geom_segment(aes(x= "2021-05-01", y= feb, xend = "2021-05-01", yend = may ),
+               arrow = arrow(ends = "both", length = unit(.2, "cm")))+
+  # geom_point()
+  #  geom_line(aes(group = yr_month),
+  #           col = "grey")+
+  annotate("text", x = "2021-04-01", y = 155000000, label = "- 6,486,879")+
   #facet_wrap(~sex)+
-  labs(title = "Job Gains and Losses by Month",subtitle = "February 2020 to May 2021",
-       caption = "Source: IPUMS CPS Monthly Data",
+  labs(title = "Total Number of Jobs per Month",subtitle = "February 2020 to May 2021",
+       caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
-       y = "% Jobs Recovered")+
+       y = "Millions of Jobs")+
   theme_minimal()+
   theme(axis.text.x = element_text(angle = 45))+
-  scale_y_continuous(labels = scales::number_format())
+  scale_y_continuous(labels = scales::number_format(scale = .000001))
+  
+
+# p2<- lfpartreg%>%
+#  # filter(is.na(differnce)==F,  yr_month!=('2020-01-01'))%>%
+#   mutate(pct_ch = (Freq/february)*100-100)%>%
+#   ggplot()+
+#   geom_line(aes(x=yr_month, y=pct_ch, group="Change"),color=carsey_colors[1], lwd=1.15)+
+#   #geom_hline(yintercept = 0, lwd=.7, lty=2)+
+#   #facet_wrap(~sex)+
+#   labs(title = "Total Number of Jobs per Month",subtitle = "February 2020 to May 2021",
+#        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
+#        x = "Month",
+#        y = "Millions of Jobs")+
+#   theme_minimal()+
+#   theme(axis.text.x = element_text(angle = 45) )+
+#   scale_y_continuous(labels = scales::number_format())
+# 
+# library(patchwork)
+# 
+# p1 + p2
 
  ggsave("images/rogelio_total.png",height=8, width=10, dpi = "print")
 
 ```
+
 ```{r}
 byrace<-data.frame(svytable(~yr_month+emp_bin+educ2,des))
 
@@ -141,7 +172,8 @@ lfpartreg%>%
   theme_minimal()+
   theme(axis.text.x = element_text(angle = 45))+
   scale_y_continuous(labels = scales::number_format())+
-  scale_color_carsey(name = "Education", labels= c("< College", "Bachelors +"))
+  #scale_color_carsey(name = "Education", labels= c("< College", "Bachelors +"))
+  scale_color_manual( name = "Education", labels= c("< College", "Bachelors +", values = c("#004f9e","#e36c2c","#4eaf49")))
 
  ggsave("images/rogelio_gender_educ.png",height=8, width=10, dpi = "print")
 
@@ -187,7 +219,8 @@ lfpartreg%>%
   theme_minimal()+
   theme(axis.text.x = element_text(angle = 45))+
   scale_y_continuous(labels = scales::number_format())+
-  scale_color_carsey(name = "Education", labels= c("< College", "Bachelors +"))
+  #scale_color_carsey(name = "Education", labels= c("< College", "Bachelors +"))
+   scale_color_manual( name = "Education", labels= c("< College", "Bachelors +", values = c("#004f9e","#e36c2c","#4eaf49")))
 
  ggsave("images/rogelio_gender_educ.png",height=8, width=10, dpi = "print")
 
@@ -237,7 +270,7 @@ lfpartreg%>%
   theme_minimal()+
   theme(axis.text.x = element_text(angle = 45))+
   scale_y_continuous(labels = scales::number_format())+
-  scale_color_carsey(name = "Gender", labels=c("Female", "Male"))
+   scale_color_manual( name = "Gender",labels=c("Female", "Male"), values = c("#004f9e","#e36c2c","#4eaf49"))
 
  ggsave("images/rogelio_gender.png",height=8, width=10, dpi = "print")
 ```
@@ -280,7 +313,7 @@ lfpartreg%>%
   theme_minimal()+
   theme(axis.text.x = element_text(angle = 45))+
   scale_y_continuous(labels = scales::number_format())+
-  scale_color_carsey(name = "Race/Ethnicity",labels=c("Black", "Latino", "White") )
+   scale_color_manual( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"), values = c("#004f9e","#e36c2c","#4eaf49"))
 
  ggsave("images/rogelio_race_gender_educ.png",height=8, width=10, dpi = "print")
 ```
@@ -328,8 +361,8 @@ lfpartreg%>%
   theme_minimal()+
   theme(axis.text.x = element_text(angle = 45))+
   scale_y_continuous(labels = scales::number_format())+
-  scale_color_carsey(name = "Race/Ethnicity", labels=c("Black", "Latino", "White"))
-
+  #scale_color_carsey(name = "Race/Ethnicity", labels=c("Black", "Latino", "White"))
+ scale_color_manual( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"), values = c("#004f9e","#e36c2c","#4eaf49"))
  ggsave("images/rogelio_race_gender.png",height=8, width=10, dpi = "print")
 ```
 
