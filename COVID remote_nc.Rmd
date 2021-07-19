@@ -1,0 +1,302 @@
+---
+title: "COVID remote"
+author: "Asiya"
+date: "3/26/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+# Load data 
+```{r cars}
+#install.packages("questionr")
+#install.packages("tidyquant")
+#setwd("/Users/asiyavalidova/Dropbox/Demography/Carsey brief")
+# library(ipumsr)
+# ddi<-read_ipums_ddi("cps_00034.xml")
+# cpsdat<-read_ipums_micro(ddi)
+# cpsdat<-zap_labels(cpsdat)
+library(haven)
+library(dplyr,quietly = T)
+library(car,quietly = T)
+library(zoo,quietly = T)
+library(ggplot2,quietly = T)
+library(questionr,quietly = T)
+library(tidyquant,quietly = T)
+#library(fpp,quietly = T)
+library(survey,quietly = T)
+library(stringr)
+```
+
+```{r}
+load("~/OneDrive - University of Texas at San Antonio/projects/carsey_brief/cpsbriefdata.Rdata")
+source("C:/Users/ozd504/Documents/GitHub/carseycolors/carsey_colors.R")
+```
+
+
+# Recode variables
+```{r }
+cpsdat<-cpsdat%>%
+  mutate(month=as.Date(as.yearmon(paste(cpsdat$YEAR,cpsdat$MONTH, sep="/"), format = "%Y/%m")))%>%
+  filter(month>=as.Date('2020-02-01'),AGE>16,EMPSTAT%in%c(10,12,21,22))%>%
+  mutate(emp = Recode(EMPSTAT, recodes = "0 = NA; 1='af'; 10='curr work'; 12 = 'recent no job'; 20:22='unemp'"),
+         sex=Recode(SEX, recodes = "1='Male'; 2='Female'; else=NA", as.factor=T),
+         race = Recode (RACE, recodes = "100 = 'White'; 200='Black';300='AIAE';651='Asian';652='NHPI';802:830='multiple'; else=NA"),
+         lfpart = Recode(LABFORCE,recodes="2=1; 1=0; else=NA" ),
+         hisp= ifelse(HISPAN !=0, "Latino", "Not Latino")
+         #remote = Recode (COVIDTELEW, recodes = "2=1; 1=0; else=NA" )
+  )%>%
+  mutate( curremp = ifelse(EMPSTAT%in%c(10,12) , 1, 0),
+          recentloss=ifelse(emp=='recent no job', 1,0))%>%
+  arrange(CPSIDP, MONTH,MISH)
+
+#Remote variable
+cpsdat$remote=ifelse(cpsdat$COVIDTELEW==2,1, ifelse (cpsdat$COVIDTELEW==1,0, NA))
+
+cpsdat$emp_bin<-ifelse(cpsdat$emp!="curr work", 1, 0)
+#cpsdat$month<- as.Date(as.yearmon(paste(cpsdat$YEAR,cpsdat$MONTH, sep="/"), format = "%Y/%m"))
+cpsdat$race_eth<-interaction(cpsdat$race, cpsdat$hisp)
+cpsdat$race_eth2<-ifelse(str_sub(as.character(cpsdat$race_eth), start = -10)=="Not Latino", as.character(cpsdat$race_eth),"Latino")
+cpsdat$byr<-2021-cpsdat$AGE
+cpsdat$cohort<-car::Recode(cpsdat$byr, recodes = "1944:1964='boomer'; 1965:1979='genx'; 1980:1994='geny'; 1995:2015='genz'; else=NA")
+cpsdat$educ<-car::Recode(cpsdat$EDUC, recodes = "21:72='< High School'; 73='High School'; 81:110='Some college';  111:125='Bachelors +';else=NA; 0=NA", as.factor=T)
+cpsdat$duremp_c<-ifelse(cpsdat$DURUNEMP==999, NA, cpsdat$DURUNEMP)
+cpsdat$fb<-ifelse(cpsdat$YRIMMIG>0, "Foreign Born", "Native Born")
+cpsdat$avghrs<-ifelse(cpsdat$AHRSWORKT==999, NA, cpsdat$AHRSWORKT)
+cpsdat<-cpsdat%>%
+  select(remote, STATEFIP,emp_bin,CPSIDP,COVIDTELEW, MISH, MONTH, WTFINL, month, race_eth2, curremp,educ, sex, race, emp, YEAR, AGE, PANLWT, EDUC, avghrs, ABSENT, WKSTAT, EMPSAME, MULTJOB, NUMJOB,recentloss,fb, cohort , METRO, duremp_c, lfpart)%>%
+  filter(is.na(race_eth2)==F, month>=as.Date('2020-05-01'))%>%
+  group_by(CPSIDP)%>%
+  arrange(CPSIDP, MONTH)
+
+#Survey design
+des<-survey::svydesign(ids=~1,  weights = ~WTFINL, data=cpsdat)
+```
+
+# Remote - race/ethnicity 
+```{r cars}
+levs<-levels(as.factor(cpsdat$race_eth2))
+out_remote<-cpsdat%>%
+  filter(is.na(race_eth2)==F, month>=as.Date('2020-05-01'))%>%
+  group_by(month, race_eth2 )%>%
+  summarise(
+    remoterate =wtd.mean(remote,weights = WTFINL, na.rm=T))%>%
+  arrange( month)%>%
+  ungroup()%>%
+  arrange( race_eth2, month )
+head (out_remote)
+
+#png("~/OneDrive - University of Texas at San Antonio/projects/carsey_brief/Figure1.png")
+out_remote%>%
+  filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino", remoterate!=0, race_eth2!="Asian.Not Latino")%>%
+  ggplot()+geom_line(aes(x=month, y=remoterate,color=race_eth2, group=race_eth2), lwd=2)+
+  labs(title = "Remote Work by Race/Ethnicity",subtitle = "May 2020 to May 2021",
+       caption = "Source: IPUMS CPS Monthly Data ",
+       x = "Month",
+       y = "Percent of working remotely")+
+  #ylim(c(0, .2))+
+  scale_color_carsey( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))+
+  scale_y_continuous(labels = scales::percent, limits = c(0, .5))+
+  theme_minimal()+theme(axis.text.x = element_text(angle = 45))  
+ggsave("images/rwraceeth_remote.png",height=8, width=10, dpi = "print")
+#rm(out_remout) 
+```
+# Remote - race/ethnicity NC
+```{r cars}
+levs<-levels(as.factor(cpsdat$race_eth2))
+out_remote<-cpsdat%>%
+  filter(is.na(race_eth2)==F, month>=as.Date('2020-05-01'), STATEFIP==37)%>%
+  group_by(month, race_eth2 )%>%
+  summarise(
+    remoterate =wtd.mean(remote,weights = WTFINL, na.rm=T))%>%
+  arrange( month)%>%
+  ungroup()%>%
+  arrange( race_eth2, month )
+head (out_remote)
+
+#png("~/OneDrive - University of Texas at San Antonio/projects/carsey_brief/Figure1.png")
+out_remote%>%
+  filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino", remoterate!=0, race_eth2!="Asian.Not Latino")%>%
+  ggplot()+geom_line(aes(x=month, y=remoterate,color=race_eth2, group=race_eth2), lwd=2)+
+  labs(title = "Remote Work by Race/Ethnicity",subtitle = "North Carolina - May 2020 to May 2021",
+       caption = "Source: IPUMS CPS Monthly Data ",
+       x = "Month",
+       y = "Percent of working remotely")+ylim(c(0, .2))+
+  scale_color_carsey( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))+
+  scale_y_continuous(labels = scales::percent, limits = c(0, .5))+
+  theme_minimal()+theme(axis.text.x = element_text(angle = 45))  
+ggsave("C:/Users/ozd504/mcrwraceeth_remote.png",height=8, width=10, dpi = "print")
+#rm(out_remout) 
+```
+
+# Gender
+```{r cars}
+out_gender<-cpsdat%>%
+  filter(is.na(race_eth2)==F)%>%
+  group_by(month, race_eth2, sex )%>%
+  summarise(
+    remoterate =(wtd.mean(remote,weights = WTFINL, na.rm=T)))%>%
+  arrange( month)%>%
+  ungroup()%>%
+  arrange( race_eth2,sex, month )
+head(out_gender)
+
+
+out_gender%>%
+  filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino", remoterate!=0, race_eth2!="Asian.Not Latino")%>%
+  ggplot()+geom_line(aes(x=month, y=remoterate,color=race_eth2, group=race_eth2), lwd=2)+
+  labs(title = "Remote Work by Race/Ethnicity and Gender",subtitle = "May 2020 to May 2021",
+       caption = "Source: IPUMS CPS Monthly Data",
+       x = "Month",
+       y = "Percent working remotely")+
+  #ylim(c(0, .25))+
+  scale_color_carsey( name = "Race/Ethnicity",labels=c("Black", "Latino"," White"))+
+  facet_wrap(~sex)+
+  scale_y_continuous(labels = scales::percent,limits = c(0, .5))+
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 45))
+
+ggsave("images/rwregender.png",height=8, width=10, dpi = "print")
+```
+
+# Foreign born
+```{r cars}
+out_foreign<-cpsdat%>%
+  filter(is.na(race_eth2)==F)%>%
+  group_by(month, race_eth2, fb, sex )%>%
+  summarise(
+        remoterate =(wtd.mean(remote,weights = WTFINL, na.rm=T)))%>%
+  arrange( month)%>%
+  ungroup()%>%
+  arrange( race_eth2,fb, month )
+
+
+out_foreign%>%
+  mutate(group=paste(race_eth2, fb, sep = "-"))%>%
+  filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino", remoterate!=0, race_eth2!="Asian.Not Latino")%>%
+  ggplot()+geom_line(aes(x=month, y=remoterate,color=race_eth2, group=race_eth2), lwd=2)+
+  labs(title = "Remote work by Race/Ethnicity, Gender and Nativity Status",subtitle = "May 2020 to May 2021",
+       caption = "Source: IPUMS CPS Monthly Data",
+       x = "Month",
+       y = "Percent working remotely")+ylim(c(0, .25))+
+  scale_color_carsey(name = "Race/Ethnicity",labels=c("Black", "Latino"," White"))+facet_wrap(~fb+sex)+scale_y_continuous(labels = scales::percent)+
+  theme_minimal()+theme(axis.text.x = element_text(angle = 45))  
+
+
+ ggsave("images/rwfb.png",height=8, width=10, dpi = "print")
+```
+
+# Education
+```{r cars}
+out_educ<-cpsdat%>%
+   filter(is.na(race_eth2)==F,!is.na(educ))%>%
+   group_by(month, race_eth2, educ)%>%
+   summarise(
+             remoterate =(wtd.mean(remote,weights = WTFINL, na.rm=T)))%>%
+   arrange( month)%>%
+   ungroup()%>%
+   arrange( race_eth2,educ, month )
+ 
+ library(forcats)
+
+
+ out_educ%>%
+   filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino", remoterate!=0, race_eth2!="Asian.Not Latino")%>%
+   
+   mutate(educ=fct_relevel(educ,"< High School","High School","Some college","Bachelors +" ))%>%
+   ggplot()+geom_line(aes(x=month, y=remoterate,
+                          color=race_eth2,
+                          group=race_eth2), lwd=1.1)+
+   labs(title = "Remote work by Race/Ethnicity and Education",
+        subtitle = "May 2020 to May 2021",
+        caption = "Source: IPUMS CPS Monthly Data ",
+        x = "Month",
+        y = "Percent working remotely")+
+   scale_color_carsey( name = "Race/Ethnicity",
+                       labels=c("Black", "Latino"," White"))+
+   facet_wrap(~educ, 
+              ncol = 4)+
+   scale_y_continuous(labels = scales::percent, limits = c(0, .6))+
+   theme_minimal()+
+   theme(axis.text.x = element_text(angle = 45))
+ggsave("images/rweduc.png",height=8, width=10, dpi = "print")
+```
+
+# Education, gender, race
+```{r cars}
+out_educ<-cpsdat%>%
+   filter(is.na(race_eth2)==F,!is.na(educ))%>%
+   group_by(month, race_eth2, educ,sex)%>%
+   summarise(
+             remoterate =(wtd.mean(remote,weights = WTFINL, na.rm=T)))%>%
+   arrange( month)%>%
+   ungroup()%>%
+   arrange( race_eth2,sex,educ, month )
+ 
+
+ out_educ%>%
+   filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino", remoterate!=0, race_eth2!="Asian.Not Latino")%>%
+   
+   mutate(educ=fct_relevel(educ,"< High School","High School","Some college","Bachelors +" ))%>%
+   ggplot()+geom_line(aes(x=month, y=remoterate,color=race_eth2, group=race_eth2), lwd=1.1)+
+   labs(title = "Figure 5. Remote work by Race/Ethnicity, Gender and Education",subtitle = "May 2020 to April  2021",
+        caption = "Source: IPUMS CPS Monthly Data ",
+        x = "Month",
+        y = "Percent working remotely")+
+   scale_color_brewer(type="qual", palette = "Set1", name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))+facet_wrap(~educ+sex, ncol = 4)+
+   scale_y_continuous(labels = scales::percent)+
+   theme_minimal()+theme(axis.text.x = element_text(angle = 45))
+
+```
+
+
+```{r cars}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

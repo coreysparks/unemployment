@@ -326,7 +326,7 @@ outna2%>%
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+ylim(c(0, .25))+
-  scale_color_manual( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"), values = c("#004f9e","#e36c2c","#4eaf49"))+facet_wrap(~sex)+scale_y_continuous(labels = scales::percent)+
+  scale_color_manual( name = "Nativity Status",labels=c("Foreign Born", "Native Born"),values = c("#004f9e","#e36c2c","#4eaf49"))+facet_wrap(~sex)+scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
 theme_minimal()+theme(axis.text.x = element_text(angle = 45))
@@ -450,6 +450,7 @@ p
 ggsave(plot = p,filename = "images/stunemp.png",height=12, width=16, dpi = "print" )
 write.csv(outst, file="docs/fig_state_race.csv", row.names = F)
 ```
+
 ## gender x  education
 ```{r, fig.width=10, fig.height=8}
 outna2<-cpsdat%>%
@@ -481,7 +482,7 @@ outna2%>%
        x = "Month",
        y = "Percent Unemployed")+
   ylim(c(0, .4))+
-  scale_color_manual( name = "Education",labels=c("College Graduate","Not College Graduate"), values = c("#004f9e","#e36c2c","#4eaf49"))+
+  scale_color_manual( name = "Education",labels=c("Not College Graduate","College Graduate"), values = c("#004f9e","#e36c2c","#4eaf49"))+
  #scale_color_carsey( name = ,labels=c())+
   facet_wrap(~sex, ncol = 4)+scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
