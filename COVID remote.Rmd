@@ -98,13 +98,15 @@ head (out_remote)
 out_remote%>%
   filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino", remoterate!=0, race_eth2!="Asian.Not Latino")%>%
   ggplot()+geom_line(aes(x=month, y=remoterate,color=race_eth2, group=race_eth2), lwd=2)+
-  labs(title = "Remote Work by Race/Ethnicity",subtitle = "May 2020 to May 2021",
+  labs(title = "Remote Work by Race/Ethnicity",subtitle = "May 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data ",
        x = "Month",
-       y = "Percent of working remotely")+ylim(c(0, .2))+
+       y = "Percent of working remotely")+
+  #ylim(c(0, .2))+
   scale_color_carsey( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))+
-  scale_y_continuous(labels = scales::percent)+
-  theme_minimal()+theme(axis.text.x = element_text(angle = 45))  
+  scale_y_continuous(labels = scales::percent, limits = c(0, .4))+
+  theme_minimal()+theme(axis.text.x = element_text(angle = 45)) 
+
 ggsave("images/rwraceeth.png",height=8, width=10, dpi = "print")
 #rm(out_remout) 
 ```
@@ -125,11 +127,11 @@ head(out_gender)
 out_gender%>%
   filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino", remoterate!=0, race_eth2!="Asian.Not Latino")%>%
   ggplot()+geom_line(aes(x=month, y=remoterate,color=race_eth2, group=race_eth2), lwd=2)+
-  labs(title = "Remote Work by Race/Ethnicity and Gender",subtitle = "May 2020 to May 2021",
+  labs(title = "Remote Work by Race/Ethnicity and Gender",subtitle = "May 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data",
        x = "Month",
-       y = "Percent working remotely")+ylim(c(0, .25))+
-  scale_color_carsey( name = "Race/Ethnicity",labels=c("Black", "Latino"," White"))+facet_wrap(~sex)+scale_y_continuous(labels = scales::percent)+
+       y = "Percent working remotely")+
+  scale_color_carsey( name = "Race/Ethnicity",labels=c("Black", "Latino"," White"))+facet_wrap(~sex)+scale_y_continuous(labels = scales::percent, limits = c(0, .6))+
   theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 
 ggsave("images/rwregender.png",height=8, width=10, dpi = "print")
@@ -151,11 +153,12 @@ out_foreign%>%
   mutate(group=paste(race_eth2, fb, sep = "-"))%>%
   filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino", remoterate!=0, race_eth2!="Asian.Not Latino")%>%
   ggplot()+geom_line(aes(x=month, y=remoterate,color=race_eth2, group=race_eth2), lwd=2)+
-  labs(title = "Remote work by Race/Ethnicity, Gender and Nativity Status",subtitle = "May 2020 to May 2021",
+  labs(title = "Remote work by Race/Ethnicity, Gender and Nativity Status",subtitle = "May 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data",
        x = "Month",
-       y = "Percent working remotely")+ylim(c(0, .25))+
-  scale_color_carsey(name = "Race/Ethnicity",labels=c("Black", "Latino"," White"))+facet_wrap(~fb+sex)+scale_y_continuous(labels = scales::percent)+
+       y = "Percent working remotely")+
+  scale_color_carsey(name = "Race/Ethnicity",labels=c("Black", "Latino"," White"))+facet_wrap(~fb+sex)+
+  scale_y_continuous(labels = scales::percent, limits = c(0, .6))+
   theme_minimal()+theme(axis.text.x = element_text(angle = 45))  
 
 
@@ -181,12 +184,12 @@ out_educ<-cpsdat%>%
    
    mutate(educ=fct_relevel(educ,"< High School","High School","Some college","Bachelors +" ))%>%
    ggplot()+geom_line(aes(x=month, y=remoterate,color=race_eth2, group=race_eth2), lwd=1.1)+
-   labs(title = "Remote work by Race/Ethnicity and Education",subtitle = "May 2020 to May 2021",
+   labs(title = "Remote work by Race/Ethnicity and Education",subtitle = "May 2020 to June 2021",
         caption = "Source: IPUMS CPS Monthly Data ",
         x = "Month",
         y = "Percent working remotely")+
    scale_color_carsey( name = "Race/Ethnicity",labels=c("Black", "Latino"," White"))+facet_wrap(~educ, ncol = 4)+
-   scale_y_continuous(labels = scales::percent)+
+   scale_y_continuous(labels = scales::percent, limits = c(0, .6))+
    theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 ggsave("images/rweduc.png",height=8, width=10, dpi = "print")
 ```
@@ -213,7 +216,7 @@ out_educ<-cpsdat%>%
         x = "Month",
         y = "Percent working remotely")+
    scale_color_brewer(type="qual", palette = "Set1", name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"))+facet_wrap(~educ+sex, ncol = 4)+
-   scale_y_continuous(labels = scales::percent)+
+   scale_y_continuous(labels = scales::percent, limits = c(0, .6))+
    theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 
 ```

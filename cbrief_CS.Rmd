@@ -91,8 +91,8 @@ lfpartreg$february<-febreg$february
 
 #library(forcats)
 feb <- lfpartreg$Freq[lfpartreg$yr_month=="2020-02-01"]
-may <- lfpartreg$Freq[lfpartreg$yr_month=="2021-05-01"]
-diff<- lfpartreg$Freq[lfpartreg$yr_month=="2020-02-01"] - lfpartreg$Freq[lfpartreg$yr_month=="2021-05-01"]
+may <- lfpartreg$Freq[lfpartreg$yr_month=="2021-06-01"]
+diff<- lfpartreg$Freq[lfpartreg$yr_month=="2020-02-01"] - lfpartreg$Freq[lfpartreg$yr_month=="2021-06-01"]
 
 lfpartreg%>%
  # filter(is.na(differnce)==F,  yr_month!=('2020-01-01'))%>%
@@ -100,17 +100,17 @@ lfpartreg%>%
   ggplot(aes(x=yr_month, y=pct_ch, group="Change"))+
   geom_line(color=carsey_colors[1], lwd=1.15)+
   geom_hline(yintercept = max(lfpartreg$Freq), lwd=.7, lty=2)+
-  geom_hline(yintercept = lfpartreg$Freq[lfpartreg$yr_month=="2021-05-01"], lwd=.7, lty=2)+
-  geom_segment(aes(x= "2021-05-01", y= feb, xend = "2021-05-01", yend = may ),
+  geom_hline(yintercept = lfpartreg$Freq[lfpartreg$yr_month=="2021-06-01"], lwd=.7, lty=2)+
+  geom_segment(aes(x= "2021-06-01", y= feb, xend = "2021-06-01", yend = may ),
                arrow = arrow(ends = "both", length = unit(.2, "cm")))+
   # geom_point()
   #  geom_line(aes(group = yr_month),
   #           col = "grey")+
-  annotate("text", x = "2021-04-01", y = 155000000, label = "- 6,486,879")+
+  annotate("text", x = "2021-05-01", y = 155000000, label = "-5,851,544")+
   annotate("text", x = "2021-01-01", y = 157402659, label = "Pre Pandemic")+
-annotate("text", x = "2021-01-01", y = 153000000, label = "May 2021")+
+annotate("text", x = "2021-01-01", y = 154000000, label = "June 2021")+
   #facet_wrap(~sex)+
-  labs(title = "Number of Employed People per Month",subtitle = "February 2020 to May 2021",
+  labs(title = "Number of Employed People per Month",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Millions of Jobs")+
@@ -126,7 +126,7 @@ annotate("text", x = "2021-01-01", y = 153000000, label = "May 2021")+
 #   geom_line(aes(x=yr_month, y=pct_ch, group="Change"),color=carsey_colors[1], lwd=1.15)+
 #   #geom_hline(yintercept = 0, lwd=.7, lty=2)+
 #   #facet_wrap(~sex)+
-#   labs(title = "Total Number of Jobs per Month",subtitle = "February 2020 to May 2021",
+#   labs(title = "Total Number of Jobs per Month",subtitle = "February 2020 to June 2021",
 #        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
 #        x = "Month",
 #        y = "Millions of Jobs")+
@@ -180,7 +180,7 @@ lfpartreg%>%
   geom_line(aes(x=yr_month, y=pct_ch, group = educ2, color=educ2), lwd=1.15)+
   geom_hline(yintercept = 0, lty=2, lwd=.7)+
   #facet_wrap(~sex)+
-  labs(title = "Job Gains and Losses by Gender and Education",subtitle = "February 2020 to May 2021",
+  labs(title = "Job Gains and Losses by Gender and Education",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data",
        x = "Month",
        y = "% Jobs Recovered")+
@@ -229,7 +229,7 @@ lfpartreg%>%
   geom_line(aes(x=yr_month, y=pct_ch, group = race_eth2, color=race_eth2), lwd=1.15)+
   geom_hline(yintercept = 0, lty=2, lwd=.7)+
   facet_wrap(~educ2+sex)+
-  labs(title = "Job Gains and Losses by Gender and Education",subtitle = "February 2020 to May 2021",
+  labs(title = "Job Gains and Losses by Gender and Education",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data",
        x = "Month",
        y = "% Jobs Recovered")+
@@ -280,7 +280,7 @@ lfpartreg%>%
   ggplot()+
   geom_line(aes(x=yr_month, y=pct_ch, group = sex, color=factor(sex)), lwd=1.15)+
   geom_hline(yintercept = 0, lwd=.7,lty=2)+
-  labs(title = "Job Gains and Losses by Gender",subtitle = "February 2020 to May 2021",
+  labs(title = "Job Gains and Losses by Gender",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data",
        x = "Month",
        y = "% Jobs Recovered")+
@@ -322,7 +322,7 @@ lfpartreg%>%
   ggplot()+
   geom_line(aes(x=yr_month, y=pct_ch, group = race_eth2, color=factor(race_eth2)), lwd=1.15)+
  # geom_hline(yintercept = 0, lwd=.7,lty=2)+
-  labs(title = "Change in Number of Employed People by Race/Ethnicity and Gender",subtitle = "February 2020 to May 2021",
+  labs(title = "Change in Number of Employed People by Race/Ethnicity and Gender",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data",
        x = "Month",
        y = "% Jobs Recovered")+
@@ -370,7 +370,7 @@ lfpartreg%>%
   ggplot()+
   geom_line(aes(x=yr_month, y=pct_ch, group = race_eth2, color=factor(race_eth2)), lwd=1.15)+
   geom_hline(yintercept = 0, lwd=.7,lty=2)+
-  labs(title = "Job Gains and Losses by Race/Ethnicity and Gender",subtitle = "February 2020 to May 2021",
+  labs(title = "Job Gains and Losses by Race/Ethnicity and Gender",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data\n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "% Jobs Recovered")+
@@ -417,7 +417,7 @@ lfpartreg%>%
   ggplot()+
   geom_line(aes(x=yr_month, y=pct_ch, group = race_eth2, color=factor(race_eth2)), lwd=1.15)+
   geom_hline(yintercept = 0, lwd=.7,lty=2)+
-  labs(title = "Job Gains and Losses by Race/Ethnicity and Gender",subtitle = "February 2020 to May 2021",
+  labs(title = "Job Gains and Losses by Race/Ethnicity and Gender",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data",
        x = "Month",
        y = "% Jobs Recovered")+
@@ -461,7 +461,7 @@ lfpartreg%>%
   ggplot()+
   geom_line(aes(x=yr_month, y=pct_ch, group = reg, color=factor(reg)), lwd=1.15)+
   geom_hline(yintercept = 0, lwd=.7,lty=2)+
-  labs(title = "Job Gains and Losses by Census Region",subtitle = "February 2020 to May 2021",
+  labs(title = "Job Gains and Losses by Census Region",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data",
        x = "Month",
        y = "% Jobs Recovered")+
@@ -512,7 +512,7 @@ lfpartreg%>%
   geom_line(aes(x=yr_month, y=pct_ch, group = nativity, color=factor(nativity)), lwd=1.15)+
   geom_hline(yintercept = 0, lwd=.7,lty=2)+
   facet_wrap(~sex+educ2)+
-  labs(title = "Change in Number of Employed People by Nativity and Gender among Latinos",subtitle = "February 2020 to May 2021",
+  labs(title = "Change in Number of Employed People by Nativity and Gender among Latinos",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data\n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "% Jobs Recovered")+
@@ -561,7 +561,7 @@ lfpartreg%>%
   geom_line(aes(x=yr_month, y=pct_ch, group = nativity, color=factor(nativity)), lwd=1.15)+
   #geom_hline(yintercept = 0, lwd=.7,lty=2)+
   facet_wrap(~sex)+
-  labs(title = "Change in Number of Workers by Nativity and Gender among Latinos",subtitle = "February 2020 to May 2021",
+  labs(title = "Change in Number of Workers by Nativity and Gender among Latinos",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data",
        x = "Month",
        y = "% Jobs Recovered")+
@@ -572,3 +572,9 @@ lfpartreg%>%
 
  ggsave("images/rogelio_native_sex.png",height=8, width=10, dpi = "print")
 ```
+
+
+```{r}
+
+```
+
