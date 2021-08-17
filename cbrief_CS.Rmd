@@ -17,6 +17,7 @@ library(ggplot2,quietly = T)
 library(questionr,quietly = T)
 library(survey,quietly = T)
 
+sasy<-haven::read_sas("~/OneDrive - University of Texas at San Antonio/projects/carsey_brief/cps_00040.sas7bdat.gz")
 
 load("~/OneDrive - University of Texas at San Antonio/projects/carsey_brief//cpsbriefdata.Rdata")
 #View(cpsdat)
@@ -36,9 +37,9 @@ cpsdat<- cpsdat%>%
          sex=Recode(sex, recodes = "1='Male'; 2='Female'; else=NA", as.factor=T),
          race = Recode (race, recodes = "100 = 'White'; 200='Black';300='AIAE';651='Asian';652='NHPI';802:830='multiple'; else=NA"),
          hisp= ifelse(hispan !=0, "Latino", "Not Latino"),
-         nativity = ifelse(citizen%in%c(1:4), 1, 0))
+         nativity = ifelse(citizen%in%c(1:3), 1, 0))
 
-cpsdat$emp_bin<-ifelse(cpsdat$empstat%in%c(10, 12), 1, 0)
+cpsdat$emp_bin<-ifelse(cpsdat$empstat%in%c(10,11, 12), 1, 0)
 cpsdat$race_eth<-interaction(cpsdat$race, cpsdat$hisp)
 library(stringr)
 cpsdat$race_eth2<-ifelse(str_sub(as.character(cpsdat$race_eth), start = -10)=="Not Latino", as.character(cpsdat$race_eth),"Latino")
@@ -46,10 +47,10 @@ cpsdat$race_eth2<-ifelse(str_sub(as.character(cpsdat$race_eth), start = -10)=="N
 # cpsdat<-cpsdat%>%
 #   filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino", race_eth2!="Asian.Not Latino", age>=16)
 
-des<-survey::svydesign(ids=~1,  weights = ~wtfinl , data=cpsdat[is.na(cpsdat$wtfinl)==F,])
+des<-survey::svydesign(ids=~1,  weights = ~wtfinl , data=cpsdat[is.na(cpsdat$wtfinl)==F&cpsdat$wtfinl>0,])
 
 totm<-data.frame(svytable(~yr_month+emp_bin, des))
-
+#write.csv(cpsdat[cpsdat$race_eth2=="Latino",], "~/cpsdat.csv", na = ".")
 ```
 
 ```{r}
@@ -113,7 +114,7 @@ annotate("text", x = "2021-01-01", y = 154000000, label = "June 2021")+
   labs(title = "Number of Employed People per Month",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
-       y = "Millions of Jobs")+
+       y = "Number of Employed Persons")+
   theme_minimal()+
   theme(axis.text.x = element_text(angle = 45))+
   scale_y_continuous(labels = scales::number_format(scale = .000001))
@@ -280,10 +281,10 @@ lfpartreg%>%
   ggplot()+
   geom_line(aes(x=yr_month, y=pct_ch, group = sex, color=factor(sex)), lwd=1.15)+
   geom_hline(yintercept = 0, lwd=.7,lty=2)+
-  labs(title = "Job Gains and Losses by Gender",subtitle = "February 2020 to June 2021",
+  labs(title = "Percent Change in Number of Employed Persons from February 2020 by Gender",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data",
        x = "Month",
-       y = "% Jobs Recovered")+
+       y = "% Change in Number of Employed Persons")+
   theme_minimal()+
   theme(axis.text.x = element_text(angle = 45))+
   scale_y_continuous(labels = scales::number_format())+
@@ -370,17 +371,17 @@ lfpartreg%>%
   ggplot()+
   geom_line(aes(x=yr_month, y=pct_ch, group = race_eth2, color=factor(race_eth2)), lwd=1.15)+
   geom_hline(yintercept = 0, lwd=.7,lty=2)+
-  labs(title = "Job Gains and Losses by Race/Ethnicity and Gender",subtitle = "February 2020 to June 2021",
+  labs(title = "Percent Change in Number of Employed Persons from February 2020 by Race/Ethnicity",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data\n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
-       y = "% Jobs Recovered")+
+       y = "% Change in Number of Employed Persons")+
   #facet_wrap(~sex)+
   theme_minimal()+
   theme(axis.text.x = element_text(angle = 45))+
   scale_y_continuous(labels = scales::number_format())+
   #scale_color_carsey(name = "Race/Ethnicity", labels=c("Black", "Latino", "White"))
  scale_color_manual( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"), values = c("#004f9e","#e36c2c","#4eaf49"))
- ggsave("images/rogelio_race_gender.png",height=8, width=10, dpi = "print")
+ ggsave("images/rogelio_race.png",height=8, width=10, dpi = "print")
 ```
 
 ```{r}
@@ -430,7 +431,7 @@ lfpartreg%>%
  ggsave("images/rogelio_race_gender.png",height=8, width=10, dpi = "print")
 ```
 
-```{r}
+```{r, eval=FALSE}
 byreg <- data.frame(svytable(~yr_month+emp_bin+reg,des))
 byreg$yr_month<- as.Date(byreg$yr_month)
 #View(byreg)
@@ -534,10 +535,6 @@ byreg$yr_month<- as.Date(byreg$yr_month)
 #one for lfpart yes only 
 lfpartreg <- byreg %>%
   filter(emp_bin==1,  yr_month!=('2020-01-01') )
- # mutate(
-  #  prevmonth=lag(Freq,1), fmonth = ifelse(yr_month== ('2020-02-01'), 1, 0)) %>%
-  #mutate(differnce=Freq-prevmonth)
-#View(lfpartreg)
 
 febreg<-lfpartreg%>%
   filter(yr_month==('2020-02-01'))%>%
@@ -554,6 +551,10 @@ pcts<-lfpartreg%>%
 
 library(forcats)
 
+out<-lfpartreg%>%
+ # filter(is.na(differnce)==F,  yr_month!=('2020-01-01'))%>%
+  mutate(pct_ch = (Freq/february)*100-100)
+
 lfpartreg%>%
  # filter(is.na(differnce)==F,  yr_month!=('2020-01-01'))%>%
   mutate(pct_ch = (Freq/february)*100-100)%>%
@@ -561,8 +562,8 @@ lfpartreg%>%
   geom_line(aes(x=yr_month, y=pct_ch, group = nativity, color=factor(nativity)), lwd=1.15)+
   #geom_hline(yintercept = 0, lwd=.7,lty=2)+
   facet_wrap(~sex)+
-  labs(title = "Change in Number of Workers by Nativity and Gender among Latinos",subtitle = "February 2020 to June 2021",
-       caption = "Source: IPUMS CPS Monthly Data",
+  labs(title = "Percent Change in Number of Latina/o Employed Persons from\nFebruary 2020  by Nativity and Gender",subtitle = "February 2020 to June 2021",
+       caption = "Source: IPUMS CPS Monthly Data\n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "% Jobs Recovered")+
   theme_minimal()+
