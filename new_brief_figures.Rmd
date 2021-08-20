@@ -167,7 +167,7 @@ lfpartreg%>%
   ggplot()+
   geom_line(aes(x=yr_month, y=pct_ch, group = sex, color=factor(sex)), lwd=1.15)+
   geom_hline(yintercept = 0, lwd=.7,lty=2)+
-  labs(title = "Percent Change in Number of Employed Persons from February 2020 by Gender",subtitle = "February 2020 to June 2021",
+  labs(title = "Percent Change in Number of Employed Persons from\nFebruary 2020 by Gender",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data",
        x = "Month",
        y = "% Change in Number of Employed Persons")+
@@ -215,7 +215,7 @@ lfpartreg%>%
   ggplot()+
   geom_line(aes(x=yr_month, y=pct_ch, group = race_eth2, color=factor(race_eth2)), lwd=1.15)+
   geom_hline(yintercept = 0, lwd=.7,lty=2)+
-  labs(title = "Percent Change in Number of Employed Persons from February 2020 by Race/Ethnicity",subtitle = "February 2020 to June 2021",
+  labs(title = "Percent Change in Number of Employed Persons from\nFebruary 2020 by Race/Ethnicity",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data\n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "% Change in Number of Employed Persons")+
@@ -261,10 +261,10 @@ lfpartreg%>%
   ggplot()+
   geom_line(aes(x=yr_month, y=pct_ch, group = race_eth2, color=factor(race_eth2)), lwd=1.15)+
  # geom_hline(yintercept = 0, lwd=.7,lty=2)+
-  labs(title = "Change in Number of Employed People by Race/Ethnicity and Gender",subtitle = "February 2020 to June 2021",
+  labs(title = "Percent Change in Number of Employed Persons from\nFebruary 2020 by Race/Ethnicity and Gender",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data",
        x = "Month",
-       y = "% Jobs Recovered")+
+       y = "% Change in Number of Employed Persons")+
   facet_wrap(~sex)+
   theme_minimal()+
   theme(axis.text.x = element_text(angle = 45))+
@@ -275,7 +275,7 @@ lfpartreg%>%
 ```
 
 
-#figure 6
+# figure 6
 ```{r}
 des2<-subset(des, race_eth2 =="Latino")
 
@@ -316,7 +316,7 @@ lfpartreg%>%
   labs(title = "Percent Change in Number of Latina/o Employed Persons from\nFebruary 2020  by Nativity and Gender",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data\n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
-       y = "% Jobs Recovered")+
+       y = "% Change in Number of Employed Persons")+
   theme_minimal()+
   theme(axis.text.x = element_text(angle = 45))+
   scale_y_continuous(labels = scales::number_format())+
@@ -326,6 +326,59 @@ lfpartreg%>%
 ```
 
 # figure 9 pct change by gender and education
+```{r,eval=FALSE}
+byrace<-data.frame(svytable(~yr_month+emp_bin+sex+educ2,des))
+
+
+byrace$yr_month<- as.Date(byrace$yr_month)
+#View(byreg)
+
+#one for lfpart yes only 
+lfpartreg <- byrace %>%
+  filter(emp_bin==1,  yr_month!=('2020-01-01') )
+ # mutate(
+  #  prevmonth=lag(Freq,1), fmonth = ifelse(yr_month== ('2020-02-01'), 1, 0)) %>%
+  #mutate(differnce=Freq-prevmonth)
+#View(lfpartreg)
+
+febreg<-lfpartreg%>%
+  filter(yr_month==('2020-02-01'))%>%
+  rename(february= Freq)%>%
+  select( educ2,sex, february)
+
+lfpartreg<- left_join(lfpartreg, febreg, by=c( "educ2", "sex"))
+
+pcts<-lfpartreg%>%
+ # filter(is.na(differnce)==F,  yr_month!=('2020-01-01'))%>%
+  mutate(pct_ch = (Freq/february)*100-100)
+
+#str(lfpartreg)
+
+#library(forcats)
+
+lfpartreg%>%
+   
+ # filter(is.na(differnce)==F,  yr_month!=('2020-01-01'))%>%
+  mutate(pct_ch = (Freq/february)*100-100)%>%
+  ggplot()+
+  geom_line(aes(x=yr_month, y=pct_ch, group = educ2, color=educ2), lwd=1.15)+
+  geom_hline(yintercept = 0, lty=2, lwd=.7)+
+  facet_wrap(~sex)+
+  labs(title = "Percent Change in Number of Latina/o Employed Persons from\nFebruary 2020 by Gender and Education",subtitle = "February 2020 to June 2021",
+       caption = "Source: IPUMS CPS Monthly Data",
+       x = "Month",
+       y = "% Change in Number of Employed Persons")+
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 45))+
+  #scale_y_continuous(labels = scales::number_format())+
+  #scale_color_carsey(name = "Education", labels= c("< College", "Bachelors +"))
+  scale_color_manual( name = "Education",
+                      labels= c("< College", "Bachelors +"), values = c("#004f9e","#e36c2c"))
+
+ ggsave("images/rogelio_gender_educ.png",height=8, width=10, dpi = "print")
+
+```
+
 
 
 # figure 10 pct change by gender, educ and race/eth
@@ -366,7 +419,7 @@ lfpartreg%>%
   labs(title = "Job Gains and Losses by Gender and Education",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data",
        x = "Month",
-       y = "% Jobs Recovered")+
+       y = "% Change in Number of Employed Persons")+
   theme_minimal()+
   theme(axis.text.x = element_text(angle = 45))+
   scale_y_continuous(labels = scales::number_format())+
@@ -421,7 +474,7 @@ lfpartreg%>%
   labs(title = "Change in Number of Employed People by Nativity and Gender among Latinos",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data\n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
-       y = "% Jobs Recovered")+
+       y = "% Change in Number of Employed Persons")+
   theme_minimal()+
   theme(axis.text.x = element_text(angle = 45))+
   scale_y_continuous(labels = scales::number_format())+
@@ -497,7 +550,7 @@ outna%>%
   labs(title = "Percent Unemployed by Race/Ethnicity",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
-       y = "Percent Unemployed")+ylim(c(0, .2))+
+       y = "% Unemployed")+ylim(c(0, .2))+
   scale_color_manual( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"), values = c("#004f9e","#e36c2c","#4eaf49"))+
   scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
@@ -531,7 +584,7 @@ outna2%>%
   labs(title = "Percent Unemployed by Race/Ethnicity and Gender",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
-       y = "Percent Unemployed")+ylim(c(0, .25))+
+       y = "% Unemployed")+ylim(c(0, .25))+
   scale_color_manual( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"), values = c("#004f9e","#e36c2c","#4eaf49"))+facet_wrap(~sex)+scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
@@ -568,7 +621,7 @@ outna2%>%
   labs(title = "Percent Unemployed Among Latinos by Nativity Status",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
-       y = "Percent Unemployed")+ylim(c(0, .25))+
+       y = "% Unemployed")+ylim(c(0, .25))+
   scale_color_manual( name = "Nativity Status",labels=c("Foreign Born", "Native Born"),values = c("#004f9e","#e36c2c","#4eaf49"))+facet_wrap(~sex)+scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
@@ -608,7 +661,7 @@ outna2%>%
        subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
-       y = "Percent Unemployed")+
+       y = "% Unemployed")+
   ylim(c(0, .4))+
   
  scale_color_carsey( name = "Education",labels=c(" Black", "Latino"," White"))+
@@ -648,7 +701,7 @@ outna2%>%
   labs(title = "Percent Unemployed Among Latinos by Nativity Status and Education",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
-       y = "Percent Unemployed")+ylim(c(0, .25))+
+       y = "% Unemployed")+ylim(c(0, .25))+
   scale_color_carsey( name = "Nativity",labels=c("Foreign Born", "Native Born"))+
   facet_wrap(~sex+educ2)+scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
@@ -793,59 +846,6 @@ ggsave("images/fig16.png",height=8, width=10, dpi = "print")
 ```
 
 # additional figures not used
-
-```{r,eval=FALSE}
-byrace<-data.frame(svytable(~yr_month+emp_bin+educ2,des))
-
-
-byrace$yr_month<- as.Date(byrace$yr_month)
-#View(byreg)
-
-#one for lfpart yes only 
-lfpartreg <- byrace %>%
-  filter(emp_bin==1,  yr_month!=('2020-01-01') )
- # mutate(
-  #  prevmonth=lag(Freq,1), fmonth = ifelse(yr_month== ('2020-02-01'), 1, 0)) %>%
-  #mutate(differnce=Freq-prevmonth)
-#View(lfpartreg)
-
-febreg<-lfpartreg%>%
-  filter(yr_month==('2020-02-01'))%>%
-  rename(february= Freq)%>%
-  select( educ2, february)
-
-lfpartreg<- left_join(lfpartreg, febreg, by=c( "educ2"))
-
-pcts<-lfpartreg%>%
- # filter(is.na(differnce)==F,  yr_month!=('2020-01-01'))%>%
-  mutate(pct_ch = (Freq/february)*100-100)
-
-#str(lfpartreg)
-
-#library(forcats)
-
-lfpartreg%>%
-   
- # filter(is.na(differnce)==F,  yr_month!=('2020-01-01'))%>%
-  mutate(pct_ch = (Freq/february)*100-100)%>%
-  ggplot()+
-  geom_line(aes(x=yr_month, y=pct_ch, group = educ2, color=educ2), lwd=1.15)+
-  geom_hline(yintercept = 0, lty=2, lwd=.7)+
-  #facet_wrap(~sex)+
-  labs(title = "Job Gains and Losses by Gender and Education",subtitle = "February 2020 to June 2021",
-       caption = "Source: IPUMS CPS Monthly Data",
-       x = "Month",
-       y = "% Jobs Recovered")+
-  theme_minimal()+
-  theme(axis.text.x = element_text(angle = 45))+
-  #scale_y_continuous(labels = scales::number_format())+
-  #scale_color_carsey(name = "Education", labels= c("< College", "Bachelors +"))
-  scale_color_manual( name = "Education",
-                      labels= c("< College", "Bachelors +"), values = c("#004f9e","#e36c2c"))
-
- ggsave("images/rogelio_gender_educ.png",height=8, width=10, dpi = "print")
-
-```
 
 
 
