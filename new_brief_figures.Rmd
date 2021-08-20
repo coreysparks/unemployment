@@ -375,7 +375,7 @@ lfpartreg%>%
   scale_color_manual( name = "Education",
                       labels= c("< College", "Bachelors +"), values = c("#004f9e","#e36c2c"))
 
- ggsave("images/rogelio_gender_educ.png",height=8, width=10, dpi = "print")
+ ggsave("images/fig9.png",height=8, width=10, dpi = "print")
 
 ```
 
@@ -416,7 +416,8 @@ lfpartreg%>%
   geom_line(aes(x=yr_month, y=pct_ch, group = race_eth2, color=race_eth2), lwd=1.15)+
   geom_hline(yintercept = 0, lty=2, lwd=.7)+
   facet_wrap(~educ2+sex)+
-  labs(title = "Job Gains and Losses by Gender and Education",subtitle = "February 2020 to June 2021",
+  labs(title = "Percent Change in Number of Employed Persons from\nFebruary 2020 by Gender and Education Level February 2020 to 2021
+",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data",
        x = "Month",
        y = "% Change in Number of Employed Persons")+
@@ -618,11 +619,14 @@ outna2%>%
   filter( emprate!=0, race_eth2=="Latino")%>%
   ggplot()+geom_line(aes(x=month, y=emprate,color=fb, group=fb), lwd=2)+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed Among Latinos by Nativity Status",subtitle = "February 2020 to June 2021",
+  labs(title = "Percent Unemployed Among Latinos by Nativity Status and Gender",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
-       y = "% Unemployed")+ylim(c(0, .25))+
-  scale_color_manual( name = "Nativity Status",labels=c("Foreign Born", "Native Born"),values = c("#004f9e","#e36c2c","#4eaf49"))+facet_wrap(~sex)+scale_y_continuous(labels = scales::percent)+
+       y = "% Unemployed")+
+  scale_color_manual( name = "Nativity Status",labels=c("Foreign Born", "Native Born"),
+                      values = c("#004f9e","#e36c2c","#4eaf49"))+
+  facet_wrap(~sex)+
+  scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
 theme_minimal()+theme(axis.text.x = element_text(angle = 45))
