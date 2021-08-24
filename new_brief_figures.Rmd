@@ -24,9 +24,9 @@ rm(list=ls()); gc()
 ```{r}
 sasy<-haven::read_sas("~/OneDrive - University of Texas at San Antonio/projects/carsey_brief/cps_00040.sas7bdat.gz")
 
-load("~/OneDrive - University of Texas at San Antonio/projects/carsey_brief//cpsbriefdata.Rdata")
+load("C:/Users/ozd504/OneDrive - University of Texas at San Antonio/projects/carsey_brief//cpsbriefdata.Rdata")
 #View(cpsdat)
-source("C:/Users/ozd504/Documents/GitHub/carseycolors/carsey_colors.R")
+source("C:/Users/ozd504/Documents/GitHub/custom_colors//carsey_colors.R")
 names(cpsdat) <- tolower(names(cpsdat))
 #names(cpsdat)
 
@@ -327,7 +327,7 @@ lfpartreg%>%
 
 # figure 9 pct change by gender and education
 ```{r,eval=FALSE}
-byrace<-data.frame(svytable(~yr_month+emp_bin+sex+educ2,des))
+byrace<-data.frame(svytable(~yr_month+emp_bin+educ2,des))
 
 
 byrace$yr_month<- as.Date(byrace$yr_month)
@@ -344,9 +344,9 @@ lfpartreg <- byrace %>%
 febreg<-lfpartreg%>%
   filter(yr_month==('2020-02-01'))%>%
   rename(february= Freq)%>%
-  select( educ2,sex, february)
+  select( educ2, february)
 
-lfpartreg<- left_join(lfpartreg, febreg, by=c( "educ2", "sex"))
+lfpartreg<- left_join(lfpartreg, febreg, by=c( "educ2"))
 
 pcts<-lfpartreg%>%
  # filter(is.na(differnce)==F,  yr_month!=('2020-01-01'))%>%
@@ -363,8 +363,8 @@ lfpartreg%>%
   ggplot()+
   geom_line(aes(x=yr_month, y=pct_ch, group = educ2, color=educ2), lwd=1.15)+
   geom_hline(yintercept = 0, lty=2, lwd=.7)+
-  facet_wrap(~sex)+
-  labs(title = "Percent Change in Number of Latina/o Employed Persons from\nFebruary 2020 by Gender and Education",subtitle = "February 2020 to June 2021",
+  #facet_wrap(~sex)+
+  labs(title = "Percent Change in Number of Latina/o Employed Persons from\nFebruary 2020 by Education Level",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data",
        x = "Month",
        y = "% Change in Number of Employed Persons")+
@@ -416,7 +416,7 @@ lfpartreg%>%
   geom_line(aes(x=yr_month, y=pct_ch, group = race_eth2, color=race_eth2), lwd=1.15)+
   geom_hline(yintercept = 0, lty=2, lwd=.7)+
   facet_wrap(~educ2+sex)+
-  labs(title = "Percent Change in Number of Employed Persons from\nFebruary 2020 by Gender and Education Level February 2020 to 2021
+  labs(title = "Percent Change in Number of Employed Persons from\nFebruary 2020 by Race/Ethnicity, Gender and Education Level February 2020 to 2021
 ",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data",
        x = "Month",
@@ -472,7 +472,7 @@ lfpartreg%>%
   geom_line(aes(x=yr_month, y=pct_ch, group = nativity, color=factor(nativity)), lwd=1.15)+
   geom_hline(yintercept = 0, lwd=.7,lty=2)+
   facet_wrap(~sex+educ2)+
-  labs(title = "Change in Number of Employed People by Nativity and Gender among Latinos",subtitle = "February 2020 to June 2021",
+  labs(title = "Change in Number of Employed People by Nativity and Gender among Latina/os",subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data\n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "% Change in Number of Employed Persons")+
@@ -661,7 +661,7 @@ outna2%>%
  # geom_hline(aes( yintercept = max(emprate), group=educ), lty=2, cex=.5)+
 #  geom_hline(yintercept = min(outna2$emprate[outna$month=="2021-05-01"]), lty=2, cex=.5)+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed by Gender and Education",
+  labs(title = "Percent Unemployed by Race/Ethnicity, Gender and Education",
        subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
