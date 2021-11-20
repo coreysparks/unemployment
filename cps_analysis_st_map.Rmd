@@ -1,0 +1,72 @@
+---
+title: "cps analysis covid"
+author: "Corey Sparks, PhD"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### These are labor force participation rates by various demographic characteristics
+### I can also do the actual numbers leaving/joining the labor force
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(ipumsr,quietly = T)
+library(dplyr,quietly = T)
+library(car,quietly = T)
+library(zoo,quietly = T)
+library(ggplot2,quietly = T)
+library(questionr,quietly = T)
+library(tidyquant,quietly = T)
+library(fpp,quietly = T)
+library(survey,quietly = T)
+# test<-sessioninfo::session_info()
+#knitr::write_bib(test$packages$package, file = "~/Documents/loadedpkgs.bib")
+```
+
+```{r}
+cpsdat_lf<-readRDS(url("https://github.com/coreysparks/unemployment/blob/master/data/cpsdat_LF.rds?raw=true"))
+```
+
+### State rate map
+```{r, eval=FALSE, echo=FALSE}
+library(geofacet)
+library(questionr)
+outst<-cpsdat_lf%>%
+  filter(is.na(race_eth2)==F)%>%
+  #mutate(Group = ifelse(stname=="Texas", "Texas","Rest of US"))%>%
+  group_by(month, stname)%>%
+  summarise(#emprate =(1- wtd.mean(curremp,weights = WTFINL, na.rm=T)),
+          #avghrs=wtd.mean(AHRSWORKT,weights = WTFINL, na.rm=T),
+          emprate =(1- wtd.mean(curremp,weights = WTFINL, na.rm=T)))%>%
+  arrange( month)%>%
+  ungroup()%>%
+  arrange( stname, month )
+
+p<-outst%>%
+  filter(emprate!=0)%>%
+  #filter(emprate!=0)%>%
+  ggplot()+geom_line(aes(x=month, y=emprate))+
+  facet_geo(~stname, grid="us_state_grid2", label="name")+
+  #scale_fill_discrete(name=)+
+  labs(title = "Percent Unemployed by State",subtitle = "February to September 2020",
+       caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
+       x = "Month",
+       y = "Percent Unemployed")+
+  scale_color_viridis_c(name="Percent Unemployed",option="C",  direction=1)+
+  ylim(c(0, .4))+scale_y_continuous(labels = scales::percent)+
+  #guides(fill=guide_legend(title="Race/Ethnicity"))+
+  #geom_hline(yintercept = 0, col="red", lwd=1.1)+
+theme_minimal()+theme(axis.text.x = element_text(angle = 45))
+
+p
+ggsave(plot = p,filename = "~/stunemp_norace.png",height=12, width=16, dpi = "print" )
+head(outst)
+write.csv(outst, file="~/Documents/GitHub/unemployment/figst_rate.csv", row.names = F)
+# outst%>%
+#   group_by(month, race_eth2)%>%
+#   summarise(max=max(emprate))
+
+```
