@@ -22,11 +22,11 @@ rm(list=ls()); gc()
 
 # Pct change data load
 ```{r}
-sasy<-haven::read_sas("~/OneDrive - University of Texas at San Antonio/projects/carsey_brief/cps_00040.sas7bdat.gz")
+#sasy<-haven::read_sas("~/OneDrive - University of Texas at San Antonio/projects/carsey_brief/cps_00040.sas7bdat.gz")
 
 load("C:/Users/ozd504/OneDrive - University of Texas at San Antonio/projects/carsey_brief//cpsbriefdata.Rdata")
 #View(cpsdat)
-source("C:/Users/ozd504/Documents/GitHub/custom_colors//carsey_colors.R")
+source("https://raw.githubusercontent.com/coreysparks/custom_colors/master/carsey_colors.R")
 names(cpsdat) <- tolower(names(cpsdat))
 #names(cpsdat)
 
@@ -60,16 +60,7 @@ des<-survey::svydesign(ids=~1,  weights = ~wtfinl , data=cpsdat[is.na(cpsdat$wtf
 #write.csv(cpsdat[cpsdat$race_eth2=="Latino",], "~/cpsdat.csv", na = ".")
 ```
 
-```{r,eval=FALSE}
-test<- cpsdat%>%
-  filter(emp_bin==1,  race_eth2=="Latino", is.na(educ2)==F )%>%
-  group_by(race_eth2, sex, nativity, yr_month, educ2)%>%
-  summarize(ns = n())
-  
-table(test$ns >=30)
 
-
-```
 
 # figure 1
 ```{r}
@@ -174,7 +165,9 @@ lfpartreg%>%
   theme_minimal()+
   theme(axis.text.x = element_text(angle = 45))+
   scale_y_continuous(labels = scales::number_format())+
-   scale_color_manual( name = "Gender",labels=c("Female", "Male"), values = c("#004f9e","#e36c2c","#4eaf49"))
+   scale_color_manual( name = "Gender",
+                       labels=c("Female", "Male"),
+                       values = c("#004f9e","#e36c2c","#4eaf49"))
 
  ggsave("images/fig2.png",height=8, width=10, dpi = "print")
 ```
