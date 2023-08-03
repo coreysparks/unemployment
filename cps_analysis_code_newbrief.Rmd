@@ -208,8 +208,9 @@ outna%>%
         race_eth2!="AIAE.Not Latino",
         race_eth2!="multiple.Not Latino", 
         emprate!=0,
-        race_eth2!="Asian.Not Latino")%>%
-  ggplot()+geom_line(aes(x=month, 
+        race_eth2!="Asian.Not Latino") %>%
+  ggplot()+
+  geom_line(aes(x=month, 
                          y=emprate,
                          color=race_eth2, 
                          group=race_eth2), lwd=2)+
@@ -218,14 +219,16 @@ outna%>%
        subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
-       y = "Percent Unemployed")+ylim(c(0, .2))+
+       y = "Percent Unemployed")+
+  ylim(c(0, .2))+
   scale_color_manual( name = "Race/Ethnicity",
                       labels=c(" Black", "Latino"," White"),
                       values = c("#004f9e","#e36c2c","#4eaf49"))+
   scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
-theme_minimal()+theme(axis.text.x = element_text(angle = 45))
+theme_minimal()+
+  theme(axis.text.x = element_text(angle = 45))
 
 
 ggsave(filename = "images/national_unemp.png",
