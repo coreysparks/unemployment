@@ -30,8 +30,8 @@ cpsdat<-zap_labels(cpsdat)
 ```
 
 ```{r}
-load("~/OneDrive - University of Texas at San Antonio/projects/carsey_brief/cpsbriefdata.Rdata")
-source("C:/Users/ozd504/Documents/GitHub/carseycolors/carsey_colors.R")
+#load("~/OneDrive - University of Texas at San Antonio/projects/carsey_brief/cpsbriefdata.Rdata")
+source("/Users/coreysparks//Documents/GitHub/custom_colors//carsey_colors.R")
 ```
 
 
@@ -204,21 +204,33 @@ outna<-cpsdat%>%
 head(outna)
 
 outna%>%
- filter(race_eth2!="NHPI.Not Latino", race_eth2!="AIAE.Not Latino",race_eth2!="multiple.Not Latino", emprate!=0, race_eth2!="Asian.Not Latino")%>%
-  ggplot()+geom_line(aes(x=month, y=emprate,color=race_eth2, group=race_eth2), lwd=2)+
+ filter(race_eth2!="NHPI.Not Latino", 
+        race_eth2!="AIAE.Not Latino",
+        race_eth2!="multiple.Not Latino", 
+        emprate!=0,
+        race_eth2!="Asian.Not Latino")%>%
+  ggplot()+geom_line(aes(x=month, 
+                         y=emprate,
+                         color=race_eth2, 
+                         group=race_eth2), lwd=2)+
   #scale_fill_discrete(name=)+
-  labs(title = "Percent Unemployed by Race/Ethnicity",subtitle = "February 2020 to June 2021",
+  labs(title = "Percent Unemployed by Race/Ethnicity",
+       subtitle = "February 2020 to June 2021",
        caption = "Source: IPUMS CPS Monthly Data \n Calculations by Corey S. Sparks, Ph.D.",
        x = "Month",
        y = "Percent Unemployed")+ylim(c(0, .2))+
-  scale_color_manual( name = "Race/Ethnicity",labels=c(" Black", "Latino"," White"), values = c("#004f9e","#e36c2c","#4eaf49"))+
+  scale_color_manual( name = "Race/Ethnicity",
+                      labels=c(" Black", "Latino"," White"),
+                      values = c("#004f9e","#e36c2c","#4eaf49"))+
   scale_y_continuous(labels = scales::percent)+
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
 theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 
 
-ggsave(filename = "images/national_unemp.png",height=8, width=10, dpi = "print" )
+ggsave(filename = "images/national_unemp.png",
+       height=8, width=10, 
+       dpi = "print", bg = "white" )
 
 ```
 
@@ -254,7 +266,9 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 #p$labels$colour<-"Race/Ethnicity"
 #p
 #<<<<<<< HEAD
-ggsave(filename = "images/national_unemp_sex.png",height=8, width=10, dpi = "print" )
+ggsave(filename = "images/national_unemp_sex.png",
+       height=8, width=10, dpi = "print" , bg = "white" )
+
 #=======
 #ggsave(filename = "~/national_unemp_sex.png",height=8, width=10, dpi = "print" )
 #write.csv(outna, file="~/Documents/GitHub/unemployment/fig4_rate.csv", row.names = F)
@@ -295,7 +309,8 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 #p$labels$colour<-"Race/Ethnicity"
 #p
 #<<<<<<< HEAD
-ggsave(filename = "images/national_unemp_sex_educ.png",height=8, width=10, dpi = "print" )
+ggsave(filename = "images/national_unemp_sex_educ.png",
+       height=8, width=10, dpi = "print", bg = "white"  )
 #=======
 #ggsave(filename = "~/national_unemp_sex_educ.png",height=8, width=10, dpi = "print" )
 #write.csv(outna2, file="~/Documents/GitHub/unemployment/fig_3_rate.csv", row.names = F)
@@ -337,7 +352,7 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 #<<<<<<< HEAD
 #ggsave(filename = "~/national_unemp_sex_fb.png",height=8, width=10, dpi = "print" )
 #=======
-ggsave(filename = "images/national_unemp_sex_fb_latinos.png",height=8, width=10, dpi = "print" )
+ggsave(filename = "images/national_unemp_sex_fb_latinos.png",height=8, width=10, dpi = "print", bg = "white" )
 #write.csv(outna2, file="~/Documents/GitHub/unemployment/fig_5rates.csv", row.names = F)
 #>>>>>>> a84ccb9e5b8bcff0b7f9cf5252e05dbf049207d3
 ```
@@ -372,7 +387,7 @@ p<-outst%>%
 theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 
 p
-ggsave(plot = p,filename = "images/stunemp_norace.png",height=12, width=16, dpi = "print" )
+ggsave(plot = p,filename = "images/stunemp_norace.png",height=12, width=16, dpi = "print", bg = "white" )
 head(outst)
 write.csv(outst, file="docs/figst_rate.csv", row.names = F)
 # outst%>%
@@ -448,7 +463,7 @@ p
 
   p$labels$colour<-"Race/Ethnicity"
 p
-ggsave(plot = p,filename = "images/stunemp.png",height=12, width=16, dpi = "print" )
+ggsave(plot = p,filename = "images/stunemp.png",height=12, width=16, dpi = "print", bg = "white" )
 write.csv(outst, file="docs/fig_state_race.csv", row.names = F)
 ```
 
@@ -493,9 +508,9 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 #p$labels$colour<-"Race/Ethnicity"
 #p
 #<<<<<<< HEAD
-#ggsave(filename = "~/national_unemp_sex_educ.png",height=8, width=10, dpi = "print" )
+#ggsave(filename = "~/national_unemp_sex_educ.png",height=8, width=10, dpi = "print", bg = "white" )
 #=======
-ggsave(filename = "images/national_unemp_sex_educ.png",height=8, width=10, dpi = "print" )
+ggsave(filename = "images/national_unemp_sex_educ.png",height=8, width=10, dpi = "print", bg = "white" )
 #write.csv(outna2, file="docs/fig_gender_edu.csv", row.names = F)
 #>>>>>>> a84ccb9e5b8bcff0b7f9cf5252e05dbf049207d3
 ```
@@ -544,9 +559,9 @@ theme_minimal()+
 #p$labels$colour<-"Race/Ethnicity"
 #p
 #<<<<<<< HEAD
-#ggsave(filename = "~/national_unemp_sex_educ.png",height=8, width=10, dpi = "print" )
+#ggsave(filename = "~/national_unemp_sex_educ.png",height=8, width=10, dpi = "print", bg = "white" )
 #=======
-ggsave(filename = "images/national_unemp_sex_race_educ.png",height=8, width=10, dpi = "print" )
+ggsave(filename = "images/national_unemp_sex_race_educ.png",height=8, width=10, dpi = "print", bg = "white" )
 #write.csv(outna2, file="docs/fig_gender_edu.csv", row.names = F)
 #>>>>>>> a84ccb9e5b8bcff0b7f9cf5252e05dbf049207d3
 ```
@@ -587,9 +602,9 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 #p$labels$colour<-"Race/Ethnicity"
 #p
 #<<<<<<< HEAD
-#ggsave(filename = "~/national_unemp_sex_fb.png",height=8, width=10, dpi = "print" )
+#ggsave(filename = "~/national_unemp_sex_fb.png",height=8, width=10, dpi = "print", bg = "white" )
 #=======
-ggsave(filename = "images/national_unemp_sex_fb_latinos.png",height=8, width=10, dpi = "print" )
+ggsave(filename = "images/national_unemp_sex_fb_latinos.png",height=8, width=10, dpi = "print", bg = "white" )
 #write.csv(outna2, file="~/Documents/GitHub/unemployment/fig_5rates.csv", row.names = F)
 #>>>>>>> a84ccb9e5b8bcff0b7f9cf5252e05dbf049207d3
 ```
@@ -633,9 +648,9 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 #p
 # <<<<<<< HEAD
 # ggsave(filename = "~/national_unemp_age.pngfig3
-#        figure",height=8, width=10, dpi = "print" )
+#        figure",height=8, width=10, dpi = "print", bg = "white" )
 # =======
-ggsave(filename = "images/national_unemp_age.png",height=8, width=10, dpi = "print" )
+ggsave(filename = "images/national_unemp_age.png",height=8, width=10, dpi = "print", bg = "white" )
 write.csv(outna2, file="docs/fig_2.csv", row.names = F)
 #>>>>>>> a84ccb9e5b8bcff0b7f9cf5252e05dbf049207d3
 ```
@@ -666,7 +681,7 @@ mutate(metro = car::Recode(METRO, recodes = "1='Not Metro';2='Central City'; 3='
   #guides(fill=guide_legend(title="Race/Ethnicity"))+
   #geom_hline(yintercept = 0, col="red", lwd=1.1)+
 theme_minimal()+theme(axis.text.x = element_text(angle = 45))
-ggsave(filename = "images/national_metro.png",height=8, width=10, dpi = "print" )
+ggsave(filename = "images/national_metro.png",height=8, width=10, dpi = "print", bg = "white" )
 
 ```
 
@@ -693,7 +708,7 @@ ggsave(filename = "images/national_metro.png",height=8, width=10, dpi = "print" 
 # 
 # #p$labels$colour<-"Race/Ethnicity"
 # #p
-# ggsave(filename = "~/national_metro_race.png",height=8, width=10, dpi = "print" )
+# ggsave(filename = "~/national_metro_race.png",height=8, width=10, dpi = "print", bg = "white" )
 # 
 outna2<-cpsdat%>%
   filter(is.na(race_eth2)==F, month>=as.Date('2019-12-01'))%>%
@@ -726,7 +741,7 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 
 #p$labels$colour<-"Race/Ethnicity"
 #p
-ggsave(filename = "images/national_metro_sex.png",height=8, width=10, dpi = "print" )
+ggsave(filename = "images/national_metro_sex.png",height=8, width=10, dpi = "print", bg = "white" )
 
 ```
 
@@ -768,7 +783,7 @@ theme_minimal()+theme(axis.text.x = element_text(angle = 45))
 #p$labels$colour<-"Race/Ethnicity"
 #p
 #<<<<<<< HEAD
-ggsave(filename = "images/national_unemp_sex.png",height=8, width=10, dpi = "print" )
+ggsave(filename = "images/national_unemp_sex.png",height=8, width=10, dpi = "print", bg = "white" )
 
 ```
 
@@ -784,7 +799,7 @@ library(ggplot2)
 dat%>%
   mutate(group= ifelse(pjobrecv<100, 1,0))%>%
   ggplot(aes(x=pjobrecv, y=reorder(STATEFIP, pjobrecv)))+geom_point(stat = "identity" , aes(color=as.factor(group) ))+geom_vline(xintercept = 100)+ylab("State")+xlab("Percentage of Jobs Recovered by June")+theme(legend.position = "none")+ggtitle("Job Recovery by State", sub="February to June")
-ggsave(filename="~/rogelio_state.png", width = 6, height = 10, dpi = "print")
+ggsave(filename="~/rogelio_state.png", width = 6, height = 10, dpi = "print", bg = "white")
 
 
 dat2<-read.csv("./data/rogrank_race.csv", header=T)
@@ -811,7 +826,7 @@ p4<-dat2%>%
 
 pa<-grid.arrange(p1,p2,p3,p4,ncol=2, nrow=2)
 pa
-ggsave(pa, filename="~/rogelio_state_race.png", width = 14, height = 18, dpi = "print")
+ggsave(pa, filename="~/rogelio_state_race.png", width = 14, height = 18, dpi = "print", bg = "white")
 
 library(stringr)
 
@@ -833,7 +848,7 @@ p5b<-dat3%>%
 
 
 p5b
-ggsave(p5b, filename="~/rogeliofig2.png", height = 6, width = 6, dpi = "print")                                                                                                     
+ggsave(p5b, filename="~/rogeliofig2.png", height = 6, width = 6, dpi = "print", bg = "white")                                                                                                     
 dat4<-read.csv("./data/rogfig3.csv", header=T)
 #names(dat4)<-c("Group", "Feb_Workers", "Feb_April")
 head(dat4)
@@ -846,7 +861,7 @@ p6b<-dat4%>%
 
 
 p6b
-ggsave(p6b, filename="~/rogeliofig1.png", height = 6, width = 6, dpi = "print")             
+ggsave(p6b, filename="~/rogeliofig1.png", height = 6, width = 6, dpi = "print", bg = "white")             
 
 
 dat5<-read.csv("./data/rogfig4.csv", header=T)
@@ -861,7 +876,7 @@ p7b<-dat5%>%
 
 
 p7b
-ggsave(p7b, filename="~/rogeliofig4.png", height = 6, width = 6, dpi = "print")       
+ggsave(p7b, filename="~/rogeliofig4.png", height = 6, width = 6, dpi = "print", bg = "white")       
 
 
 dat6<-read.csv("./data/rogfig5.csv", header=T)
@@ -876,7 +891,7 @@ p8b<-dat6%>%
 
 
 p8b
-ggsave(p8b, filename="~/rogeliofig3.png", height = 6, width = 6, dpi = "print") 
+ggsave(p8b, filename="~/rogeliofig3.png", height = 6, width = 6, dpi = "print", bg = "white") 
 write.csv(outna, file="~/Documents/GitHub/unemployment/fig4_rate.csv", row.names = F)
 
 ```
@@ -910,7 +925,7 @@ p8b<-dat7%>%
   
 
 p8b
-ggsave(p8b, filename="images/pct_change_race.png", height = 6, width = 8, dpi = "print") 
+ggsave(p8b, filename="images/pct_change_race.png", height = 6, width = 8, dpi = "print", bg = "white") 
 
 ```
 
@@ -943,7 +958,7 @@ p8b<-dat7%>%
   
 
 p8b
-ggsave(p8b, filename="images/pct_change_Gender_edu.png", height = 6, width = 8, dpi = "print") 
+ggsave(p8b, filename="images/pct_change_Gender_edu.png", height = 6, width = 8, dpi = "print", bg = "white") 
 
 ```
 
@@ -981,6 +996,6 @@ p8b<-dat8%>%
   
 
 p8b
-ggsave(p8b, filename="images/pct_change_jobs.png", height = 6, width = 8, dpi = "print") 
+ggsave(p8b, filename="images/pct_change_jobs.png", height = 6, width = 8, dpi = "print", bg = "white") 
 
 ```

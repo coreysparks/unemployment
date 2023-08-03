@@ -24,7 +24,7 @@ rm(list=ls()); gc()
 ```{r}
 #sasy<-haven::read_sas("~/OneDrive - University of Texas at San Antonio/projects/carsey_brief/cps_00040.sas7bdat.gz")
 
-load("C:/Users/ozd504/OneDrive - University of Texas at San Antonio/projects/carsey_brief//cpsbriefdata.Rdata")
+cpsdat<-readRDS("data/cpsdat_newbrief.rds")
 #View(cpsdat)
 source("https://raw.githubusercontent.com/coreysparks/custom_colors/master/carsey_colors.R")
 names(cpsdat) <- tolower(names(cpsdat))
@@ -117,7 +117,7 @@ annotate("text", x = "2021-01-01", y = 154000000, label = "June 2021")+
   theme(axis.text.x = element_text(angle = 45))+
   scale_y_continuous(labels = scales::number_format(scale = .000001))
   
- ggsave("images/fig1.png",height=8, width=10, dpi = "print")
+ ggsave("images/fig1.png",height=8, width=10, dpi = "print", bg = "white")
 
 ```
 
@@ -169,7 +169,7 @@ lfpartreg%>%
                        labels=c("Female", "Male"),
                        values = c("#004f9e","#e36c2c","#4eaf49"))
 
- ggsave("images/fig2.png",height=8, width=10, dpi = "print")
+ ggsave("images/fig2.png",height=8, width=10, dpi = "print", bg= "white")
 ```
 
 # figure 3
